@@ -44,8 +44,9 @@ section{padding:80px 0;}
 header{background:var(--bg);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50;}
 .nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:20px;}
 .brand{display:flex;align-items:center;gap:10px;font-weight:800;}
-.brand .m{width:26px;height:26px;background:var(--accent);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;font-weight:900;border-radius:4px;font-size:.85rem;}
-.brand .word span{background:var(--accent);color:var(--accent-ink);padding:1px 6px;border-radius:4px;font-size:.72rem;margin-left:4px;}
+.logo-mark{height:44px;width:auto;display:block;}
+.logo-mark--footer{height:56px;}
+@media (max-width:480px){ .logo-mark{height:36px;} }
 nav.links{display:flex;gap:22px;}
 nav.links a{font-size:.9rem;color:var(--ink-soft);}
 nav.links a:hover{color:var(--ink);}
@@ -208,8 +209,7 @@ footer{background:#0A0C10;padding:56px 0 26px;}
 <header>
   <div class="wrap nav">
     <a class="brand" href="#top">
-      <span class="m">M</span>
-      <span class="word">MAX WAX <span>PRO</span></span>
+      <img src="logo.png" alt="MAX WAX PRO" class="logo-mark">
     </a>
     <nav class="links">
       <a href="#products" data-uk="Продукти" data-en="Products">Продукти</a>
@@ -359,26 +359,6 @@ footer{background:#0A0C10;padding:56px 0 26px;}
     </div>
   </section>
 
-  <!-- PAYMENT DETAILS -->
-  <section id="payment-details">
-    <div class="wrap">
-      <div class="section-head">
-        <h2 data-uk="Оплата за реквізитами" data-en="Bank transfer details">Оплата за реквізитами</h2>
-        <p data-uk="Якщо вам зручніше оплатити прямим переказом на картку/рахунок ФОП — ось реквізити для оплати." data-en="If a direct bank transfer is more convenient for you — here are the payment details.">Якщо вам зручніше оплатити прямим переказом на картку/рахунок ФОП — ось реквізити для оплати.</p>
-      </div>
-      <div class="req-card">
-        <div class="req-row"><span class="req-k" data-uk="Отримувач" data-en="Recipient">Отримувач</span><span class="req-v">ФОП Тесленко Ірина Вікторівна</span></div>
-        <div class="req-row"><span class="req-k">IBAN</span><span class="req-v mono">UA593220010000026004370080278</span></div>
-        <div class="req-row"><span class="req-k" data-uk="ІПН/ЄДРПОУ" data-en="Tax ID">ІПН/ЄДРПОУ</span><span class="req-v mono">2254719589</span></div>
-        <div class="req-row"><span class="req-k" data-uk="Банк" data-en="Bank">Банк</span><span class="req-v">Акціонерне товариство «УНІВЕРСАЛ БАНК»</span></div>
-        <div class="req-row"><span class="req-k">МФО</span><span class="req-v mono">322001</span></div>
-        <div class="req-row"><span class="req-k" data-uk="ЄДРПОУ банку" data-en="Bank code">ЄДРПОУ банку</span><span class="req-v mono">21133352</span></div>
-        <div class="req-row"><span class="req-k" data-uk="Телефон для зв'язку" data-en="Contact phone">Телефон для зв'язку</span><span class="req-v"><a href="tel:+380968949414">+380 96 894 94 14</a></span></div>
-        <p class="req-note" data-uk="Після оплати за реквізитами напишіть, будь ласка, на maxwaxpro2@gmail.com або в Telegram — вкажіть суму й час переказу, щоб ми одразу підтвердили замовлення." data-en="After paying by bank transfer, please email maxwaxpro2@gmail.com or message us on Telegram with the amount and time of transfer so we can confirm your order right away.">Після оплати за реквізитами напишіть, будь ласка, на maxwaxpro2@gmail.com або в Telegram — вкажіть суму й час переказу, щоб ми одразу підтвердили замовлення.</p>
-      </div>
-    </div>
-  </section>
-
   <!-- FAQ -->
   <section id="faq">
     <div class="wrap">
@@ -423,7 +403,7 @@ footer{background:#0A0C10;padding:56px 0 26px;}
       <input class="field-input" name="city" data-uk-ph="Місто / Нова Пошта" data-en-ph="City / Nova Poshta" placeholder="Місто / Нова Пошта">
       <textarea class="field-input" name="comment" data-uk-ph="Коментар до замовлення" data-en-ph="Order comment" placeholder="Коментар до замовлення" rows="2"></textarea>
       <button type="submit" class="btn btn-accent full-btn" data-uk="Відправити замовлення на email →" data-en="Send order by email →">Відправити замовлення на email →</button>
-      <p class="checkout-note" data-uk='Після натискання відкриється ваш email-клієнт із готовим листом на maxwaxpro2@gmail.com — просто натисніть "Надіслати". Або оплатіть напряму за реквізитами.' data-en='Clicking this will open your email client with a ready-made message to maxwaxpro2@gmail.com — just hit "Send". Or pay directly using our bank transfer details.'>Після натискання відкриється ваш email-клієнт із готовим листом на maxwaxpro2@gmail.com — просто натисніть "Надіслати". Або оплатіть напряму за реквізитами.</p>
+      <p class="checkout-note" id="checkoutNote">Після натискання відкриється ваш email-клієнт із готовим листом на maxwaxpro2@gmail.com — просто натисніть "Надіслати". Або оплатіть напряму за <a href="requisites.html">реквізитами</a>.</p>
     </form>
   </div>
 </div>
@@ -432,8 +412,8 @@ footer{background:#0A0C10;padding:56px 0 26px;}
   <div class="wrap">
     <div class="foot-top">
       <div>
-        <a class="brand" href="#top" style="color:#fff;">
-          <span class="m">M</span><span class="word">MAX WAX <span>PRO</span></span>
+        <a class="brand" href="#top">
+          <img src="logo.png" alt="MAX WAX PRO" class="logo-mark logo-mark--footer">
         </a>
         <p data-uk="Професійні воскові змазки для велосипедних ланцюгів. Розроблено та вироблено в Україні." data-en="Professional hot wax lubricants for bicycle chains. Designed and made in Ukraine.">Професійні воскові змазки для велосипедних ланцюгів. Розроблено та вироблено в Україні.</p>
         <div class="foot-social">
@@ -460,7 +440,7 @@ footer{background:#0A0C10;padding:56px 0 26px;}
         <div class="foot-col">
           <h4 data-uk="Правова інформація" data-en="Legal">Правова інформація</h4>
           <div><a href="privacy.html" data-uk="Політика конфіденційності" data-en="Privacy policy">Політика конфіденційності</a></div>
-          <div><a href="#payment-details" data-uk="Реквізити для оплати" data-en="Payment details">Реквізити для оплати</a></div>
+          <div><a href="requisites.html" data-uk="Реквізити для оплати" data-en="Payment details">Реквізити для оплати</a></div>
         </div>
       </div>
     </div>
@@ -796,6 +776,13 @@ window.__PRODUCT_PHOTOS__ = {
     document.querySelectorAll('.lang-btn').forEach(function(b){
       b.classList.toggle('active', b.getAttribute('data-lang') === lang);
     });
+
+    var noteEl = document.getElementById('checkoutNote');
+    if(noteEl){
+      noteEl.innerHTML = lang === 'en'
+        ? 'Clicking this will open your email client with a ready-made message to maxwaxpro2@gmail.com — just hit "Send". Or pay directly using our <a href="requisites.html">bank transfer details</a>.'
+        : 'Після натискання відкриється ваш email-клієнт із готовим листом на maxwaxpro2@gmail.com — просто натисніть "Надіслати". Або оплатіть напряму за <a href="requisites.html">реквізитами</a>.';
+    }
 
     try{ localStorage.setItem(LANG_KEY, lang); }catch(e){}
 
