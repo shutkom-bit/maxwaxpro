@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" data-lang="uk">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -149,6 +149,16 @@ nav.links a:hover{color:var(--ink);}
 .field-input{width:100%;background:var(--surface-2);border:1px solid var(--border);border-radius:4px;padding:11px 12px;font-family:'Inter',sans-serif;font-size:.9rem;color:var(--ink);margin-bottom:10px;}
 .field-input::placeholder{color:var(--ink-soft);}
 
+/* ---------- payment details / requisites ---------- */
+.req-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:6px 26px;max-width:640px;}
+.req-row{display:flex;justify-content:space-between;gap:20px;padding:14px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+.req-row:last-of-type{border-bottom:none;}
+.req-k{color:var(--ink-soft);font-size:.86rem;}
+.req-v{font-weight:600;font-size:.92rem;text-align:right;}
+.req-v.mono{font-family:'JetBrains Mono',monospace;letter-spacing:.02em;}
+.req-note{padding:18px 0 6px;font-size:.82rem;color:var(--ink-soft);}
+@media (max-width:560px){ .req-row{flex-direction:column;gap:4px;} .req-v{text-align:left;} }
+
 /* ---------- faq ---------- */
 .faq-wrap{max-width:740px;}
 details{border-bottom:1px solid var(--border);}
@@ -202,20 +212,19 @@ footer{background:#0A0C10;padding:56px 0 26px;}
       <span class="word">MAX WAX <span>PRO</span></span>
     </a>
     <nav class="links">
-      <a href="#products">Продукти</a>
-      <a href="#why">Чому віск</a>
-      <a href="#how">Як варити</a>
-      <a href="#reviews">Відгуки</a>
-      <a href="#faq">FAQ</a>
+      <a href="#products" data-uk="Продукти" data-en="Products">Продукти</a>
+      <a href="#why" data-uk="Чому віск" data-en="Why wax">Чому віск</a>
+      <a href="#how" data-uk="Як варити" data-en="How to wax">Як варити</a>
+      <a href="#faq" data-uk="FAQ" data-en="FAQ">FAQ</a>
     </nav>
     <div class="nav-right">
-      <a class="b2b-pill" href="#dealers">B2B Дилерам</a>
+      <a class="b2b-pill" href="#dealers" data-uk="B2B Дилерам" data-en="B2B Dealers">B2B Дилерам</a>
       <div class="lang-toggle">
         <button class="lang-btn active" data-lang="uk" type="button">UA</button>
         <button class="lang-btn" data-lang="en" type="button">EN</button>
       </div>
       <button class="cart-btn" id="cartBtn" aria-label="Кошик">
-        🛒 КОШИК <span class="cart-count" id="cartCount">0</span>
+        🛒 <span data-uk="КОШИК" data-en="CART">КОШИК</span> <span class="cart-count" id="cartCount">0</span>
       </button>
     </div>
   </div>
@@ -227,17 +236,17 @@ footer{background:#0A0C10;padding:56px 0 26px;}
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <div class="eyebrow">● ТРИБОЛОГІЧНА ФОРМУЛА НОВОГО ПОКОЛІННЯ</div>
-        <h1>Ідеально чистий ланцюг. <span class="accent">Нуль бруду та мазуту.</span></h1>
-        <p class="lede">Преміальний гарячий парафін для велосипедних ланцюгів. До 500 км безшумного ходу на одній варці, без брудних рук та зносу трансмісії.</p>
+        <div class="eyebrow" data-uk="● ТРИБОЛОГІЧНА ФОРМУЛА НОВОГО ПОКОЛІННЯ" data-en="● NEXT-GENERATION TRIBOLOGICAL FORMULA">● ТРИБОЛОГІЧНА ФОРМУЛА НОВОГО ПОКОЛІННЯ</div>
+        <h1><span data-uk="Ідеально чистий ланцюг." data-en="A perfectly clean chain.">Ідеально чистий ланцюг.</span> <span class="accent" data-uk="Нуль бруду та мазуту." data-en="Zero grime, zero grease.">Нуль бруду та мазуту.</span></h1>
+        <p class="lede" data-uk="Преміальний гарячий парафін для велосипедних ланцюгів. До 500 км безшумного ходу на одній варці, без брудних рук та зносу трансмісії." data-en="Premium hot wax for bicycle chains. Up to 500 km of silent riding per treatment — no dirty hands, no drivetrain wear.">Преміальний гарячий парафін для велосипедних ланцюгів. До 500 км безшумного ходу на одній варці, без брудних рук та зносу трансмісії.</p>
         <div class="hero-actions">
-          <a class="btn btn-accent" href="#products">Замовити Starter Kit</a>
-          <a class="btn btn-outline-dark" href="#how">Як це працює</a>
+          <a class="btn btn-accent" href="#products" data-uk="Замовити Starter Kit" data-en="Order a Starter Kit">Замовити Starter Kit</a>
+          <a class="btn btn-outline-dark" href="#how" data-uk="Як це працює" data-en="How it works">Як це працює</a>
         </div>
         <div class="check-row">
-          <span>✅ Сухий дотик — не бруднить одяг</span>
-          <span>✅ Ресурс ланцюга x3</span>
-          <span>✅ Зроблено в Україні</span>
+          <span data-uk="✅ Сухий дотик — не бруднить одяг" data-en="✅ Dry to the touch — won't stain clothes">✅ Сухий дотик — не бруднить одяг</span>
+          <span data-uk="✅ Ресурс ланцюга x3" data-en="✅ 3x chain lifespan">✅ Ресурс ланцюга x3</span>
+          <span data-uk="✅ Зроблено в Україні" data-en="✅ Made in Ukraine">✅ Зроблено в Україні</span>
         </div>
       </div>
       <div class="hero-photo-wrap">
@@ -250,7 +259,7 @@ footer{background:#0A0C10;padding:56px 0 26px;}
   <!-- TRUST BAR -->
   <div class="trust">
     <div class="wrap trust-row">
-      <span class="trust-label">ДОВІРЯЮТЬ РАЙДЕРИ ТА МАЙСТЕРНІ ПО ВСІЙ УКРАЇНІ</span>
+      <span class="trust-label" data-uk="ДОВІРЯЮТЬ РАЙДЕРИ ТА МАЙСТЕРНІ ПО ВСІЙ УКРАЇНІ" data-en="TRUSTED BY RIDERS AND WORKSHOPS ACROSS UKRAINE">ДОВІРЯЮТЬ РАЙДЕРИ ТА МАЙСТЕРНІ ПО ВСІЙ УКРАЇНІ</span>
       <span class="dot">•</span><span>GRAVEL LOVERS UA</span>
       <span class="dot">•</span><span>KYIV CYCLING HUB</span>
       <span class="dot">•</span><span>VELOLAB WORKSHOP</span>
@@ -262,13 +271,13 @@ footer{background:#0A0C10;padding:56px 0 26px;}
   <section id="why">
     <div class="wrap">
       <div class="section-head">
-        <h2>Чому гарячий віск, а не олива</h2>
-        <p>Олива та рідкий віск лишаються липкими й притягують бруд. Гарячий парафін застигає сухим — і просто відштовхує пил, бруд та сольові реагенти.</p>
+        <h2 data-uk="Чому гарячий віск, а не олива" data-en="Why hot wax, not oil">Чому гарячий віск, а не олива</h2>
+        <p data-uk="Олива та рідкий віск лишаються липкими й притягують бруд. Гарячий парафін застигає сухим — і просто відштовхує пил, бруд та сольові реагенти." data-en="Oil and liquid wax stay sticky and attract dirt. Hot wax sets dry and simply repels dust, grime and road salt.">Олива та рідкий віск лишаються липкими й притягують бруд. Гарячий парафін застигає сухим — і просто відштовхує пил, бруд та сольові реагенти.</p>
       </div>
       <div class="why-grid">
-        <div class="why-cell"><div class="why-num">01</div><h3>Сухий привід</h3><p>Ланцюг і касета лишаються практично без чорного нальоту, навіть у бруді чи снігу.</p></div>
-        <div class="why-cell"><div class="why-num">02</div><h3>+5 Вт потужності</h3><p>Триступенева синергія присадок WS₂ + MoS₂ + hBN знижує тертя в кожній ланці.</p></div>
-        <div class="why-cell"><div class="why-num">03</div><h3>Ресурс x3</h3><p>Менше абразивного зносу — довший строк служби ланцюга, касети та зірок.</p></div>
+        <div class="why-cell"><div class="why-num">01</div><h3 data-uk="Сухий привід" data-en="Dry drivetrain">Сухий привід</h3><p data-uk="Ланцюг і касета лишаються практично без чорного нальоту, навіть у бруді чи снігу." data-en="Chain and cassette stay almost free of black grime, even in mud or snow.">Ланцюг і касета лишаються практично без чорного нальоту, навіть у бруді чи снігу.</p></div>
+        <div class="why-cell"><div class="why-num">02</div><h3 data-uk="+5 Вт потужності" data-en="+5W of power">+5 Вт потужності</h3><p data-uk="Триступенева синергія присадок WS₂ + MoS₂ + hBN знижує тертя в кожній ланці." data-en="A three-stage additive synergy of WS₂ + MoS₂ + hBN reduces friction in every link.">Триступенева синергія присадок WS₂ + MoS₂ + hBN знижує тертя в кожній ланці.</p></div>
+        <div class="why-cell"><div class="why-num">03</div><h3 data-uk="Ресурс x3" data-en="3x lifespan">Ресурс x3</h3><p data-uk="Менше абразивного зносу — довший строк служби ланцюга, касети та зірок." data-en="Less abrasive wear means a longer life for your chain, cassette and rings.">Менше абразивного зносу — довший строк служби ланцюга, касети та зірок.</p></div>
       </div>
     </div>
   </section>
@@ -277,8 +286,8 @@ footer{background:#0A0C10;padding:56px 0 26px;}
   <section id="products">
     <div class="wrap">
       <div class="section-head">
-        <h2>Каталог продукції</h2>
-        <p>Офіційний прейскурант MAX WAX PRO. Оберіть формат — ціна оновиться автоматично.</p>
+        <h2 data-uk="Каталог продукції" data-en="Product catalogue">Каталог продукції</h2>
+        <p data-uk="Офіційний прейскурант MAX WAX PRO. Оберіть формат — ціна оновиться автоматично." data-en="The official MAX WAX PRO price list. Choose a format — the price updates automatically.">Офіційний прейскурант MAX WAX PRO. Оберіть формат — ціна оновиться автоматично.</p>
       </div>
 
       <div class="cat-tabs" id="catTabs"></div>
@@ -290,19 +299,19 @@ footer{background:#0A0C10;padding:56px 0 26px;}
   <section id="ice-diamond" class="ice-section">
     <div class="wrap ice-grid">
       <div>
-        <div class="eyebrow ice-eyebrow">❄️ НОВИНКА 2026</div>
+        <div class="eyebrow ice-eyebrow" data-uk="❄️ НОВИНКА 2026" data-en="❄️ NEW FOR 2026">❄️ НОВИНКА 2026</div>
         <h2>Royal Eggs — <span class="accent-ice">Ice Diamond</span> 💎</h2>
-        <p class="lede">Зимова формула флагманської лінійки для морозу та міжсезоння. Робочий діапазон −10°C…+15°C, аромат замороженої чорниці, ресурс до 1000 км на одній варці.</p>
+        <p class="lede" data-uk="Зимова формула флагманської лінійки для морозу та міжсезоння. Робочий діапазон −10°C…+15°C, аромат замороженої чорниці, ресурс до 1000 км на одній варці." data-en="A winter formula from the flagship line, for frost and off-season riding. Working range −10°C…+15°C, frozen-blueberry scent, up to 1000 km per treatment.">Зимова формула флагманської лінійки для морозу та міжсезоння. Робочий діапазон −10°C…+15°C, аромат замороженої чорниці, ресурс до 1000 км на одній варці.</p>
         <ul class="ice-list">
-          <li>Триступенева синергія присадок: WS₂ + MoS₂ + hBN — до +5 Вт потужності</li>
-          <li>Гідрофобна плівка стійка до снігу, соляних реагентів та каші на дорозі</li>
-          <li>Проварка за 3 хвилини при 90–95°C — просто й швидко</li>
+          <li data-uk="Триступенева синергія присадок: WS₂ + MoS₂ + hBN — до +5 Вт потужності" data-en="Three-stage additive synergy: WS₂ + MoS₂ + hBN — up to +5W of power">Триступенева синергія присадок: WS₂ + MoS₂ + hBN — до +5 Вт потужності</li>
+          <li data-uk="Гідрофобна плівка стійка до снігу, соляних реагентів та каші на дорозі" data-en="Hydrophobic film resistant to snow, road salt and slush">Гідрофобна плівка стійка до снігу, соляних реагентів та каші на дорозі</li>
+          <li data-uk="Проварка за 3 хвилини при 90–95°C — просто й швидко" data-en="A 3-minute treatment at 90–95°C — quick and simple">Проварка за 3 хвилини при 90–95°C — просто й швидко</li>
         </ul>
         <div class="ice-price-row">
-          <span class="ice-price">2 100 грн</span>
-          <button class="btn btn-accent add-to-cart-btn" data-name="Royal Eggs Ice Diamond, 500 г" data-price="2100">Додати в кошик</button>
+          <span class="ice-price">2 100 <span data-uk="грн" data-en="UAH">грн</span></span>
+          <button class="btn btn-accent add-to-cart-btn" data-name="Royal Eggs Ice Diamond, 500 г" data-price="2100" data-uk="Додати в кошик" data-en="Add to cart">Додати в кошик</button>
         </div>
-        <p class="ice-note">У комплекті: 500 г воску (24 порційні сфери), 2 бонусні сфери по 20 г, 2 шайби-дегризери, доступ до відео-інструкцій. 🇺🇦 Зроблено в Україні.</p>
+        <p class="ice-note" data-uk="У комплекті: 500 г воску (24 порційні сфери), 2 бонусні сфери по 20 г, 2 шайби-дегризери, доступ до відео-інструкцій. 🇺🇦 Зроблено в Україні." data-en="Included: 500 g of wax (24 portioned spheres), 2 bonus 20 g spheres, 2 degreaser discs, access to video instructions. 🇺🇦 Made in Ukraine.">У комплекті: 500 г воску (24 порційні сфери), 2 бонусні сфери по 20 г, 2 шайби-дегризери, доступ до відео-інструкцій. 🇺🇦 Зроблено в Україні.</p>
       </div>
       <div class="ice-video-wrap">
         <video class="ice-video" controls playsinline preload="metadata">
@@ -315,11 +324,11 @@ footer{background:#0A0C10;padding:56px 0 26px;}
   <!-- HOW -->
   <section id="how" class="how-section">
     <div class="wrap">
-      <div class="section-head"><h2>Як варити ланцюг</h2></div>
+      <div class="section-head"><h2 data-uk="Як варити ланцюг" data-en="How to wax your chain">Як варити ланцюг</h2></div>
       <div class="how-grid">
-        <div class="how-step"><div class="step-n">1</div><h3>Розігріти</h3><p>Розігрійте сфери у воскоплаві, мультиварці чи ковшику до 90–95°C.</p></div>
-        <div class="how-step"><div class="step-n">2</div><h3>Занурити</h3><p>Опустіть підготовлений сухий ланцюг у розплав на 2–3 хвилини.</p></div>
-        <div class="how-step"><div class="step-n">3</div><h3>Дістати й розім'яти</h3><p>Дістаньте, дайте охолонути, розімніть ланки — ланцюг готовий до виїзду.</p></div>
+        <div class="how-step"><div class="step-n">1</div><h3 data-uk="Розігріти" data-en="Heat">Розігріти</h3><p data-uk="Розігрійте сфери у воскоплаві, мультиварці чи ковшику до 90–95°C." data-en="Heat the spheres in a wax heater, slow cooker or pot to 90–95°C.">Розігрійте сфери у воскоплаві, мультиварці чи ковшику до 90–95°C.</p></div>
+        <div class="how-step"><div class="step-n">2</div><h3 data-uk="Занурити" data-en="Dip">Занурити</h3><p data-uk="Опустіть підготовлений сухий ланцюг у розплав на 2–3 хвилини." data-en="Submerge the prepared, dry chain into the melt for 2–3 minutes.">Опустіть підготовлений сухий ланцюг у розплав на 2–3 хвилини.</p></div>
+        <div class="how-step"><div class="step-n">3</div><h3 data-uk="Дістати й розім'яти" data-en="Remove and flex">Дістати й розім'яти</h3><p data-uk="Дістаньте, дайте охолонути, розімніть ланки — ланцюг готовий до виїзду." data-en="Take it out, let it cool, flex the links — the chain is ready to ride.">Дістаньте, дайте охолонути, розімніть ланки — ланцюг готовий до виїзду.</p></div>
       </div>
     </div>
   </section>
@@ -329,23 +338,43 @@ footer{background:#0A0C10;padding:56px 0 26px;}
     <div class="wrap dealers-grid">
       <div>
         <div class="eyebrow">B2B</div>
-        <h2>Гуртові умови для майстерень і магазинів</h2>
-        <p class="lede">Продаєте велоаксесуари чи обслуговуєте велосипеди? Отримайте гуртовий прайс і умови співпраці.</p>
+        <h2 data-uk="Гуртові умови для майстерень і магазинів" data-en="Wholesale terms for workshops and shops">Гуртові умови для майстерень і магазинів</h2>
+        <p class="lede" data-uk="Продаєте велоаксесуари чи обслуговуєте велосипеди? Отримайте гуртовий прайс і умови співпраці." data-en="Sell bike accessories or service bikes? Get our wholesale price list and terms.">Продаєте велоаксесуари чи обслуговуєте велосипеди? Отримайте гуртовий прайс і умови співпраці.</p>
         <ul class="checklist">
-          <li>Гуртові ціни та знижки за обсягом</li>
-          <li>Навчання майстрів технології проварювання</li>
-          <li>Брендовані POS-матеріали для точки продажу</li>
+          <li data-uk="Гуртові ціни та знижки за обсягом" data-en="Wholesale pricing and volume discounts">Гуртові ціни та знижки за обсягом</li>
+          <li data-uk="Навчання майстрів технології проварювання" data-en="Waxing technique training for mechanics">Навчання майстрів технології проварювання</li>
+          <li data-uk="Брендовані POS-матеріали для точки продажу" data-en="Branded point-of-sale materials">Брендовані POS-матеріали для точки продажу</li>
         </ul>
       </div>
       <div class="form-card">
-        <h3>Заявка дилера</h3>
+        <h3 data-uk="Заявка дилера" data-en="Dealer application">Заявка дилера</h3>
         <form id="dealerForm">
-          <input class="field-input" name="companyName" placeholder="Назва компанії/майстерні" required>
-          <input class="field-input" name="contactName" placeholder="Контактна особа" required>
+          <input class="field-input" name="companyName" data-uk-ph="Назва компанії/майстерні" data-en-ph="Company / workshop name" placeholder="Назва компанії/майстерні" required>
+          <input class="field-input" name="contactName" data-uk-ph="Контактна особа" data-en-ph="Contact person" placeholder="Контактна особа" required>
           <input class="field-input" name="email" type="email" placeholder="Email" required>
-          <input class="field-input" name="phone" type="tel" placeholder="Телефон" required>
-          <button type="submit" class="btn btn-dark full-btn">Надіслати заявку →</button>
+          <input class="field-input" name="phone" type="tel" data-uk-ph="Телефон" data-en-ph="Phone" placeholder="Телефон" required>
+          <button type="submit" class="btn btn-dark full-btn" data-uk="Надіслати заявку →" data-en="Send application →">Надіслати заявку →</button>
         </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAYMENT DETAILS -->
+  <section id="payment-details">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 data-uk="Оплата за реквізитами" data-en="Bank transfer details">Оплата за реквізитами</h2>
+        <p data-uk="Якщо вам зручніше оплатити прямим переказом на картку/рахунок ФОП — ось реквізити для оплати." data-en="If a direct bank transfer is more convenient for you — here are the payment details.">Якщо вам зручніше оплатити прямим переказом на картку/рахунок ФОП — ось реквізити для оплати.</p>
+      </div>
+      <div class="req-card">
+        <div class="req-row"><span class="req-k" data-uk="Отримувач" data-en="Recipient">Отримувач</span><span class="req-v">ФОП Тесленко Ірина Вікторівна</span></div>
+        <div class="req-row"><span class="req-k">IBAN</span><span class="req-v mono">UA593220010000026004370080278</span></div>
+        <div class="req-row"><span class="req-k" data-uk="ІПН/ЄДРПОУ" data-en="Tax ID">ІПН/ЄДРПОУ</span><span class="req-v mono">2254719589</span></div>
+        <div class="req-row"><span class="req-k" data-uk="Банк" data-en="Bank">Банк</span><span class="req-v">Акціонерне товариство «УНІВЕРСАЛ БАНК»</span></div>
+        <div class="req-row"><span class="req-k">МФО</span><span class="req-v mono">322001</span></div>
+        <div class="req-row"><span class="req-k" data-uk="ЄДРПОУ банку" data-en="Bank code">ЄДРПОУ банку</span><span class="req-v mono">21133352</span></div>
+        <div class="req-row"><span class="req-k" data-uk="Телефон для зв'язку" data-en="Contact phone">Телефон для зв'язку</span><span class="req-v"><a href="tel:+380968949414">+380 96 894 94 14</a></span></div>
+        <p class="req-note" data-uk="Після оплати за реквізитами напишіть, будь ласка, на maxwaxpro2@gmail.com або в Telegram — вкажіть суму й час переказу, щоб ми одразу підтвердили замовлення." data-en="After paying by bank transfer, please email maxwaxpro2@gmail.com or message us on Telegram with the amount and time of transfer so we can confirm your order right away.">Після оплати за реквізитами напишіть, будь ласка, на maxwaxpro2@gmail.com або в Telegram — вкажіть суму й час переказу, щоб ми одразу підтвердили замовлення.</p>
       </div>
     </div>
   </section>
@@ -353,12 +382,12 @@ footer{background:#0A0C10;padding:56px 0 26px;}
   <!-- FAQ -->
   <section id="faq">
     <div class="wrap">
-      <div class="section-head"><h2>Питання</h2></div>
+      <div class="section-head"><h2 data-uk="Питання" data-en="FAQ">Питання</h2></div>
       <div class="faq-wrap">
-        <details open><summary>Чи потрібен спеціальний воскоплав?<span class="plus">+</span></summary><p>Бажано — так температура тримається стабільною. Можна також використати мультиварку чи ковшик з термометром.</p></details>
-        <details><summary>Як часто варити ланцюг?<span class="plus">+</span></summary><p>Залежно від лінійки — орієнтовно кожні 300–1000 км, дивіться ресурс у картці товару.</p></details>
-        <details><summary>Що означають кольори PRO/Wax Warmer/Royal Eggs NB?<span class="plus">+</span></summary><p>Колір відповідає температурному діапазону використання: Red — спека, Yellow — тепло, Green — міжсезоння, Blue — холод.</p></details>
-        <details><summary>Як стати дилером?<span class="plus">+</span></summary><p>Залиште заявку в розділі B2B — ми надішлемо гуртовий прайс і умови співпраці.</p></details>
+        <details open><summary data-uk="Чи потрібен спеціальний воскоплав?" data-en="Do I need a special wax heater?">Чи потрібен спеціальний воскоплав?<span class="plus">+</span></summary><p data-uk="Бажано — так температура тримається стабільною. Можна також використати мультиварку чи ковшик з термометром." data-en="It's recommended — it keeps the temperature stable. You can also use a slow cooker or a pot with a thermometer.">Бажано — так температура тримається стабільною. Можна також використати мультиварку чи ковшик з термометром.</p></details>
+        <details><summary data-uk="Як часто варити ланцюг?" data-en="How often should I wax the chain?">Як часто варити ланцюг?<span class="plus">+</span></summary><p data-uk="Залежно від лінійки — орієнтовно кожні 300–1000 км, дивіться ресурс у картці товару." data-en="Depending on the line — roughly every 300–1000 km, see the lifespan in the product card.">Залежно від лінійки — орієнтовно кожні 300–1000 км, дивіться ресурс у картці товару.</p></details>
+        <details><summary data-uk="Що означають кольори PRO/Wax Warmer/Royal Eggs NB?" data-en="What do the PRO / Wax Warmer / Royal Eggs NB colours mean?">Що означають кольори PRO/Wax Warmer/Royal Eggs NB?<span class="plus">+</span></summary><p data-uk="Колір відповідає температурному діапазону використання: Red — спека, Yellow — тепло, Green — міжсезоння, Blue — холод." data-en="The colour corresponds to the temperature range: Red — hot, Yellow — warm, Green — off-season, Blue — cold.">Колір відповідає температурному діапазону використання: Red — спека, Yellow — тепло, Green — міжсезоння, Blue — холод.</p></details>
+        <details><summary data-uk="Як стати дилером?" data-en="How do I become a dealer?">Як стати дилером?<span class="plus">+</span></summary><p data-uk="Залиште заявку в розділі B2B — ми надішлемо гуртовий прайс і умови співпраці." data-en="Leave a request in the B2B section — we'll send you the wholesale price list and terms.">Залиште заявку в розділі B2B — ми надішлемо гуртовий прайс і умови співпраці.</p></details>
       </div>
     </div>
   </section>
@@ -369,32 +398,32 @@ footer{background:#0A0C10;padding:56px 0 26px;}
 <div class="cart-overlay" id="cartOverlay"></div>
 <aside class="cart-drawer" id="cartDrawer">
   <div class="cart-drawer-head">
-    <h3>Кошик</h3>
+    <h3 data-uk="Кошик" data-en="Cart">Кошик</h3>
     <button class="cart-close" id="cartClose">✕</button>
   </div>
   <div class="cart-items" id="cartItems"></div>
   <div class="cart-total-row">
-    <span>Разом</span>
+    <span data-uk="Разом" data-en="Total">Разом</span>
     <span id="cartTotal">0 грн</span>
   </div>
-  <button class="btn btn-accent full-btn" id="checkoutBtn">Оформити замовлення →</button>
+  <button class="btn btn-accent full-btn" id="checkoutBtn" data-uk="Оформити замовлення →" data-en="Proceed to checkout →">Оформити замовлення →</button>
 </aside>
 
 <!-- CHECKOUT MODAL -->
 <div class="modal-overlay" id="checkoutOverlay">
   <div class="modal-card">
     <div class="modal-head">
-      <h3>Оформлення замовлення</h3>
+      <h3 data-uk="Оформлення замовлення" data-en="Checkout">Оформлення замовлення</h3>
       <button class="cart-close" id="checkoutClose">✕</button>
     </div>
     <form id="checkoutForm">
-      <input class="field-input" name="name" placeholder="Ім'я та прізвище" required>
-      <input class="field-input" name="phone" type="tel" placeholder="Телефон" required>
+      <input class="field-input" name="name" data-uk-ph="Ім'я та прізвище" data-en-ph="Full name" placeholder="Ім'я та прізвище" required>
+      <input class="field-input" name="phone" type="tel" data-uk-ph="Телефон" data-en-ph="Phone" placeholder="Телефон" required>
       <input class="field-input" name="email" type="email" placeholder="Email">
-      <input class="field-input" name="city" placeholder="Місто / Нова Пошта">
-      <textarea class="field-input" name="comment" placeholder="Коментар до замовлення" rows="2"></textarea>
-      <button type="submit" class="btn btn-accent full-btn">Відправити замовлення на email →</button>
-      <p class="checkout-note">Після натискання відкриється ваш email-клієнт із готовим листом на maxwaxpro2@gmail.com — просто натисніть "Надіслати".</p>
+      <input class="field-input" name="city" data-uk-ph="Місто / Нова Пошта" data-en-ph="City / Nova Poshta" placeholder="Місто / Нова Пошта">
+      <textarea class="field-input" name="comment" data-uk-ph="Коментар до замовлення" data-en-ph="Order comment" placeholder="Коментар до замовлення" rows="2"></textarea>
+      <button type="submit" class="btn btn-accent full-btn" data-uk="Відправити замовлення на email →" data-en="Send order by email →">Відправити замовлення на email →</button>
+      <p class="checkout-note" data-uk='Після натискання відкриється ваш email-клієнт із готовим листом на maxwaxpro2@gmail.com — просто натисніть "Надіслати". Або оплатіть напряму за реквізитами.' data-en='Clicking this will open your email client with a ready-made message to maxwaxpro2@gmail.com — just hit "Send". Or pay directly using our bank transfer details.'>Після натискання відкриється ваш email-клієнт із готовим листом на maxwaxpro2@gmail.com — просто натисніть "Надіслати". Або оплатіть напряму за реквізитами.</p>
     </form>
   </div>
 </div>
@@ -406,7 +435,7 @@ footer{background:#0A0C10;padding:56px 0 26px;}
         <a class="brand" href="#top" style="color:#fff;">
           <span class="m">M</span><span class="word">MAX WAX <span>PRO</span></span>
         </a>
-        <p>Професійні воскові змазки для велосипедних ланцюгів. Розроблено та вироблено в Україні.</p>
+        <p data-uk="Професійні воскові змазки для велосипедних ланцюгів. Розроблено та вироблено в Україні." data-en="Professional hot wax lubricants for bicycle chains. Designed and made in Ukraine.">Професійні воскові змазки для велосипедних ланцюгів. Розроблено та вироблено в Україні.</p>
         <div class="foot-social">
           <a href="https://www.instagram.com/max.waxpro" target="_blank" rel="noopener">Instagram</a>
           <a href="https://www.tiktok.com/@maxwaxpro" target="_blank" rel="noopener">TikTok</a>
@@ -416,22 +445,28 @@ footer{background:#0A0C10;padding:56px 0 26px;}
       </div>
       <div class="foot-cols">
         <div class="foot-col">
-          <h4>Продукція</h4>
+          <h4 data-uk="Продукція" data-en="Products">Продукція</h4>
           <div><a href="#products">PRO</a></div>
           <div><a href="#products">Wax Warmer</a></div>
           <div><a href="#products">Royal Eggs NB</a></div>
-          <div><a href="#ice-diamond">Black Diamond</a></div>
+          <div><a href="#ice-diamond">Black Diamond / Ice Diamond</a></div>
         </div>
         <div class="foot-col">
-          <h4>Контакти</h4>
+          <h4 data-uk="Контакти" data-en="Contacts">Контакти</h4>
           <div><a href="mailto:maxwaxpro2@gmail.com">maxwaxpro2@gmail.com</a></div>
-          <div>Дилерам: <a href="#dealers">заявка B2B</a></div>
+          <div><a href="tel:+380968949414">+380 96 894 94 14</a></div>
+          <div><span data-uk="Дилерам:" data-en="Dealers:">Дилерам:</span> <a href="#dealers" data-uk="заявка B2B" data-en="B2B application">заявка B2B</a></div>
+        </div>
+        <div class="foot-col">
+          <h4 data-uk="Правова інформація" data-en="Legal">Правова інформація</h4>
+          <div><a href="privacy.html" data-uk="Політика конфіденційності" data-en="Privacy policy">Політика конфіденційності</a></div>
+          <div><a href="#payment-details" data-uk="Реквізити для оплати" data-en="Payment details">Реквізити для оплати</a></div>
         </div>
       </div>
     </div>
     <div class="foot-bottom">
       <span>MAX WAX PRO</span>
-      <span>© 2026 MAX WAX PRO. Торгова марка MAX WAX PRO. Всі права захищені.</span>
+      <span data-uk="© 2026 MAX WAX PRO. Торгова марка MAX WAX PRO. Всі права захищені." data-en="© 2026 MAX WAX PRO. MAX WAX PRO trademark. All rights reserved.">© 2026 MAX WAX PRO. Торгова марка MAX WAX PRO. Всі права захищені.</span>
     </div>
   </div>
 </footer>
@@ -451,67 +486,80 @@ window.__PRODUCT_PHOTOS__ = {
   // ---------------------------------------------------------------
   // Каталог товарів — з офіційного прейскуранту MAX WAX PRO (PDF).
   // photoKey відповідає ключам у window.__PRODUCT_PHOTOS__ (інжектяться нижче).
+  // labelEn/nameEn — переклад для EN-режиму сайту.
   // ---------------------------------------------------------------
   var CATALOG = [
     // 1. PRO (дропси)
     { cat:"pro", name:"PRO Red", temp:"+25°C … +45°C", photoKey:"red",
-      variants:[{label:"Дропси, 500 г", price:1420},{label:"Дропси, 1000 г", price:2000}] },
+      variants:[{label:"Дропси, 500 г", labelEn:"Pellets, 500 g", price:1420},{label:"Дропси, 1000 г", labelEn:"Pellets, 1000 g", price:2000}] },
     { cat:"pro", name:"PRO Yellow", temp:"+15°C … +25°C", photoKey:"yellow",
-      variants:[{label:"Дропси, 500 г", price:1420},{label:"Дропси, 1000 г", price:2000}] },
+      variants:[{label:"Дропси, 500 г", labelEn:"Pellets, 500 g", price:1420},{label:"Дропси, 1000 г", labelEn:"Pellets, 1000 g", price:2000}] },
     { cat:"pro", name:"PRO Green", temp:"+5°C … +15°C", photoKey:"green",
-      variants:[{label:"Дропси, 500 г", price:1420},{label:"Дропси, 1000 г", price:2000}] },
+      variants:[{label:"Дропси, 500 г", labelEn:"Pellets, 500 g", price:1420},{label:"Дропси, 1000 г", labelEn:"Pellets, 1000 g", price:2000}] },
     { cat:"pro", name:"PRO Blue", temp:"−20°C … +5°C", photoKey:"blue",
-      variants:[{label:"Дропси, 500 г", price:1420},{label:"Дропси, 1000 г", price:2000}] },
+      variants:[{label:"Дропси, 500 г", labelEn:"Pellets, 500 g", price:1420},{label:"Дропси, 1000 г", labelEn:"Pellets, 1000 g", price:2000}] },
 
     // 2. Wax Warmer (блоки для воскоплавів)
     { cat:"warmer", name:"Wax Warmer Red", temp:"+25°C … +45°C", photoKey:"red",
-      variants:[{label:"Блок 320 г", price:1173}] },
+      variants:[{label:"Блок 320 г", labelEn:"Block, 320 g", price:1173}] },
     { cat:"warmer", name:"Wax Warmer Yellow", temp:"+15°C … +25°C", photoKey:"yellow",
-      variants:[{label:"Блок 320 г", price:1173}] },
+      variants:[{label:"Блок 320 г", labelEn:"Block, 320 g", price:1173}] },
     { cat:"warmer", name:"Wax Warmer Green", temp:"+5°C … +15°C", photoKey:"green",
-      variants:[{label:"Блок 320 г", price:1173}] },
+      variants:[{label:"Блок 320 г", labelEn:"Block, 320 g", price:1173}] },
     { cat:"warmer", name:"Wax Warmer Blue", temp:"−20°C … +5°C", photoKey:"blue",
-      variants:[{label:"Блок 320 г", price:1173}] },
-    { cat:"warmer", name:"Wax Warmer Power (E-Bike)", temp:"Для електротяги", photoKey:"grey",
-      variants:[{label:"Блок 320 г", price:1173}] },
+      variants:[{label:"Блок 320 г", labelEn:"Block, 320 g", price:1173}] },
+    { cat:"warmer", name:"Wax Warmer Power (E-Bike)", tempEn:"For e-bikes", temp:"Для електротяги", photoKey:"grey",
+      variants:[{label:"Блок 320 г", labelEn:"Block, 320 g", price:1173}] },
 
     // 3. Royal Eggs NB (з нітридом бору)
     { cat:"bn", name:"Royal Eggs NB Red", temp:"+25°C … +45°C", photoKey:"red",
-      variants:[{label:"NB, 500 г", price:1737},{label:"Компенсаційні шарики, 250 г", price:901}] },
+      variants:[{label:"NB, 500 г", labelEn:"NB, 500 g", price:1737},{label:"Компенсаційні шарики, 250 г", labelEn:"Top-up balls, 250 g", price:901}] },
     { cat:"bn", name:"Royal Eggs NB Yellow", temp:"+15°C … +25°C", photoKey:"yellow",
-      variants:[{label:"NB, 500 г", price:1737},{label:"Компенсаційні шарики, 250 г", price:901}] },
+      variants:[{label:"NB, 500 г", labelEn:"NB, 500 g", price:1737},{label:"Компенсаційні шарики, 250 г", labelEn:"Top-up balls, 250 g", price:901}] },
     { cat:"bn", name:"Royal Eggs NB Green", temp:"+5°C … +15°C", photoKey:"green",
-      variants:[{label:"NB, 500 г", price:1737},{label:"Компенсаційні шарики, 250 г", price:901}] },
+      variants:[{label:"NB, 500 г", labelEn:"NB, 500 g", price:1737},{label:"Компенсаційні шарики, 250 г", labelEn:"Top-up balls, 250 g", price:901}] },
     { cat:"bn", name:"Royal Eggs NB Blue", temp:"−20°C … +5°C", photoKey:"blue",
-      variants:[{label:"NB, 500 г", price:1737},{label:"Компенсаційні шарики, 250 г", price:901}] },
+      variants:[{label:"NB, 500 г", labelEn:"NB, 500 g", price:1737},{label:"Компенсаційні шарики, 250 г", labelEn:"Top-up balls, 250 g", price:901}] },
 
     // 4. Флагман Black Diamond / Ice Diamond
-    { cat:"diamond", name:"Royal Eggs Black Diamond", temp:"+15°C … +45°C, нагрів 90°C (3 хв)", photoKey:"diamond-red",
-      variants:[{label:"Комплект: 500 г + дегризер + 2×20 г + фіксатор", price:2100}] },
-    { cat:"diamond", name:"Royal Eggs Ice Diamond", temp:"−10°C … +15°C, нагрів 90°C (3 хв)", photoKey:"blue",
-      variants:[{label:"Комплект: 500 г (сині кульки) + дегризер + 2×20 г + фіксатор", price:2100}] },
+    { cat:"diamond", name:"Royal Eggs Black Diamond",
+      temp:"+15°C … +45°C, нагрів 90°C (3 хв)", tempEn:"+15°C … +45°C, heat to 90°C (3 min)", photoKey:"diamond-red",
+      variants:[{label:"Комплект: 500 г + дегризер + 2×20 г + фіксатор", labelEn:"Kit: 500 g + degreaser + 2×20 g + fixative", price:2100}] },
+    { cat:"diamond", name:"Royal Eggs Ice Diamond",
+      temp:"−10°C … +15°C, нагрів 90°C (3 хв)", tempEn:"−10°C … +15°C, heat to 90°C (3 min)", photoKey:"blue",
+      variants:[{label:"Комплект: 500 г (сині кульки) + дегризер + 2×20 г + фіксатор", labelEn:"Kit: 500 g (blue balls) + degreaser + 2×20 g + fixative", price:2100}] },
 
     // 5. Дегризери
-    { cat:"degreaser", name:"Degreaser Solid Red", temp:"Для нових ланцюгів, літо", photoKey:null,
-      variants:[{label:"Твердий, 2×25 г", price:479}] },
-    { cat:"degreaser", name:"Degreaser Solid Yellow", temp:"Для нових ланцюгів, помірний клімат", photoKey:null,
-      variants:[{label:"Твердий, 2×25 г", price:479}] },
-    { cat:"degreaser", name:"Degreaser Solid Green", temp:"Для нових ланцюгів, міжсезоння", photoKey:null,
-      variants:[{label:"Твердий, 2×25 г", price:479}] },
-    { cat:"degreaser", name:"Degreaser Solid Blue", temp:"Для нових ланцюгів, холод", photoKey:null,
-      variants:[{label:"Твердий, 2×25 г", price:479}] },
-    { cat:"degreaser", name:"Active Foam Degreaser", temp:"Концентрат для б/у ланцюгів і касет", photoKey:null,
-      variants:[{label:"Рідкий концентрат, 500 мл", price:814}] },
+    { cat:"degreaser", name:"Degreaser Solid Red", temp:"Для нових ланцюгів, літо", tempEn:"For new chains, summer", photoKey:null,
+      variants:[{label:"Твердий, 2×25 г", labelEn:"Solid, 2×25 g", price:479}] },
+    { cat:"degreaser", name:"Degreaser Solid Yellow", temp:"Для нових ланцюгів, помірний клімат", tempEn:"For new chains, mild climate", photoKey:null,
+      variants:[{label:"Твердий, 2×25 г", labelEn:"Solid, 2×25 g", price:479}] },
+    { cat:"degreaser", name:"Degreaser Solid Green", temp:"Для нових ланцюгів, міжсезоння", tempEn:"For new chains, off-season", photoKey:null,
+      variants:[{label:"Твердий, 2×25 г", labelEn:"Solid, 2×25 g", price:479}] },
+    { cat:"degreaser", name:"Degreaser Solid Blue", temp:"Для нових ланцюгів, холод", tempEn:"For new chains, cold", photoKey:null,
+      variants:[{label:"Твердий, 2×25 г", labelEn:"Solid, 2×25 g", price:479}] },
+    { cat:"degreaser", name:"Active Foam Degreaser", temp:"Концентрат для б/у ланцюгів і касет", tempEn:"Concentrate for used chains and cassettes", photoKey:null,
+      variants:[{label:"Рідкий концентрат, 500 мл", labelEn:"Liquid concentrate, 500 ml", price:814}] },
 
     // 6. Набір Ultimate
-    { cat:"sets", name:"Ultimate Set", temp:"Блок 320 г + комплект обслуговування", photoKey:"grey",
-      variants:[{label:"WS₂ + MoS₂ + NB, дегризер, 2×20 г", price:1700}] }
+    { cat:"sets", name:"Ultimate Set", temp:"Блок 320 г + комплект обслуговування", tempEn:"320 g block + service kit", photoKey:"grey",
+      variants:[{label:"WS₂ + MoS₂ + NB, дегризер, 2×20 г", labelEn:"WS₂ + MoS₂ + NB, degreaser, 2×20 g", price:1700}] }
   ];
 
-  var CATEGORY_LABELS = {
+  var CATEGORY_LABELS_UK = {
     all:"Усі товари", pro:"PRO (дропси)", warmer:"Wax Warmer", bn:"Royal Eggs NB",
     diamond:"Black Diamond / Ice Diamond", degreaser:"Дегризери", sets:"Набори"
   };
+  var CATEGORY_LABELS_EN = {
+    all:"All products", pro:"PRO (pellets)", warmer:"Wax Warmer", bn:"Royal Eggs NB",
+    diamond:"Black Diamond / Ice Diamond", degreaser:"Degreasers", sets:"Sets"
+  };
+
+  function currentLang(){
+    return document.documentElement.getAttribute('data-lang') === 'en' ? 'en' : 'uk';
+  }
+  function priceUnit(){ return currentLang() === 'en' ? 'UAH' : 'грн'; }
+  function fmtPrice(n){ return n.toLocaleString('uk-UA') + ' ' + priceUnit(); }
 
   // ---------------------------------------------------------------
   // Рендер вкладок категорій
@@ -521,9 +569,10 @@ window.__PRODUCT_PHOTOS__ = {
   var activeCat = "all";
 
   function renderTabs(){
+    var labels = currentLang() === 'en' ? CATEGORY_LABELS_EN : CATEGORY_LABELS_UK;
     catTabsEl.innerHTML = cats.map(function(c){
       return '<button class="cat-tab' + (c === activeCat ? ' active' : '') + '" data-cat="' + c + '">' +
-        (CATEGORY_LABELS[c] || c) + '</button>';
+        (labels[c] || c) + '</button>';
     }).join('');
     catTabsEl.querySelectorAll('.cat-tab').forEach(function(btn){
       btn.addEventListener('click', function(){
@@ -540,39 +589,44 @@ window.__PRODUCT_PHOTOS__ = {
   var gridEl = document.getElementById('productGrid');
 
   function renderProducts(){
+    var lang = currentLang();
+    var addToCartLabel = lang === 'en' ? 'Add to cart' : 'Додати в кошик';
+    var photoTagLabel = lang === 'en' ? 'photo coming soon' : 'фото додається';
+
     var list = activeCat === "all" ? CATALOG : CATALOG.filter(function(p){ return p.cat === activeCat; });
     gridEl.innerHTML = list.map(function(p, idx){
       var photoSrc = (window.__PRODUCT_PHOTOS__ && p.photoKey && window.__PRODUCT_PHOTOS__[p.photoKey]) || null;
+      var temp = (lang === 'en' && p.tempEn) ? p.tempEn : p.temp;
       var options = p.variants.map(function(v, vi){
-        return '<option value="' + vi + '">' + v.label + ' — ' + v.price.toLocaleString('uk-UA') + ' грн</option>';
+        var label = (lang === 'en' && v.labelEn) ? v.labelEn : v.label;
+        return '<option value="' + vi + '">' + label + ' — ' + fmtPrice(v.price) + '</option>';
       }).join('');
       var uid = p.cat + '-' + idx;
       return (
         '<div class="p-card" data-uid="' + uid + '">' +
           '<div class="p-card-photo">' +
-            (photoSrc ? '<img src="' + photoSrc + '" alt="' + p.name + '">' : '<span class="ph-tag">фото додається</span>') +
+            (photoSrc ? '<img src="' + photoSrc + '" alt="' + p.name + '">' : '<span class="ph-tag">' + photoTagLabel + '</span>') +
           '</div>' +
           '<div class="p-card-body">' +
             '<h3>' + p.name + '</h3>' +
-            '<div class="p-card-temp">' + p.temp + '</div>' +
+            '<div class="p-card-temp">' + temp + '</div>' +
             '<select class="p-card-select" data-uid="' + uid + '">' + options + '</select>' +
             '<div class="p-card-foot">' +
-              '<span class="p-card-price" data-price-for="' + uid + '">' + p.variants[0].price.toLocaleString('uk-UA') + ' грн</span>' +
-              '<button class="add-to-cart-btn" data-uid="' + uid + '">Додати в кошик</button>' +
+              '<span class="p-card-price" data-price-for="' + uid + '">' + fmtPrice(p.variants[0].price) + '</span>' +
+              '<button class="add-to-cart-btn" data-uid="' + uid + '">' + addToCartLabel + '</button>' +
             '</div>' +
           '</div>' +
         '</div>'
       );
     }).join('');
 
-    // reflect price when variant changes
     gridEl.querySelectorAll('.p-card-select').forEach(function(sel){
       sel.addEventListener('change', function(){
         var uid = sel.getAttribute('data-uid');
         var product = findProductByUid(uid);
         var variant = product.variants[Number(sel.value)];
         var priceEl = gridEl.querySelector('[data-price-for="' + uid + '"]');
-        priceEl.textContent = variant.price.toLocaleString('uk-UA') + ' грн';
+        priceEl.textContent = fmtPrice(variant.price);
       });
     });
 
@@ -582,7 +636,9 @@ window.__PRODUCT_PHOTOS__ = {
         var product = findProductByUid(uid);
         var sel = gridEl.querySelector('.p-card-select[data-uid="' + uid + '"]');
         var variant = product.variants[Number(sel.value)];
-        addToCart(product.name + ' — ' + variant.label, variant.price);
+        var lang2 = currentLang();
+        var label = (lang2 === 'en' && variant.labelEn) ? variant.labelEn : variant.label;
+        addToCart(product.name + ' — ' + label, variant.price);
       });
     });
   }
@@ -624,19 +680,22 @@ window.__PRODUCT_PHOTOS__ = {
   var cartCountEl = document.getElementById('cartCount');
 
   function renderCart(){
+    var lang = currentLang();
     if(cart.length === 0){
-      cartItemsEl.innerHTML = '<p class="cart-empty">Кошик порожній. Додайте товари з каталогу.</p>';
+      cartItemsEl.innerHTML = '<p class="cart-empty">' +
+        (lang === 'en' ? 'Your cart is empty. Add products from the catalogue.' : 'Кошик порожній. Додайте товари з каталогу.') +
+        '</p>';
     } else {
       cartItemsEl.innerHTML = cart.map(function(item, i){
         return '<div class="cart-item"><span>' + item.name + '</span>' +
-          '<span>' + item.price.toLocaleString('uk-UA') + ' грн <button class="rm" data-i="' + i + '">✕</button></span></div>';
+          '<span>' + fmtPrice(item.price) + ' <button class="rm" data-i="' + i + '">✕</button></span></div>';
       }).join('');
       cartItemsEl.querySelectorAll('.rm').forEach(function(btn){
         btn.addEventListener('click', function(){ removeFromCart(Number(btn.getAttribute('data-i'))); });
       });
     }
     var total = cart.reduce(function(s,i){ return s + i.price; }, 0);
-    cartTotalEl.textContent = total.toLocaleString('uk-UA') + ' грн';
+    cartTotalEl.textContent = fmtPrice(total);
     cartCountEl.textContent = cart.length;
   }
 
@@ -650,14 +709,13 @@ window.__PRODUCT_PHOTOS__ = {
 
   // ---------------------------------------------------------------
   // Checkout modal -> mailto: на maxwaxpro2@gmail.com
-  // Це статична сторінка без бекенду: mailto відкриває email-клієнт
-  // користувача з готовим листом. Для гарантованої автоматичної
-  // відправки без участі користувача пізніше варто підключити
-  // форму-сервіс (напр. Formspree/EmailJS) або власний бекенд.
   // ---------------------------------------------------------------
   var checkoutOverlay = document.getElementById('checkoutOverlay');
   document.getElementById('checkoutBtn').addEventListener('click', function(){
-    if(cart.length === 0){ alert('Кошик порожній — додайте товари перед оформленням.'); return; }
+    if(cart.length === 0){
+      alert(currentLang() === 'en' ? 'Your cart is empty — add products before checking out.' : 'Кошик порожній — додайте товари перед оформленням.');
+      return;
+    }
     checkoutOverlay.classList.add('open');
   });
   document.getElementById('checkoutClose').addEventListener('click', function(){
@@ -706,18 +764,56 @@ window.__PRODUCT_PHOTOS__ = {
   // "Додати в кошик" на блоці Ice Diamond (не з каталогу-масиву)
   // ---------------------------------------------------------------
   document.querySelectorAll('.add-to-cart-btn[data-name]').forEach(function(btn){
-    if(btn.closest('.p-card')) return; // ці вже оброблені вище
+    if(btn.closest('.p-card')) return;
     btn.addEventListener('click', function(){
       addToCart(btn.getAttribute('data-name'), Number(btn.getAttribute('data-price')));
     });
   });
 
   // ---------------------------------------------------------------
+  // Мовний перемикач (UA/EN) — реальний, з перекладом статичного
+  // тексту (data-uk/data-en, data-uk-ph/data-en-ph) і перерендером
+  // динамічних частин (вкладки категорій, картки товарів, кошик).
+  // ---------------------------------------------------------------
+  var LANG_KEY = 'mwp-lang-v1';
+
+  function applyLang(lang){
+    var root = document.documentElement;
+    root.setAttribute('lang', lang);
+    root.setAttribute('data-lang', lang);
+    var attr = lang === 'en' ? 'data-en' : 'data-uk';
+
+    document.querySelectorAll('[data-en]').forEach(function(el){
+      var val = el.getAttribute(attr);
+      if(val !== null){ el.textContent = val; }
+    });
+    var phAttr = lang === 'en' ? 'data-en-ph' : 'data-uk-ph';
+    document.querySelectorAll('[data-en-ph]').forEach(function(el){
+      var val = el.getAttribute(phAttr);
+      if(val !== null){ el.setAttribute('placeholder', val); }
+    });
+
+    document.querySelectorAll('.lang-btn').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+    });
+
+    try{ localStorage.setItem(LANG_KEY, lang); }catch(e){}
+
+    renderTabs();
+    renderProducts();
+    renderCart();
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(function(b){
+    b.addEventListener('click', function(){ applyLang(b.getAttribute('data-lang')); });
+  });
+
+  // ---------------------------------------------------------------
   // init
   // ---------------------------------------------------------------
-  renderTabs();
-  renderProducts();
-  renderCart();
+  var savedLang;
+  try{ savedLang = localStorage.getItem(LANG_KEY); }catch(e){}
+  applyLang(savedLang === 'en' ? 'en' : 'uk');
 })();
 
 </script>
