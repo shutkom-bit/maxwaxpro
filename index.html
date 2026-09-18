@@ -849,6 +849,7 @@ window.__PRODUCT_PHOTOS__ = {
       city: city || '',
       comment: comment || '',
       items: cart.map(function(i){ return { name: i.name, price: i.price }; }),
+      itemsText: cart.map(function(i){ return i.name + ' — ' + i.price + ' грн'; }).join('\n'),
       total: total,
       currency: 'UAH',
       source: 'maxwaxpro.com'
