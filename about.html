@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" data-lang="uk">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +18,11 @@
   .wrap{max-width:760px;margin:0 auto;padding:60px 24px 100px;}
   a{color:var(--accent);text-decoration:none;}
   a:hover{text-decoration:underline;}
-  .back{display:inline-block;margin-bottom:34px;font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--ink-soft);}
+  .top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:34px;flex-wrap:wrap;gap:14px;}
+  .back{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--ink-soft);}
+  .lang-toggle{display:flex;border:1px solid var(--border);border-radius:20px;overflow:hidden;}
+  .lang-btn{border:none;background:transparent;color:var(--ink-soft);font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:700;padding:7px 12px;cursor:pointer;}
+  .lang-btn.active{background:var(--ink);color:var(--bg);}
   .eyebrow{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.06em;color:var(--accent);font-weight:700;margin-bottom:14px;}
   h1{font-size:clamp(2rem,4.5vw,2.8rem);font-weight:900;letter-spacing:-0.02em;line-height:1.05;margin:0 0 20px;}
   h2{font-size:1.35rem;font-weight:800;letter-spacing:-0.01em;margin:48px 0 14px;}
@@ -51,85 +55,117 @@
 </head>
 <body>
   <div class="wrap">
-    <a class="back" href="index.html">← На головну / MAX WAX PRO</a>
+    <div class="top-row">
+      <a class="back" href="index.html" data-uk="← На головну / MAX WAX PRO" data-en="← Home / MAX WAX PRO">← На головну / MAX WAX PRO</a>
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="uk" type="button">UA</button>
+        <button class="lang-btn" data-lang="en" type="button">EN</button>
+      </div>
+    </div>
 
-    <div class="eyebrow">ІСТОРІЯ БРЕНДУ</div>
-    <h1>12 років ми доводимо гарячий віск до ідеалу</h1>
-    <p class="lede">Мене звати Макс. Уже 12 років наша команда створює тверді воски для вело- та мотоланцюгів — і сьогодні це один з найкращих продуктів у своїй категорії.</p>
-    <p>Наші райдери з цікавості пробували все: від рідких мастил до різноманітних твердих восків інших брендів. Але більшість лишається саме з нами. Не через голосні імена блогерів чи великі бюджети на рекламу — а через нескінченні тести, точні розрахунки й роки практики на власних велосипедах.</p>
-    <p>Я не просто продаю суміш для ланцюга — я ділюся 25-річним досвідом роботи з матеріалами й формулою, доведеною до ідеалу. З самого початку метою було зробити продукт, який реально перевершує все, що вже є на ринку. Щороку ми вдосконалювали склад і уточнювали оптимальну температуру проварювання, щоб суміш розкривала весь свій потенціал.</p>
-    <p>Ми розділили продукт на дві лінійки для зручності: базову <strong>Wax Warmer</strong> — для тих, хто варить у власному воскоплаві, і <strong>Pro</strong> — для ентузіастів і професійних спортсменів, яким потрібен максимум.</p>
+    <div class="eyebrow" data-uk="ІСТОРІЯ БРЕНДУ" data-en="BRAND STORY">ІСТОРІЯ БРЕНДУ</div>
+    <h1 data-uk="12 років ми доводимо гарячий віск до ідеалу" data-en="12 years perfecting hot wax">12 років ми доводимо гарячий віск до ідеалу</h1>
+    <p class="lede" data-uk="Уже 12 років наша команда створює тверді воски для вело- та мотоланцюгів — і сьогодні це один з найкращих продуктів у своїй категорії." data-en="For 12 years now our team has been making solid wax for bicycle and motorcycle chains — and today it's one of the best products in its category.">Уже 12 років наша команда створює тверді воски для вело- та мотоланцюгів — і сьогодні це один з найкращих продуктів у своїй категорії.</p>
+    <p data-uk="Наші райдери з цікавості пробували все: від рідких мастил до різноманітних твердих восків інших брендів. Але більшість лишається саме з нами. Не через голосні імена блогерів чи великі бюджети на рекламу — а через нескінченні тести, точні розрахунки й роки практики на власних велосипедах." data-en="Out of curiosity, our riders have tried everything: from liquid lubes to various solid waxes from other brands. But most of them stay with us. Not because of loud blogger names or big ad budgets — but because of endless testing, precise calculations, and years of practice on our own bikes.">Наші райдери з цікавості пробували все: від рідких мастил до різноманітних твердих восків інших брендів. Але більшість лишається саме з нами. Не через голосні імена блогерів чи великі бюджети на рекламу — а через нескінченні тести, точні розрахунки й роки практики на власних велосипедах.</p>
+    <p data-uk="Я не просто продаю суміш для ланцюга — я ділюся 25-річним досвідом роботи з матеріалами й формулою, доведеною до ідеалу. З самого початку метою було зробити продукт, який реально перевершує все, що вже є на ринку. Щороку ми вдосконалювали склад і уточнювали оптимальну температуру проварювання, щоб суміш розкривала весь свій потенціал." data-en="I'm not just selling a chain mix — I'm sharing 25 years of hands-on material science and a formula refined to its limit. From the very start, the goal was to make a product that genuinely outperforms everything already on the market. Every year we refined the formula and fine-tuned the optimal treatment temperature so the mix reaches its full potential.">Я не просто продаю суміш для ланцюга — я ділюся 25-річним досвідом роботи з матеріалами й формулою, доведеною до ідеалу. З самого початку метою було зробити продукт, який реально перевершує все, що вже є на ринку. Щороку ми вдосконалювали склад і уточнювали оптимальну температуру проварювання, щоб суміш розкривала весь свій потенціал.</p>
+    <p data-uk="Ми розділили продукт на дві лінійки для зручності: базову Wax Warmer — для тих, хто варить у власному воскоплаві, і Pro — для ентузіастів і професійних спортсменів, яким потрібен максимум." data-en="We split the product into two lines for convenience: the base Wax Warmer — for anyone treating chains in their own heater — and Pro, for enthusiasts and professional athletes who need the maximum.">Ми розділили продукт на дві лінійки для зручності: базову <strong>Wax Warmer</strong> — для тих, хто варить у власному воскоплаві, і <strong>Pro</strong> — для ентузіастів і професійних спортсменів, яким потрібен максимум.</p>
 
-    <h2>Температурні лінійки й аромати</h2>
-    <p>Ми врахували реальний діапазон погодних умов — від −20°C до +45°C — і підібрали під кожен температурний режим окремий аромат, щоб сама проварка була приємним, а не хімічним процесом.</p>
+    <h2 data-uk="Температурні лінійки й аромати" data-en="Temperature lines and scents">Температурні лінійки й аромати</h2>
+    <p data-uk="Ми врахували реальний діапазон погодних умов — від −20°C до +45°C — і підібрали під кожен температурний режим окремий аромат, щоб сама проварка була приємним, а не хімічним процесом." data-en="We accounted for the real range of weather conditions — from −20°C to +45°C — and matched each temperature mode with its own scent, so the treatment itself feels pleasant rather than chemical.">Ми врахували реальний діапазон погодних умов — від −20°C до +45°C — і підібрали під кожен температурний режим окремий аромат, щоб сама проварка була приємним, а не хімічним процесом.</p>
     <div class="temp-grid">
       <div class="temp-card">
-        <h3><span class="dot" style="background:#D64545;"></span>RED — Спека</h3>
-        <div class="row"><span>Середовище</span><span>+25°C … +45°C</span></div>
-        <div class="row"><span>Нагрів</span><span>82°C</span></div>
-        <div class="row"><span>Аромат</span><span>полуниця</span></div>
+        <h3><span class="dot" style="background:#D64545;"></span><span data-uk="RED — Спека" data-en="RED — Hot">RED — Спека</span></h3>
+        <div class="row"><span data-uk="Середовище" data-en="Ambient">Середовище</span><span>+25°C … +45°C</span></div>
+        <div class="row"><span data-uk="Нагрів" data-en="Melt temp">Нагрів</span><span>82°C</span></div>
+        <div class="row"><span data-uk="Аромат" data-en="Scent">Аромат</span><span data-uk="полуниця" data-en="strawberry">полуниця</span></div>
       </div>
       <div class="temp-card">
-        <h3><span class="dot" style="background:#E8B923;"></span>YELLOW — Комфорт</h3>
-        <div class="row"><span>Середовище</span><span>+18°C … +25°C</span></div>
-        <div class="row"><span>Нагрів</span><span>80°C</span></div>
-        <div class="row"><span>Аромат</span><span>лимон</span></div>
+        <h3><span class="dot" style="background:#E8B923;"></span><span data-uk="YELLOW — Комфорт" data-en="YELLOW — Comfort">YELLOW — Комфорт</span></h3>
+        <div class="row"><span data-uk="Середовище" data-en="Ambient">Середовище</span><span>+18°C … +25°C</span></div>
+        <div class="row"><span data-uk="Нагрів" data-en="Melt temp">Нагрів</span><span>80°C</span></div>
+        <div class="row"><span data-uk="Аромат" data-en="Scent">Аромат</span><span data-uk="лимон" data-en="lemon">лимон</span></div>
       </div>
       <div class="temp-card">
-        <h3><span class="dot" style="background:#3FA24C;"></span>GREEN — Міжсезоння</h3>
-        <div class="row"><span>Середовище</span><span>+5°C … +18°C</span></div>
-        <div class="row"><span>Нагрів</span><span>78°C</span></div>
-        <div class="row"><span>Аромат</span><span>кава</span></div>
+        <h3><span class="dot" style="background:#3FA24C;"></span><span data-uk="GREEN — Міжсезоння" data-en="GREEN — Off-season">GREEN — Міжсезоння</span></h3>
+        <div class="row"><span data-uk="Середовище" data-en="Ambient">Середовище</span><span>+5°C … +18°C</span></div>
+        <div class="row"><span data-uk="Нагрів" data-en="Melt temp">Нагрів</span><span>78°C</span></div>
+        <div class="row"><span data-uk="Аромат" data-en="Scent">Аромат</span><span data-uk="кава" data-en="coffee">кава</span></div>
       </div>
       <div class="temp-card">
-        <h3><span class="dot" style="background:#3B6FD6;"></span>BLUE — Зима / Мороз</h3>
-        <div class="row"><span>Середовище</span><span>нижче +5°C</span></div>
-        <div class="row"><span>Нагрів</span><span>75°C</span></div>
-        <div class="row"><span>Аромат</span><span>кокос</span></div>
+        <h3><span class="dot" style="background:#3B6FD6;"></span><span data-uk="BLUE — Зима / Мороз" data-en="BLUE — Winter / Frost">BLUE — Зима / Мороз</span></h3>
+        <div class="row"><span data-uk="Середовище" data-en="Ambient">Середовище</span><span data-uk="нижче +5°C" data-en="below +5°C">нижче +5°C</span></div>
+        <div class="row"><span data-uk="Нагрів" data-en="Melt temp">Нагрів</span><span>75°C</span></div>
+        <div class="row"><span data-uk="Аромат" data-en="Scent">Аромат</span><span data-uk="кокос" data-en="coconut">кокос</span></div>
       </div>
     </div>
-    <p style="font-size:.82rem;">Лінійка Pro повторює ті самі температурні діапазони й аромати — Red, Yellow, Green, Blue — але розрахована під частіші проварки та вищі навантаження.</p>
+    <p style="font-size:.82rem;" data-uk="Лінійка Pro повторює ті самі температурні діапазони й аромати — Red, Yellow, Green, Blue — але розрахована під частіші проварки та вищі навантаження." data-en="The Pro line repeats the same temperature ranges and scents — Red, Yellow, Green, Blue — but is built for more frequent treatments and higher loads.">Лінійка Pro повторює ті самі температурні діапазони й аромати — Red, Yellow, Green, Blue — але розрахована під частіші проварки та вищі навантаження.</p>
 
-    <h2>Інновації, якими ми пишаємось</h2>
-    <p><strong>Присадка для нових ланцюгів.</strong> До кожного замовлення додається спеціальна формула разом із фільтром і зручним фіксатором. Вона перетворює заводське консерваційне мастило в олеогель, споріднений з воском, — ланцюг більше не потрібно довго відмивати чи знежирювати. Перехід на віск займає лише 10 хвилин.</p>
-    <p><strong>Кульки по 20 г для точного дозування.</strong> Окрім класичних шайб і гранул, ми випускаємо суміш у формі кульок: для кожної наступної проварки просто додаєте одну кульку. Це точна витрата на 3 ланцюги плюс 5 г на технологічні втрати — робочий об'єм суміші в ємності завжди лишається стабільним.</p>
+    <h2 data-uk="Інновації, якими ми пишаємось" data-en="Innovations we're proud of">Інновації, якими ми пишаємось</h2>
+    <p data-uk="Присадка для нових ланцюгів. До кожного замовлення додається спеціальна формула разом із фільтром і зручним фіксатором. Вона перетворює заводське консерваційне мастило в олеогель, споріднений з воском, — ланцюг більше не потрібно довго відмивати чи знежирювати. Перехід на віск займає лише 10 хвилин." data-en="New-chain additive. Every order includes a special formula along with a filter and a convenient holder. It turns factory preservative grease into a wax-like oleogel — no more long degreasing or washing. Switching to wax takes just 10 minutes."><strong>Присадка для нових ланцюгів.</strong> До кожного замовлення додається спеціальна формула разом із фільтром і зручним фіксатором. Вона перетворює заводське консерваційне мастило в олеогель, споріднений з воском, — ланцюг більше не потрібно довго відмивати чи знежирювати. Перехід на віск займає лише 10 хвилин.</p>
+    <p data-uk="Кульки по 20 г для точного дозування. Окрім класичних шайб і гранул, ми випускаємо суміш у формі кульок: для кожної наступної проварки просто додаєте одну кульку. Це точна витрата на 3 ланцюги плюс 5 г на технологічні втрати — робочий об'єм суміші в ємності завжди лишається стабільним." data-en="20 g balls for precise dosing. Besides the classic discs and pellets, we make the mix in ball form: for every next treatment you just drop in one ball. That's an exact amount for 3 chains plus 5 g for process loss — the working volume in your heater always stays stable."><strong>Кульки по 20 г для точного дозування.</strong> Окрім класичних шайб і гранул, ми випускаємо суміш у формі кульок: для кожної наступної проварки просто додаєте одну кульку. Це точна витрата на 3 ланцюги плюс 5 г на технологічні втрати — робочий об'єм суміші в ємності завжди лишається стабільним.</p>
 
-    <h2>Чистота й стійкість</h2>
-    <p>У наших складах немає натурального бджолиного воску — щоб уникнути окиснення металу — і немає крихкого побутового парафіну. Віск глибоко заходить усередину ланок, працює безпосередньо в парах тертя й не осипається пластівцями на підлогу.</p>
-    <p>Суміш має виражені гідрофобні властивості: вода не вимиває віск під час зливи, а пил і пісок не налипають на ланки.</p>
-    <p>Термостійкі харчові ароматизатори перетворюють технічний процес проварювання на комфортну домашню процедуру — без хімічного смороду, який зазвичай асоціюється з розтопленим парафіном.</p>
+    <h2 data-uk="Чистота й стійкість" data-en="Purity and resistance">Чистота й стійкість</h2>
+    <p data-uk="У наших складах немає натурального бджолиного воску — щоб уникнути окиснення металу — і немає крихкого побутового парафіну. Віск глибоко заходить усередину ланок, працює безпосередньо в парах тертя й не осипається пластівцями на підлогу." data-en="Our formulas contain no natural beeswax — to avoid metal oxidation — and no brittle household paraffin. The wax penetrates deep into the links, works directly at the friction surfaces, and doesn't flake off onto the floor.">У наших складах немає натурального бджолиного воску — щоб уникнути окиснення металу — і немає крихкого побутового парафіну. Віск глибоко заходить усередину ланок, працює безпосередньо в парах тертя й не осипається пластівцями на підлогу.</p>
+    <p data-uk="Суміш має виражені гідрофобні властивості: вода не вимиває віск під час зливи, а пил і пісок не налипають на ланки." data-en="The mix has pronounced hydrophobic properties: rain doesn't wash the wax out, and dust or sand don't stick to the links.">Суміш має виражені гідрофобні властивості: вода не вимиває віск під час зливи, а пил і пісок не налипають на ланки.</p>
+    <p data-uk="Термостійкі харчові ароматизатори перетворюють технічний процес проварювання на комфортну домашню процедуру — без хімічного смороду, який зазвичай асоціюється з розтопленим парафіном." data-en="Heat-stable, food-grade fragrances turn the technical treatment process into a comfortable at-home routine — without the chemical stench usually associated with melted paraffin.">Термостійкі харчові ароматизатори перетворюють технічний процес проварювання на комфортну домашню процедуру — без хімічного смороду, який зазвичай асоціюється з розтопленим парафіном.</p>
 
-    <h2>Наш шлях</h2>
+    <h2 data-uk="Наш шлях" data-en="Our journey">Наш шлях</h2>
     <div class="timeline">
       <div class="t-item">
-        <span class="t-year">20 років тому</span>
-        <p style="margin:0;">Коли більшість тільки починала капати на ланцюги рідкі оливи, ми вже експериментували з формулами гарячого нанесення — і прагнули ресурсу в 1000 км на одній обробці. Ми досягли цієї мети.</p>
+        <span class="t-year" data-uk="20 років тому" data-en="20 years ago">20 років тому</span>
+        <p style="margin:0;" data-uk="Коли більшість тільки починала капати на ланцюги рідкі оливи, ми вже експериментували з формулами гарячого нанесення — і прагнули ресурсу в 1000 км на одній обробці. Ми досягли цієї мети." data-en="While most people were just starting to drip liquid oils onto their chains, we were already experimenting with hot-application formulas — chasing a 1000 km range per treatment. We reached that goal.">Коли більшість тільки починала капати на ланцюги рідкі оливи, ми вже експериментували з формулами гарячого нанесення — і прагнули ресурсу в 1000 км на одній обробці. Ми досягли цієї мети.</p>
       </div>
       <div class="t-item">
-        <span class="t-year">12 років тому</span>
-        <p style="margin:0;">Спільнота розділилася: одні шукали кращого й варили ланцюги у звичайному парафіні, інші й далі користувались мастилом з пляшечок. Знань не вистачало — люди експериментували в гаражах із консервними банками, боялись спалахів парафіну на кухні, а близькі скаржились на їдкий технічний запах гару.</p>
+        <span class="t-year" data-uk="12 років тому" data-en="12 years ago">12 років тому</span>
+        <p style="margin:0;" data-uk="Спільнота розділилася: одні шукали кращого й варили ланцюги у звичайному парафіні, інші й далі користувались мастилом з пляшечок. Знань не вистачало — люди експериментували в гаражах із консервними банками, боялись спалахів парафіну на кухні, а близькі скаржились на їдкий технічний запах гару." data-en="The community split: some looked for something better and treated chains in plain paraffin, others kept using bottled lube. Knowledge was scarce — people experimented in garages with tin cans, feared paraffin flare-ups in the kitchen, and their families complained about the acrid technical smell.">Спільнота розділилася: одні шукали кращого й варили ланцюги у звичайному парафіні, інші й далі користувались мастилом з пляшечок. Знань не вистачало — люди експериментували в гаражах із консервними банками, боялись спалахів парафіну на кухні, а близькі скаржились на їдкий технічний запах гару.</p>
       </div>
       <div class="t-item">
-        <span class="t-year">Сьогодні</span>
-        <p style="margin:0;">Ми відкрито ділимося знаннями, і райдери нам довіряють. Спробувавши MAX WAX PRO один раз, майже ніхто не повертається до мастил чи розкручених брендів, які поступаються за всіма показниками.</p>
+        <span class="t-year" data-uk="Сьогодні" data-en="Today">Сьогодні</span>
+        <p style="margin:0;" data-uk="Ми відкрито ділимося знаннями, і райдери нам довіряють. Спробувавши MAX WAX PRO один раз, майже ніхто не повертається до мастил чи розкручених брендів, які поступаються за всіма показниками." data-en="We share our knowledge openly, and riders trust us for it. Once someone tries MAX WAX PRO, almost no one goes back to lubes or hyped brands that fall short on every metric.">Ми відкрито ділимося знаннями, і райдери нам довіряють. Спробувавши MAX WAX PRO один раз, майже ніхто не повертається до мастил чи розкручених брендів, які поступаються за всіма показниками.</p>
       </div>
     </div>
 
-    <h2>Чому обирають MAX WAX PRO</h2>
+    <h2 data-uk="Чому обирають MAX WAX PRO" data-en="Why riders choose MAX WAX PRO">Чому обирають MAX WAX PRO</h2>
     <ul>
-      <li><strong>Комплексний підхід</strong> — процес продуманий до дрібниць: від розігріву до встановлення ланцюга на касету.</li>
-      <li><strong>Чесний ресурс</strong> — 800–1000 км на одній проварці за умови дотримання інструкції.</li>
+      <li data-uk="Комплексний підхід — процес продуманий до дрібниць: від розігріву до встановлення ланцюга на касету." data-en="A comprehensive approach — every detail is worked out, from heating the wax to refitting the chain onto the cassette."><strong>Комплексний підхід</strong> — процес продуманий до дрібниць: від розігріву до встановлення ланцюга на касету.</li>
+      <li data-uk="Чесний ресурс — 800–1000 км на одній проварці за умови дотримання інструкції." data-en="An honest lifespan — 800–1000 km per treatment when the instructions are followed."><strong>Чесний ресурс</strong> — 800–1000 км на одній проварці за умови дотримання інструкції.</li>
     </ul>
 
     <div class="quote-block">
-      <p>Символ оси на нашому логотипі — не випадковість. З п'яти років я працював із батьком на пасіці на 130 бджолосімей. Я бачив, як оси залітали за медом, і бджолине жало не могло пробити їхній міцний панцир. Наш віск діє так само: він створює справжню броню для кожного піна й ролика ланцюга.</p>
+      <p data-uk="Символ оси на нашому логотипі — не випадковість. З п'ятьох років я працював із батьком на пасіці на 130 бджолосімей. Я бачив, як оси залітали за медом, і бджолине жало не могло пробити їхній міцний панцир. Наш віск діє так само: він створює справжню броню для кожного піна й ролика ланцюга." data-en="The wasp on our logo isn't there by chance. From the age of five I worked with my father at an apiary of 130 bee colonies. I watched wasps raid the hives for honey, and the bees' stingers simply couldn't pierce their tough armor. Our wax works the same way: it builds real armor for every pin and roller in the chain.">Символ оси на нашому логотипі — не випадковість. З п'ятьох років я працював із батьком на пасіці на 130 бджолосімей. Я бачив, як оси залітали за медом, і бджолине жало не могло пробити їхній міцний панцир. Наш віск діє так само: він створює справжню броню для кожного піна й ролика ланцюга.</p>
     </div>
 
     <div class="closing">
-      <p>Саме відгуки й підтримка спільноти надихнули нас вийти на міжнародний рівень. Якщо ви колись знайдете суміш, яка працює краще за нашу, — дайте знати, і ми зробимо MAX WAX PRO ще досконалішим.</p>
-      <p class="tagline">Робимо з душею і для душі.</p>
-      <p class="signature">— Макс, засновник MAX WAX PRO</p>
+      <p data-uk="Саме відгуки й підтримка спільноти надихнули нас вийти на міжнародний рівень. Якщо ви колись знайдете суміш, яка працює краще за нашу, — дайте знати, і ми зробимо MAX WAX PRO ще досконалішим." data-en="It was your feedback and the community's support that inspired us to go international. If you ever find a mix that works better than ours — let us know, and we'll make MAX WAX PRO even better.">Саме відгуки й підтримка спільноти надихнули нас вийти на міжнародний рівень. Якщо ви колись знайдете суміш, яка працює краще за нашу, — дайте знати, і ми зробимо MAX WAX PRO ще досконалішим.</p>
+      <p class="tagline" data-uk="Робимо з душею і для душі." data-en="Made with soul, for the soul.">Робимо з душею і для душі.</p>
+      <p class="signature" data-uk="— засновник MAX WAX PRO" data-en="— Founder, MAX WAX PRO">— засновник MAX WAX PRO</p>
     </div>
   </div>
+
+  <script>
+  (function(){
+    var LANG_KEY = 'mwp-lang-v1';
+    function applyLang(lang){
+      var root = document.documentElement;
+      root.setAttribute('lang', lang);
+      root.setAttribute('data-lang', lang);
+      var attr = lang === 'en' ? 'data-en' : 'data-uk';
+      document.querySelectorAll('[data-en]').forEach(function(el){
+        var val = el.getAttribute(attr);
+        if(val !== null){ el.textContent = val; }
+      });
+      document.querySelectorAll('.lang-btn').forEach(function(b){
+        b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+      });
+      try{ localStorage.setItem(LANG_KEY, lang); }catch(e){}
+    }
+    document.querySelectorAll('.lang-btn').forEach(function(b){
+      b.addEventListener('click', function(){ applyLang(b.getAttribute('data-lang')); });
+    });
+    var saved;
+    try{ saved = localStorage.getItem(LANG_KEY); }catch(e){}
+    applyLang(saved === 'en' ? 'en' : 'uk');
+  })();
+  </script>
 </body>
 </html>
