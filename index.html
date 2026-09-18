@@ -220,6 +220,15 @@ details p{padding:0 4px 13px;font-size:.88rem;max-width:64ch;}
 .checkout-note{font-size:.76rem;color:var(--ink-soft);margin-top:10px;}
 textarea.field-input{resize:vertical;}
 
+.checkout-success{text-align:center;padding:12px 4px 4px;}
+.success-check{
+  width:56px;height:56px;border-radius:50%;background:#1E7B3C;color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:800;
+  margin:0 auto 18px;
+}
+.checkout-success h3{margin-bottom:8px;}
+.checkout-success p{color:var(--ink-soft);font-size:.9rem;margin-bottom:22px;}
+
 /* ---------- footer ---------- */
 footer{background:#0A0C10;padding:36px 0 18px;}
 .foot-top{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap;padding-bottom:20px;border-bottom:1px solid var(--border);}
@@ -475,6 +484,13 @@ footer{background:#0A0C10;padding:36px 0 18px;}
       <button type="submit" class="btn btn-accent full-btn" data-uk="Відправити замовлення на email →" data-en="Send order by email →">Відправити замовлення на email →</button>
       <p class="checkout-note" id="checkoutNote">Після натискання відкриється ваш email-клієнт із готовим листом на maxwaxpro2@gmail.com — просто натисніть "Надіслати". Або оплатіть напряму за <a href="requisites.html">реквізитами</a>.</p>
     </form>
+
+    <div class="checkout-success" id="checkoutSuccess" style="display:none;">
+      <div class="success-check">✓</div>
+      <h3 data-uk="Дякуємо за замовлення!" data-en="Thank you for your order!">Дякуємо за замовлення!</h3>
+      <p data-uk="Ми отримали ваше замовлення й незабаром зв'яжемось для підтвердження." data-en="We've received your order and will be in touch shortly to confirm it.">Ми отримали ваше замовлення й незабаром зв'яжемось для підтвердження.</p>
+      <button class="btn btn-outline-dark full-btn" id="checkoutSuccessClose" data-uk="Закрити" data-en="Close">Закрити</button>
+    </div>
   </div>
 </div>
 
@@ -792,14 +808,26 @@ window.__PRODUCT_PHOTOS__ = {
   // Checkout modal -> mailto: на maxwaxpro2@gmail.com
   // ---------------------------------------------------------------
   var checkoutOverlay = document.getElementById('checkoutOverlay');
+  var checkoutFormEl = document.getElementById('checkoutForm');
+  var checkoutSuccessEl = document.getElementById('checkoutSuccess');
+
+  function resetCheckoutModal(){
+    checkoutFormEl.style.display = 'block';
+    checkoutSuccessEl.style.display = 'none';
+  }
+
   document.getElementById('checkoutBtn').addEventListener('click', function(){
     if(cart.length === 0){
       alert(currentLang() === 'en' ? 'Your cart is empty — add products before checking out.' : 'Кошик порожній — додайте товари перед оформленням.');
       return;
     }
+    resetCheckoutModal();
     checkoutOverlay.classList.add('open');
   });
   document.getElementById('checkoutClose').addEventListener('click', function(){
+    checkoutOverlay.classList.remove('open');
+  });
+  document.getElementById('checkoutSuccessClose').addEventListener('click', function(){
     checkoutOverlay.classList.remove('open');
   });
 
@@ -822,8 +850,21 @@ window.__PRODUCT_PHOTOS__ = {
       'Разом: ' + total + ' грн\n\n' +
       'Коментар: ' + (comment || '—');
 
+    // TODO: коли буде готовий webhook (Formspree / Make.com), замінити рядок нижче
+    // на fetch(ENDPOINT, {method:'POST', body: JSON.stringify({...})}) і прибрати mailto —
+    // тоді лист/Telegram підуть тихо, без відкриття поштового клієнта користувача.
     var mailto = 'mailto:maxwaxpro2@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
     window.location.href = mailto;
+
+    // Кошик очищується й показується підтвердження одразу — незалежно від того,
+    // встиг користувач надіслати лист у своєму клієнті чи ні.
+    cart = [];
+    saveCart(cart);
+    renderCart();
+    closeCart();
+    f.reset();
+    f.style.display = 'none';
+    document.getElementById('checkoutSuccess').style.display = 'block';
   });
 
   // ---------------------------------------------------------------
