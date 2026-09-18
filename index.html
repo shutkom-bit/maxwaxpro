@@ -481,8 +481,8 @@ footer{background:#0A0C10;padding:36px 0 18px;}
       <input class="field-input" name="email" type="email" placeholder="Email">
       <input class="field-input" name="city" data-uk-ph="Місто / Нова Пошта" data-en-ph="City / Nova Poshta" placeholder="Місто / Нова Пошта">
       <textarea class="field-input" name="comment" data-uk-ph="Коментар до замовлення" data-en-ph="Order comment" placeholder="Коментар до замовлення" rows="2"></textarea>
-      <button type="submit" class="btn btn-accent full-btn" data-uk="Відправити замовлення на email →" data-en="Send order by email →">Відправити замовлення на email →</button>
-      <p class="checkout-note" id="checkoutNote">Після натискання відкриється ваш email-клієнт із готовим листом на maxwaxpro2@gmail.com — просто натисніть "Надіслати". Або оплатіть напряму за <a href="requisites.html">реквізитами</a>.</p>
+      <button type="submit" class="btn btn-accent full-btn" data-uk="Підтвердити замовлення →" data-en="Confirm order →">Підтвердити замовлення →</button>
+      <p class="checkout-note" id="checkoutNote">Замовлення надійде нам напряму із сайту — нічого додатково відправляти не потрібно. Або оплатіть напряму за <a href="requisites.html">реквізитами</a>.</p>
     </form>
 
     <div class="checkout-success" id="checkoutSuccess" style="display:none;">
@@ -831,40 +831,63 @@ window.__PRODUCT_PHOTOS__ = {
     checkoutOverlay.classList.remove('open');
   });
 
+  var ORDER_WEBHOOK_URL = 'https://hook.eu1.make.com/k8kptqq25xu3wkpa3w28ab5ldp11gbsi';
+
   document.getElementById('checkoutForm').addEventListener('submit', function(e){
     e.preventDefault();
     var f = e.target;
     var name = f.name.value, phone = f.phone.value, email = f.email.value, city = f.city.value, comment = f.comment.value;
-
-    var itemsText = cart.map(function(i){ return '- ' + i.name + ' — ' + i.price + ' грн'; }).join('\n');
     var total = cart.reduce(function(s,i){ return s + i.price; }, 0);
 
-    var subject = 'Нове замовлення MAX WAX PRO — ' + name;
-    var body =
-      'Замовлення з сайту MAX WAX PRO\n\n' +
-      'Клієнт: ' + name + '\n' +
-      'Телефон: ' + phone + '\n' +
-      'Email: ' + (email || '—') + '\n' +
-      'Місто/Нова Пошта: ' + (city || '—') + '\n\n' +
-      'Товари:\n' + itemsText + '\n\n' +
-      'Разом: ' + total + ' грн\n\n' +
-      'Коментар: ' + (comment || '—');
+    var submitBtn = f.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
 
-    // TODO: коли буде готовий webhook (Formspree / Make.com), замінити рядок нижче
-    // на fetch(ENDPOINT, {method:'POST', body: JSON.stringify({...})}) і прибрати mailto —
-    // тоді лист/Telegram підуть тихо, без відкриття поштового клієнта користувача.
-    var mailto = 'mailto:maxwaxpro2@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-    window.location.href = mailto;
+    var payload = {
+      customerName: name,
+      customerPhone: phone,
+      customerEmail: email || '',
+      city: city || '',
+      comment: comment || '',
+      items: cart.map(function(i){ return { name: i.name, price: i.price }; }),
+      total: total,
+      currency: 'UAH',
+      source: 'maxwaxpro.com'
+    };
 
-    // Кошик очищується й показується підтвердження одразу — незалежно від того,
-    // встиг користувач надіслати лист у своєму клієнті чи ні.
-    cart = [];
-    saveCart(cart);
-    renderCart();
-    closeCart();
-    f.reset();
-    f.style.display = 'none';
-    document.getElementById('checkoutSuccess').style.display = 'block';
+    function finishOrder(){
+      cart = [];
+      saveCart(cart);
+      renderCart();
+      closeCart();
+      f.reset();
+      f.style.display = 'none';
+      document.getElementById('checkoutSuccess').style.display = 'block';
+      submitBtn.disabled = false;
+    }
+
+    fetch(ORDER_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(finishOrder)
+      .catch(function(){
+        // Якщо вебхук недоступний (напр. немає інтернету саме в цю секунду) —
+        // не втрачаємо замовлення, а підстраховуємось через mailto.
+        var itemsText = cart.map(function(i){ return '- ' + i.name + ' — ' + i.price + ' грн'; }).join('\n');
+        var subject = 'Нове замовлення MAX WAX PRO — ' + name;
+        var body =
+          'Замовлення з сайту MAX WAX PRO\n\n' +
+          'Клієнт: ' + name + '\n' +
+          'Телефон: ' + phone + '\n' +
+          'Email: ' + (email || '—') + '\n' +
+          'Місто/Нова Пошта: ' + (city || '—') + '\n\n' +
+          'Товари:\n' + itemsText + '\n\n' +
+          'Разом: ' + total + ' грн\n\n' +
+          'Коментар: ' + (comment || '—');
+        window.location.href = 'mailto:maxwaxpro2@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        finishOrder();
+      });
   });
 
   // ---------------------------------------------------------------
@@ -940,8 +963,8 @@ window.__PRODUCT_PHOTOS__ = {
     var noteEl = document.getElementById('checkoutNote');
     if(noteEl){
       noteEl.innerHTML = lang === 'en'
-        ? 'Clicking this will open your email client with a ready-made message to maxwaxpro2@gmail.com — just hit "Send". Or pay directly using our <a href="requisites.html">bank transfer details</a>.'
-        : 'Після натискання відкриється ваш email-клієнт із готовим листом на maxwaxpro2@gmail.com — просто натисніть "Надіслати". Або оплатіть напряму за <a href="requisites.html">реквізитами</a>.';
+        ? 'Your order goes straight to us from the site — nothing else to send. Or pay directly using our <a href="requisites.html">bank transfer details</a>.'
+        : 'Замовлення надійде нам напряму із сайту — нічого додатково відправляти не потрібно. Або оплатіть напряму за <a href="requisites.html">реквізитами</a>.';
     }
 
     try{ localStorage.setItem(LANG_KEY, lang); }catch(e){}
