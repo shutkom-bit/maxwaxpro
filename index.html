@@ -29,7 +29,7 @@
 }
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.52;-webkit-font-smoothing:antialiased;}
 a{color:inherit;text-decoration:none;}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
 h1,h2{font-weight:800;letter-spacing:-0.02em;line-height:1.05;margin:0;}
@@ -38,7 +38,25 @@ h2{font-size:clamp(1.6rem,3vw,2.2rem);}
 h3{font-weight:700;margin:0;}
 p{margin:0;color:var(--ink-soft);}
 .mono{font-family:'JetBrains Mono',monospace;}
-section{padding:80px 0;}
+section{padding:52px 0;}
+
+/* ---------- marquee announcement bar ---------- */
+.marquee-bar{background:var(--accent);overflow:hidden;white-space:nowrap;position:relative;}
+.marquee-track{display:flex;width:max-content;animation:marquee-scroll 22s linear infinite;}
+.marquee-item{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.78rem;letter-spacing:.02em;
+  color:var(--accent-ink);text-decoration:none;
+  padding:9px 40px;white-space:nowrap;
+}
+.marquee-item:hover{text-decoration:underline;}
+@keyframes marquee-scroll{
+  from{ transform:translateX(0); }
+  to{ transform:translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce){
+  .marquee-track{animation:none;}
+}
 
 /* ---------- header ---------- */
 header{background:var(--bg);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50;}
@@ -67,7 +85,7 @@ nav.links a:hover{color:var(--ink);}
 .full-btn{width:100%;justify-content:center;}
 
 /* ---------- hero ---------- */
-.hero{padding-top:64px;padding-bottom:56px;}
+.hero{padding-top:36px;padding-bottom:32px;}
 .hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:44px;align-items:center;}
 @media (max-width:880px){.hero-grid{grid-template-columns:1fr;}}
 .eyebrow{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.06em;color:var(--accent);font-weight:700;margin-bottom:16px;}
@@ -89,11 +107,11 @@ nav.links a:hover{color:var(--ink);}
 /* ---------- why (light section) ---------- */
 #why{background:var(--light-bg);color:var(--light-ink);}
 #why p, #why .why-cell p{color:var(--light-ink-soft);}
-.section-head{max-width:640px;margin-bottom:44px;}
+.section-head{max-width:640px;margin-bottom:28px;}
 .section-head h2{margin-bottom:12px;color:inherit;}
 .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--light-border);border:1px solid var(--light-border);}
 @media (max-width:820px){.why-grid{grid-template-columns:1fr;}}
-.why-cell{background:var(--light-bg);padding:30px 26px;}
+.why-cell{background:var(--light-bg);padding:22px 20px;}
 .why-num{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--accent);font-size:1.3rem;margin-bottom:10px;}
 .why-cell h3{margin-bottom:8px;font-size:1.02rem;}
 
@@ -109,7 +127,7 @@ nav.links a:hover{color:var(--ink);}
 .p-card-photo{aspect-ratio:1/1;background:var(--surface-2);display:flex;align-items:center;justify-content:center;position:relative;}
 .p-card-photo img{width:60%;max-height:80%;object-fit:contain;}
 .p-card-photo .ph-tag{position:absolute;top:8px;left:8px;font-family:'JetBrains Mono',monospace;font-size:.58rem;background:var(--bg);border:1px solid var(--border);padding:2px 6px;border-radius:2px;color:var(--ink-soft);}
-.p-card-body{padding:16px;display:flex;flex-direction:column;gap:10px;flex:1;}
+.p-card-body{padding:14px;display:flex;flex-direction:column;gap:7px;flex:1;}
 .p-card-body h3{font-size:.98rem;}
 .p-card-temp{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--accent);}
 .p-card-select{background:var(--surface-2);border:1px solid var(--border);color:var(--ink);border-radius:4px;padding:8px 10px;font-family:'Inter',sans-serif;font-size:.84rem;}
@@ -119,7 +137,7 @@ nav.links a:hover{color:var(--ink);}
 
 /* ---------- ice diamond ---------- */
 .ice-section{background:linear-gradient(160deg,#0E1116 0%,#141A2E 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-.ice-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:44px;align-items:center;}
+.ice-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:32px;align-items:center;}
 @media (max-width:880px){.ice-grid{grid-template-columns:1fr;}}
 .ice-eyebrow{color:#7EC8E3;}
 .accent-ice{color:#7EC8E3;}
@@ -137,19 +155,19 @@ nav.links a:hover{color:var(--ink);}
 .how-section p{color:var(--light-ink-soft);}
 .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
 @media (max-width:800px){.how-grid{grid-template-columns:1fr;}}
-.how-step{background:#fff;border:1px solid var(--light-border);border-radius:var(--radius);padding:24px;}
+.how-step{background:#fff;border:1px solid var(--light-border);border-radius:var(--radius);padding:18px;}
 .step-n{font-family:'JetBrains Mono',monospace;font-weight:800;color:var(--accent);font-size:1.4rem;margin-bottom:10px;}
 .how-step h3{margin-bottom:8px;font-size:1rem;}
 
 /* ---------- dealers ---------- */
-.dealers-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start;}
+.dealers-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;}
 @media (max-width:880px){.dealers-grid{grid-template-columns:1fr;}}
 .checklist{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:10px;}
 .checklist li{font-size:.9rem;color:var(--ink-soft);padding-left:20px;position:relative;}
 .checklist li::before{content:"✓";color:var(--accent);position:absolute;left:0;font-weight:700;}
-.form-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px;}
+.form-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;}
 .form-card h3{margin-bottom:16px;}
-.field-input{width:100%;background:var(--surface-2);border:1px solid var(--border);border-radius:4px;padding:11px 12px;font-family:'Inter',sans-serif;font-size:.9rem;color:var(--ink);margin-bottom:10px;}
+.field-input{width:100%;background:var(--surface-2);border:1px solid var(--border);border-radius:4px;padding:9px 12px;font-family:'Inter',sans-serif;font-size:.9rem;color:var(--ink);margin-bottom:8px;}
 .field-input::placeholder{color:var(--ink-soft);}
 
 /* ---------- payment details / requisites ---------- */
@@ -166,11 +184,11 @@ nav.links a:hover{color:var(--ink);}
 .faq-wrap{max-width:740px;}
 details{border-bottom:1px solid var(--border);}
 details:first-of-type{border-top:1px solid var(--border);}
-summary{list-style:none;cursor:pointer;padding:18px 4px;display:flex;justify-content:space-between;font-weight:700;font-size:.94rem;}
+summary{list-style:none;cursor:pointer;padding:13px 4px;display:flex;justify-content:space-between;font-weight:700;font-size:.94rem;}
 summary::-webkit-details-marker{display:none;}
 summary .plus{color:var(--accent);}
 details[open] summary .plus{transform:rotate(45deg);display:inline-block;}
-details p{padding:0 4px 18px;font-size:.88rem;max-width:64ch;}
+details p{padding:0 4px 13px;font-size:.88rem;max-width:64ch;}
 
 /* ---------- cart drawer ---------- */
 .cart-overlay,.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:90;display:none;}
@@ -192,21 +210,32 @@ details p{padding:0 4px 18px;font-size:.88rem;max-width:64ch;}
 textarea.field-input{resize:vertical;}
 
 /* ---------- footer ---------- */
-footer{background:#0A0C10;padding:56px 0 26px;}
-.foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:34px;border-bottom:1px solid var(--border);}
+footer{background:#0A0C10;padding:36px 0 18px;}
+.foot-top{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap;padding-bottom:20px;border-bottom:1px solid var(--border);}
 .foot-top p{margin-top:12px;max-width:34ch;color:var(--ink-soft);}
 .foot-social{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap;}
 .foot-social a{font-size:.82rem;color:var(--ink-soft);}
-.foot-cols{display:flex;gap:50px;flex-wrap:wrap;}
+.foot-cols{display:flex;gap:34px;flex-wrap:wrap;}
 .foot-col h4{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.05em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 12px;}
-.foot-col div{font-size:.86rem;margin-bottom:6px;color:var(--ink-soft);}
-.foot-bottom{display:flex;justify-content:space-between;padding-top:20px;font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--ink-soft);flex-wrap:wrap;gap:10px;}
+.foot-col div{font-size:.86rem;margin-bottom:3px;line-height:1.4;color:var(--ink-soft);}
+.foot-bottom{display:flex;justify-content:space-between;padding-top:12px;font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--ink-soft);flex-wrap:wrap;gap:8px;}
 
 @media (max-width:820px){ nav.links{display:none;} }
 
 </style>
 </head>
 <body>
+
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <a href="#ice-diamond" class="marquee-item" data-uk="❄️ НОВИНКА — Royal Eggs Ice Diamond 💎: зимова формула вже в каталозі →" data-en="❄️ NEW — Royal Eggs Ice Diamond 💎: the winter formula is now in the catalogue →">❄️ НОВИНКА — Royal Eggs Ice Diamond 💎: зимова формула вже в каталозі →</a>
+    <a href="#ice-diamond" class="marquee-item" data-uk="❄️ НОВИНКА — Royal Eggs Ice Diamond 💎: зимова формула вже в каталозі →" data-en="❄️ NEW — Royal Eggs Ice Diamond 💎: the winter formula is now in the catalogue →">❄️ НОВИНКА — Royal Eggs Ice Diamond 💎: зимова формула вже в каталозі →</a>
+    <a href="#ice-diamond" class="marquee-item" data-uk="❄️ НОВИНКА — Royal Eggs Ice Diamond 💎: зимова формула вже в каталозі →" data-en="❄️ NEW — Royal Eggs Ice Diamond 💎: the winter formula is now in the catalogue →">❄️ НОВИНКА — Royal Eggs Ice Diamond 💎: зимова формула вже в каталозі →</a>
+    <a href="#ice-diamond" class="marquee-item" data-uk="❄️ НОВИНКА — Royal Eggs Ice Diamond 💎: зимова формула вже в каталозі →" data-en="❄️ NEW — Royal Eggs Ice Diamond 💎: the winter formula is now in the catalogue →">❄️ НОВИНКА — Royal Eggs Ice Diamond 💎: зимова формула вже в каталозі →</a>
+    <a href="#ice-diamond" class="marquee-item" data-uk="❄️ НОВИНКА — Royal Eggs Ice Diamond 💎: зимова формула вже в каталозі →" data-en="❄️ NEW — Royal Eggs Ice Diamond 💎: the winter formula is now in the catalogue →">❄️ НОВИНКА — Royal Eggs Ice Diamond 💎: зимова формула вже в каталозі →</a>
+    <a href="#ice-diamond" class="marquee-item" data-uk="❄️ НОВИНКА — Royal Eggs Ice Diamond 💎: зимова формула вже в каталозі →" data-en="❄️ NEW — Royal Eggs Ice Diamond 💎: the winter formula is now in the catalogue →">❄️ НОВИНКА — Royal Eggs Ice Diamond 💎: зимова формула вже в каталозі →</a>
+  </div>
+</div>
 
 <header>
   <div class="wrap nav">
