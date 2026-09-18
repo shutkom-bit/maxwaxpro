@@ -44,9 +44,11 @@ section{padding:80px 0;}
 header{background:var(--bg);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50;}
 .nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:20px;}
 .brand{display:flex;align-items:center;gap:10px;font-weight:800;}
-.logo-mark{height:44px;width:auto;display:block;}
-.logo-mark--footer{height:56px;}
-@media (max-width:480px){ .logo-mark{height:36px;} }
+.logo-mark{height:38px;width:auto;display:block;}
+.logo-mark--footer{height:46px;}
+.brand-word{font-family:'Inter',sans-serif;font-weight:800;font-size:1.05rem;letter-spacing:-0.01em;color:var(--ink);white-space:nowrap;}
+.brand-word span{color:var(--accent);}
+@media (max-width:480px){ .logo-mark{height:30px;} .brand-word{font-size:.92rem;} }
 nav.links{display:flex;gap:22px;}
 nav.links a{font-size:.9rem;color:var(--ink-soft);}
 nav.links a:hover{color:var(--ink);}
@@ -210,6 +212,7 @@ footer{background:#0A0C10;padding:56px 0 26px;}
   <div class="wrap nav">
     <a class="brand" href="#top">
       <img src="logo.png" alt="MAX WAX PRO" class="logo-mark">
+      <span class="brand-word">MAX WAX <span>PRO</span></span>
     </a>
     <nav class="links">
       <a href="#products" data-uk="Продукти" data-en="Products">Продукти</a>
@@ -414,6 +417,7 @@ footer{background:#0A0C10;padding:56px 0 26px;}
       <div>
         <a class="brand" href="#top">
           <img src="logo.png" alt="MAX WAX PRO" class="logo-mark logo-mark--footer">
+          <span class="brand-word" style="color:#fff;">MAX WAX <span>PRO</span></span>
         </a>
         <p data-uk="Професійні воскові змазки для велосипедних ланцюгів. Розроблено та вироблено в Україні." data-en="Professional hot wax lubricants for bicycle chains. Designed and made in Ukraine.">Професійні воскові змазки для велосипедних ланцюгів. Розроблено та вироблено в Україні.</p>
         <div class="foot-social">
