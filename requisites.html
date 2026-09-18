@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Реквізити для оплати — MAX WAX PRO</title>
+<meta name="robots" content="noindex, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0E1116; --surface:#171B22; --ink:#F4F2EC; --ink-soft:#9AA1AC;
+    --accent:#F2932E; --border:rgba(244,242,236,0.12);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.65;}
+  .wrap{max-width:640px;margin:0 auto;padding:60px 24px 100px;}
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  h1{font-size:clamp(1.6rem,4vw,2.1rem);font-weight:800;letter-spacing:-0.02em;margin:0 0 10px;}
+  .back{display:inline-block;margin-bottom:30px;font-family:'JetBrains Mono',monospace;font-size:.8rem;}
+  p.lede{color:var(--ink-soft);margin:0 0 30px;font-size:.95rem;}
+  .req-card{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:6px 26px;}
+  .req-row{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+  .req-row:last-of-type{border-bottom:none;}
+  .req-k{color:var(--ink-soft);font-size:.86rem;}
+  .req-v{font-weight:600;font-size:.94rem;text-align:right;}
+  .req-v.mono{font-family:'JetBrains Mono',monospace;letter-spacing:.02em;}
+  .req-note{padding:22px 0 8px;font-size:.85rem;color:var(--ink-soft);}
+  @media (max-width:520px){ .req-row{flex-direction:column;gap:4px;} .req-v{text-align:left;} }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="index.html">← На головну / MAX WAX PRO</a>
+    <h1>Реквізити для оплати</h1>
+    <p class="lede">Якщо вам зручніше оплатити прямим переказом на рахунок ФОП, а не через кошик на сайті — ось реквізити.</p>
+
+    <div class="req-card">
+      <div class="req-row"><span class="req-k">Отримувач</span><span class="req-v">ФОП Тесленко Ірина Вікторівна</span></div>
+      <div class="req-row"><span class="req-k">IBAN</span><span class="req-v mono">UA593220010000026004370080278</span></div>
+      <div class="req-row"><span class="req-k">ІПН/ЄДРПОУ</span><span class="req-v mono">2254719589</span></div>
+      <div class="req-row"><span class="req-k">Банк</span><span class="req-v">Акціонерне товариство «УНІВЕРСАЛ БАНК»</span></div>
+      <div class="req-row"><span class="req-k">МФО</span><span class="req-v mono">322001</span></div>
+      <div class="req-row"><span class="req-k">ЄДРПОУ банку</span><span class="req-v mono">21133352</span></div>
+      <div class="req-row"><span class="req-k">Телефон для зв'язку</span><span class="req-v"><a href="tel:+380968949414">+380 96 894 94 14</a></span></div>
+    </div>
+    <p class="req-note">Після оплати за реквізитами напишіть, будь ласка, на <a href="mailto:maxwaxpro2@gmail.com">maxwaxpro2@gmail.com</a> або в Telegram — вкажіть суму й час переказу, щоб ми одразу підтвердили замовлення.</p>
+  </div>
+</body>
+</html>
