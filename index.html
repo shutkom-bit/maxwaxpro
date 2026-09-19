@@ -139,10 +139,10 @@ nav.links a:hover{color:var(--ink);}
 .p-card-body{padding:14px;display:flex;flex-direction:column;gap:7px;flex:1;}
 .p-card-body h3{font-size:.98rem;}
 .p-card-temp{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--accent);}
-.p-card-select{background:var(--surface-2);border:1px solid var(--border);color:var(--ink);border-radius:4px;padding:8px 10px;font-family:'Inter',sans-serif;font-size:.84rem;}
+.p-card-select{background:var(--surface-2);border:1px solid var(--border);color:var(--ink);border-radius:4px;padding:10px 10px;font-family:'Inter',sans-serif;font-size:1rem;}
 .p-card-foot{display:flex;justify-content:space-between;align-items:center;margin-top:auto;}
 .p-card-price{font-weight:800;font-size:1.05rem;}
-.add-to-cart-btn{font-family:'JetBrains Mono',monospace;font-size:.68rem;font-weight:700;background:var(--accent);color:var(--accent-ink);border:none;border-radius:4px;padding:9px 12px;cursor:pointer;}
+.add-to-cart-btn{font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:700;background:var(--accent);color:var(--accent-ink);border:none;border-radius:4px;padding:12px 14px;cursor:pointer;min-height:40px;}
 
 /* ---------- ice diamond ---------- */
 .ice-section{background:linear-gradient(160deg,#0E1116 0%,#141A2E 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
@@ -176,7 +176,7 @@ nav.links a:hover{color:var(--ink);}
 .checklist li::before{content:"✓";color:var(--accent);position:absolute;left:0;font-weight:700;}
 .form-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;}
 .form-card h3{margin-bottom:16px;}
-.field-input{width:100%;background:var(--surface-2);border:1px solid var(--border);border-radius:4px;padding:9px 12px;font-family:'Inter',sans-serif;font-size:.9rem;color:var(--ink);margin-bottom:8px;}
+.field-input{width:100%;background:var(--surface-2);border:1px solid var(--border);border-radius:4px;padding:11px 12px;font-family:'Inter',sans-serif;font-size:1rem;color:var(--ink);margin-bottom:8px;}
 .field-input::placeholder{color:var(--ink-soft);}
 
 /* ---------- payment details / requisites ---------- */
@@ -201,6 +201,7 @@ details p{padding:0 4px 13px;font-size:.88rem;max-width:64ch;}
 
 /* ---------- cart drawer ---------- */
 .cart-overlay,.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:90;display:none;}
+.modal-overlay{z-index:200;overflow-y:auto;-webkit-overflow-scrolling:touch;}
 .cart-overlay.open,.modal-overlay.open{display:block;}
 .cart-drawer{position:fixed;top:0;right:-380px;width:360px;max-width:88vw;height:100%;background:var(--surface);border-left:1px solid var(--border);z-index:100;transition:right .25s ease;display:flex;flex-direction:column;padding:24px;}
 @media (max-width:420px){ .cart-drawer{right:-100%;width:100%;max-width:100%;padding:20px;} .cart-drawer.open{right:0 !important;} }
@@ -465,7 +466,7 @@ footer{background:#0A0C10;padding:36px 0 18px;}
     <span data-uk="Разом" data-en="Total">Разом</span>
     <span id="cartTotal">0 грн</span>
   </div>
-  <button class="btn btn-accent full-btn" id="checkoutBtn" data-uk="Оформити замовлення →" data-en="Proceed to checkout →">Оформити замовлення →</button>
+  <button class="btn btn-accent full-btn" id="checkoutBtn" data-uk="Оформити замовлення" data-en="Checkout">Оформити замовлення</button>
 </aside>
 
 <!-- CHECKOUT MODAL -->
@@ -798,8 +799,25 @@ window.__PRODUCT_PHOTOS__ = {
 
   var cartDrawer = document.getElementById('cartDrawer');
   var cartOverlay = document.getElementById('cartOverlay');
-  function openCart(){ cartDrawer.classList.add('open'); cartOverlay.classList.add('open'); }
-  function closeCart(){ cartDrawer.classList.remove('open'); cartOverlay.classList.remove('open'); }
+
+  // Блокуємо прокрутку фонової сторінки, поки відкрите будь-яке з двох вікон
+  // (кошик або форма замовлення) — інакше на мобільному фон "їде" під ними,
+  // і виглядає так, ніби вікна одне одного перекривають.
+  var lockCount = 0;
+  function lockBodyScroll(){
+    lockCount++;
+    document.body.style.overflow = 'hidden';
+  }
+  function unlockBodyScroll(){
+    lockCount = Math.max(0, lockCount - 1);
+    if(lockCount === 0){ document.body.style.overflow = ''; }
+  }
+
+  function openCart(){ cartDrawer.classList.add('open'); cartOverlay.classList.add('open'); lockBodyScroll(); }
+  function closeCart(){
+    if(cartDrawer.classList.contains('open')){ unlockBodyScroll(); }
+    cartDrawer.classList.remove('open'); cartOverlay.classList.remove('open');
+  }
   document.getElementById('cartBtn').addEventListener('click', openCart);
   document.getElementById('cartClose').addEventListener('click', closeCart);
   cartOverlay.addEventListener('click', closeCart);
@@ -815,21 +833,23 @@ window.__PRODUCT_PHOTOS__ = {
     checkoutFormEl.style.display = 'block';
     checkoutSuccessEl.style.display = 'none';
   }
+  function closeCheckout(){
+    if(checkoutOverlay.classList.contains('open')){ unlockBodyScroll(); }
+    checkoutOverlay.classList.remove('open');
+  }
 
   document.getElementById('checkoutBtn').addEventListener('click', function(){
     if(cart.length === 0){
       alert(currentLang() === 'en' ? 'Your cart is empty — add products before checking out.' : 'Кошик порожній — додайте товари перед оформленням.');
       return;
     }
+    closeCart(); // закриваємо кошик, щоб він не перекривав форму замовлення
     resetCheckoutModal();
     checkoutOverlay.classList.add('open');
+    lockBodyScroll();
   });
-  document.getElementById('checkoutClose').addEventListener('click', function(){
-    checkoutOverlay.classList.remove('open');
-  });
-  document.getElementById('checkoutSuccessClose').addEventListener('click', function(){
-    checkoutOverlay.classList.remove('open');
-  });
+  document.getElementById('checkoutClose').addEventListener('click', closeCheckout);
+  document.getElementById('checkoutSuccessClose').addEventListener('click', closeCheckout);
 
   var ORDER_WEBHOOK_URL = 'https://hook.eu1.make.com/k8kptqq25xu3wkpa3w28ab5ldp11gbsi';
 
