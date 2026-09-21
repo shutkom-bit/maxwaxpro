@@ -133,13 +133,16 @@ nav.links a:hover{color:var(--ink);}
 .p-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;}
 .p-card-photo{aspect-ratio:1/1;background:var(--surface-2);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;cursor:zoom-in;}
 .p-card-photo .photo-img{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60%;max-height:80%;object-fit:contain;transition:opacity .35s ease, transform .35s ease;}
-.p-card-photo .photo-img.photo-back{opacity:0;}
-.p-card-photo:hover .photo-img.photo-front{opacity:0;}
-.p-card-photo:hover .photo-img.photo-back{opacity:1;}
-.p-card-photo:hover .photo-img{transform:translate(-50%,-50%) scale(1.14);}
+.p-card-photo .photo-img.photo-back{opacity:0;pointer-events:none;}
+/* За замовчуванням (бек-фото ще нема або не завантажилось) — просто zoom фронтального фото, без зникнення */
+.p-card-photo:hover .photo-img.photo-front{transform:translate(-50%,-50%) scale(1.14);}
+/* Коли бек-фото реально завантажилось (клас додає JS через onload) — на ховері міняємо фронт на бек */
+.p-card-photo.has-back:hover .photo-img.photo-front{opacity:0;}
+.p-card-photo.has-back:hover .photo-img.photo-back{opacity:1;transform:translate(-50%,-50%) scale(1.14);}
 .p-card-photo.p-card-photo--full{aspect-ratio:3/4;}
 .p-card-photo.p-card-photo--full .photo-img{top:0;left:0;transform:none;width:100%;height:100%;object-fit:cover;object-position:top;}
-.p-card-photo.p-card-photo--full:hover .photo-img{transform:scale(1.08);}
+.p-card-photo.p-card-photo--full:hover .photo-img.photo-front{transform:scale(1.08);}
+.p-card-photo.p-card-photo--full.has-back:hover .photo-img.photo-back{transform:scale(1.08);}
 .p-card-photo .ph-tag{position:absolute;top:8px;left:8px;font-family:'JetBrains Mono',monospace;font-size:.58rem;background:var(--bg);border:1px solid var(--border);padding:2px 6px;border-radius:2px;color:var(--ink-soft);}
 .p-card-body{padding:14px;display:flex;flex-direction:column;gap:7px;flex:1;}
 .p-card-body h3{font-size:.98rem;}
@@ -725,7 +728,7 @@ window.__PRODUCT_PHOTOS_BACK__ = {
           '<div class="p-card-photo' + (isFullPhoto ? ' p-card-photo--full' : '') + '" data-photo-el="' + uid + '">' +
             (photoSrc ?
               '<img class="photo-img photo-front" src="' + photoSrc + '" alt="' + p.name + '">' +
-              (photoBackSrc ? '<img class="photo-img photo-back" src="' + photoBackSrc + '" alt="' + p.name + ' — задня етикетка">' : '')
+              (photoBackSrc ? '<img class="photo-img photo-back" src="' + photoBackSrc + '" alt="' + p.name + ' — задня етикетка" onload="this.closest(\'.p-card-photo\').classList.add(\'has-back\')" onerror="this.remove()">' : '')
               : '<span class="ph-tag">' + photoTagLabel + '</span>') +
           '</div>' +
           '<div class="p-card-body">' +
@@ -754,8 +757,9 @@ window.__PRODUCT_PHOTOS_BACK__ = {
         var photoBackSrc = (window.__PRODUCT_PHOTOS_BACK__ && photoKey && window.__PRODUCT_PHOTOS_BACK__[photoKey]) || null;
         var photoEl = gridEl.querySelector('[data-photo-el="' + uid + '"]');
         if(photoEl && photoSrc){
+          photoEl.classList.remove('has-back');
           photoEl.innerHTML = '<img class="photo-img photo-front" src="' + photoSrc + '" alt="' + product.name + '">' +
-            (photoBackSrc ? '<img class="photo-img photo-back" src="' + photoBackSrc + '" alt="' + product.name + ' — задня етикетка">' : '');
+            (photoBackSrc ? '<img class="photo-img photo-back" src="' + photoBackSrc + '" alt="' + product.name + ' — задня етикетка" onload="this.closest(\'.p-card-photo\').classList.add(\'has-back\')" onerror="this.remove()">' : '');
         }
       });
     });
