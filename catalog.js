@@ -16,8 +16,8 @@ var CATALOG = [
       {src:"images/pro-red-drops.jpg", alt:"дропси у відкритому пакеті", altEn:"pellets in an open bag"}
     ],
     variants:[
-      {label:"Дропси, 500 г", labelEn:"Pellets, 500 g", price:1420},
-      {label:"Дропси, 1 кг", labelEn:"Pellets, 1 kg", price:2120}
+      {label:"Дропси, 500 г", labelEn:"Pellets, 500 g", short:"500 г", shortEn:"500 g", price:1420},
+      {label:"Дропси, 1 кг", labelEn:"Pellets, 1 kg", short:"1 кг", shortEn:"1 kg", price:2120}
     ] },
   { cat:"pro", id:"pro-pro-yellow", name:"PRO Yellow", temp:"+18°C … +25°C", scent:"аромат лимона", scentEn:"lemon scent",
     gallery:[
@@ -26,8 +26,8 @@ var CATALOG = [
       {src:"images/pro-yellow-drops.jpg", alt:"дропси у відкритому пакеті", altEn:"pellets in an open bag"}
     ],
     variants:[
-      {label:"Дропси, 500 г", labelEn:"Pellets, 500 g", price:1420},
-      {label:"Дропси, 1 кг", labelEn:"Pellets, 1 kg", price:2120}
+      {label:"Дропси, 500 г", labelEn:"Pellets, 500 g", short:"500 г", shortEn:"500 g", price:1420},
+      {label:"Дропси, 1 кг", labelEn:"Pellets, 1 kg", short:"1 кг", shortEn:"1 kg", price:2120}
     ] },
   { cat:"pro", id:"pro-pro-green", name:"PRO Green", temp:"+5°C … +18°C", scent:"аромат кави", scentEn:"coffee scent",
     gallery:[
@@ -36,8 +36,8 @@ var CATALOG = [
       {src:"images/pro-green-drops.jpg", alt:"дропси у відкритому пакеті", altEn:"pellets in an open bag"}
     ],
     variants:[
-      {label:"Дропси, 500 г", labelEn:"Pellets, 500 g", price:1420},
-      {label:"Дропси, 1 кг", labelEn:"Pellets, 1 kg", price:2120}
+      {label:"Дропси, 500 г", labelEn:"Pellets, 500 g", short:"500 г", shortEn:"500 g", price:1420},
+      {label:"Дропси, 1 кг", labelEn:"Pellets, 1 kg", short:"1 кг", shortEn:"1 kg", price:2120}
     ] },
   { cat:"pro", id:"pro-pro-blue", name:"PRO Blue", temp:"−20°C … +5°C", scent:"аромат кокосу", scentEn:"coconut scent",
     gallery:[
@@ -46,8 +46,8 @@ var CATALOG = [
       {src:"images/pro-blue-drops.jpg", alt:"дропси у відкритому пакеті", altEn:"pellets in an open bag"}
     ],
     variants:[
-      {label:"Дропси, 500 г", labelEn:"Pellets, 500 g", price:1420},
-      {label:"Дропси, 1 кг", labelEn:"Pellets, 1 kg", price:2120}
+      {label:"Дропси, 500 г", labelEn:"Pellets, 500 g", short:"500 г", shortEn:"500 g", price:1420},
+      {label:"Дропси, 1 кг", labelEn:"Pellets, 1 kg", short:"1 кг", shortEn:"1 kg", price:2120}
     ] },
 
   // 2. Wax Warmer (блоки для воскоплавів)
