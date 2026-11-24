@@ -257,6 +257,7 @@ details p{padding:0 4px 13px;font-size:.88rem;max-width:64ch;}
 .cart-items{flex:1;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;gap:12px;}
 .cart-item{display:flex;justify-content:space-between;gap:10px;font-size:.86rem;border-bottom:1px solid var(--border);padding-bottom:10px;}
 .cart-item .rm{background:none;border:none;color:var(--ink-soft);cursor:pointer;font-size:.8rem;width:32px;height:32px;margin:-7px 0 -7px 2px;flex:none;border-radius:50%;}
+.cart-item > span:last-child{white-space:nowrap;flex:none;}
 .cart-item .rm:hover{color:var(--ink);background:var(--surface-2);}
 .cart-total-row{display:flex;justify-content:space-between;font-weight:800;padding:16px 0;border-top:1px solid var(--border);margin-top:10px;}
 .cart-empty{color:var(--ink-soft);font-size:.86rem;}
@@ -335,6 +336,7 @@ input,textarea,select{caret-color:var(--accent);}
 #why :focus-visible,.how-section :focus-visible{outline-color:var(--accent-on-light);}
 h1,h2,h3{text-wrap:balance;}
 p,li{text-wrap:pretty;}
+.hp-field{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
 .foot-social a,.foot-col div a{display:inline-block;padding:5px 0;}
 .foot-social a:hover,.foot-col div a:hover{color:var(--ink);}
@@ -518,7 +520,7 @@ p,li{text-wrap:pretty;}
         </ul>
         <div class="ice-price-row">
           <span class="ice-price">2 100 <span data-uk="грн" data-en="UAH">грн</span></span>
-          <button class="btn btn-accent add-to-cart-btn" data-name="Royal Eggs Ice Diamond, 500 г" data-price="2100" data-uk="Додати в кошик" data-en="Add to cart">Додати в кошик</button>
+          <button class="btn btn-accent add-to-cart-btn" data-id="diamond-royal-eggs-ice-diamond" data-v="0" data-uk="Додати в кошик" data-en="Add to cart">Додати в кошик</button>
         </div>
         <p class="ice-note" data-uk="У комплекті: 500 г воску (24 порційні сфери), 2 бонусні сфери по 20 г, 2 шайби-дегризери, доступ до відео-інструкцій. 🇺🇦 Зроблено в Україні." data-en="Included: 500 g of wax (24 portioned spheres), 2 bonus 20 g spheres, 2 degreaser discs, access to video instructions. 🇺🇦 Made in Ukraine.">У комплекті: 500 г воску (24 порційні сфери), 2 бонусні сфери по 20 г, 2 шайби-дегризери, доступ до відео-інструкцій. 🇺🇦 Зроблено в Україні.</p>
       </div>
@@ -550,13 +552,14 @@ p,li{text-wrap:pretty;}
         <h3 data-uk="Заявка дилера" data-en="Dealer application">Заявка дилера</h3>
         <form id="dealerForm">
           <label class="sr-only" for="dl-company" data-uk="Назва компанії/майстерні" data-en="Company / workshop name">Назва компанії/майстерні</label>
-          <input class="field-input" id="dl-company" name="companyName" autocomplete="organization" data-uk-ph="Назва компанії/майстерні" data-en-ph="Company / workshop name" placeholder="Назва компанії/майстерні" required>
+          <input class="field-input" id="dl-company" maxlength="160" name="companyName" autocomplete="organization" data-uk-ph="Назва компанії/майстерні" data-en-ph="Company / workshop name" placeholder="Назва компанії/майстерні" required>
           <label class="sr-only" for="dl-contact" data-uk="Контактна особа" data-en="Contact person">Контактна особа</label>
-          <input class="field-input" id="dl-contact" name="contactName" autocomplete="name" data-uk-ph="Контактна особа" data-en-ph="Contact person" placeholder="Контактна особа" required>
+          <input class="field-input" id="dl-contact" maxlength="100" name="contactName" autocomplete="name" data-uk-ph="Контактна особа" data-en-ph="Contact person" placeholder="Контактна особа" required>
           <label class="sr-only" for="dl-email" data-uk="Email" data-en="Email">Email</label>
-          <input class="field-input" id="dl-email" name="email" type="email" autocomplete="email" placeholder="Email" required>
+          <input class="field-input" id="dl-email" maxlength="120" name="email" type="email" autocomplete="email" placeholder="Email" required>
           <label class="sr-only" for="dl-phone" data-uk="Телефон" data-en="Phone">Телефон</label>
-          <input class="field-input" id="dl-phone" name="phone" type="tel" autocomplete="tel" data-uk-ph="Телефон" data-en-ph="Phone" placeholder="Телефон" required>
+          <input class="field-input" id="dl-phone" maxlength="30" pattern="[+0-9 \(\)\-.]{9,30}" name="phone" type="tel" autocomplete="tel" data-uk-ph="Телефон" data-en-ph="Phone" placeholder="Телефон" required>
+<div class="hp-field" aria-hidden="true"><label>Website<input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
           <button type="submit" class="btn btn-dark full-btn" data-uk="Надіслати заявку →" data-en="Send application →">Надіслати заявку →</button>
         </form>
       </div>
@@ -590,15 +593,16 @@ p,li{text-wrap:pretty;}
     </div>
     <form id="checkoutForm">
       <label class="sr-only" for="co-name" data-uk="Ім'я та прізвище" data-en="Full name">Ім'я та прізвище</label>
-      <input class="field-input" id="co-name" name="name" autocomplete="name" data-uk-ph="Ім'я та прізвище" data-en-ph="Full name" placeholder="Ім'я та прізвище" required>
+      <input class="field-input" id="co-name" maxlength="100" name="name" autocomplete="name" data-uk-ph="Ім'я та прізвище" data-en-ph="Full name" placeholder="Ім'я та прізвище" required>
       <label class="sr-only" for="co-phone" data-uk="Телефон" data-en="Phone">Телефон</label>
-      <input class="field-input" id="co-phone" name="phone" type="tel" autocomplete="tel" data-uk-ph="Телефон" data-en-ph="Phone" placeholder="Телефон" required>
+      <input class="field-input" id="co-phone" maxlength="30" pattern="[+0-9 \(\)\-.]{9,30}" name="phone" type="tel" autocomplete="tel" data-uk-ph="Телефон" data-en-ph="Phone" placeholder="Телефон" required>
       <label class="sr-only" for="co-email" data-uk="Email (необовʼязково)" data-en="Email (optional)">Email (необовʼязково)</label>
-      <input class="field-input" id="co-email" name="email" type="email" autocomplete="email" data-uk-ph="Email (необовʼязково)" data-en-ph="Email (optional)" placeholder="Email (необовʼязково)">
+      <input class="field-input" id="co-email" maxlength="120" name="email" type="email" autocomplete="email" data-uk-ph="Email (необовʼязково)" data-en-ph="Email (optional)" placeholder="Email (необовʼязково)">
       <label class="sr-only" for="co-city" data-uk="Місто / Нова Пошта" data-en="City / Nova Poshta">Місто / Нова Пошта</label>
-      <input class="field-input" id="co-city" name="city" autocomplete="address-level2" data-uk-ph="Місто / Нова Пошта" data-en-ph="City / Nova Poshta" placeholder="Місто / Нова Пошта">
+      <input class="field-input" id="co-city" maxlength="160" name="city" autocomplete="address-level2" data-uk-ph="Місто / Нова Пошта" data-en-ph="City / Nova Poshta" placeholder="Місто / Нова Пошта">
       <label class="sr-only" for="co-comment" data-uk="Коментар до замовлення" data-en="Order comment">Коментар до замовлення</label>
-      <textarea class="field-input" id="co-comment" name="comment" data-uk-ph="Коментар до замовлення" data-en-ph="Order comment" placeholder="Коментар до замовлення" rows="2"></textarea>
+<div class="hp-field" aria-hidden="true"><label>Website<input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
+      <textarea class="field-input" id="co-comment" maxlength="1000" name="comment" data-uk-ph="Коментар до замовлення" data-en-ph="Order comment" placeholder="Коментар до замовлення" rows="2"></textarea>
       <button type="submit" class="btn btn-accent full-btn" data-uk="Підтвердити замовлення →" data-en="Confirm order →">Підтвердити замовлення →</button>
       <p class="checkout-note" id="checkoutNote">Замовлення надійде нам напряму із сайту — нічого додатково відправляти не потрібно. Або оплатіть напряму за <a href="requisites.html">реквізитами</a>.</p>
     </form>
@@ -656,6 +660,7 @@ p,li{text-wrap:pretty;}
   </div>
 </footer>
 
+<script src="catalog.js"></script>
 <script>
 
 window.__PRODUCT_PHOTOS__ = {
@@ -695,75 +700,7 @@ window.__PRODUCT_PHOTOS_BACK__ = {
   // photoKey відповідає ключам у window.__PRODUCT_PHOTOS__ (інжектяться нижче).
   // labelEn/nameEn — переклад для EN-режиму сайту.
   // ---------------------------------------------------------------
-  var CATALOG = [
-    // 1. PRO (дропси) — фото й температури з реальних етикеток
-    { cat:"pro", id:"pro-pro-red", name:"PRO Red", temp:"+25°C … +45°C",
-      variants:[
-        {label:"Дропси, 500 г", labelEn:"Pellets, 500 g", price:1420, photoKey:"pro-red-500"},
-        {label:"Дропси, 1000 г", labelEn:"Pellets, 1000 g", price:2000, photoKey:"pro-red-1000"}
-      ] },
-    { cat:"pro", id:"pro-pro-yellow", name:"PRO Yellow", temp:"+18°C … +25°C",
-      variants:[
-        {label:"Дропси, 500 г", labelEn:"Pellets, 500 g", price:1420, photoKey:"pro-yellow-500"},
-        {label:"Дропси, 1000 г", labelEn:"Pellets, 1000 g", price:2000, photoKey:"pro-yellow-1000"}
-      ] },
-    { cat:"pro", id:"pro-pro-green", name:"PRO Green", temp:"+5°C … +18°C",
-      variants:[
-        {label:"Дропси, 500 г", labelEn:"Pellets, 500 g", price:1420, photoKey:"pro-green-500"},
-        {label:"Дропси, 1000 г", labelEn:"Pellets, 1000 g", price:2000, photoKey:"pro-green-1000"}
-      ] },
-    { cat:"pro", id:"pro-pro-blue", name:"PRO Blue", temp:"−20°C … +5°C",
-      variants:[
-        {label:"Дропси, 500 г", labelEn:"Pellets, 500 g", price:1420, photoKey:"pro-blue-500"},
-        {label:"Дропси, 1000 г", labelEn:"Pellets, 1000 g", price:2000, photoKey:"pro-blue-1000"}
-      ] },
-
-    // 2. Wax Warmer (блоки для воскоплавів)
-    { cat:"warmer", id:"warmer-wax-warmer-red", name:"Wax Warmer Red", temp:"+25°C … +45°C", photoKey:"red",
-      variants:[{label:"Блок 320 г", labelEn:"Block, 320 g", price:1173}] },
-    { cat:"warmer", id:"warmer-wax-warmer-yellow", name:"Wax Warmer Yellow", temp:"+18°C … +25°C", photoKey:"yellow",
-      variants:[{label:"Блок 320 г", labelEn:"Block, 320 g", price:1173}] },
-    { cat:"warmer", id:"warmer-wax-warmer-green", name:"Wax Warmer Green", temp:"+5°C … +18°C", photoKey:"green",
-      variants:[{label:"Блок 320 г", labelEn:"Block, 320 g", price:1173}] },
-    { cat:"warmer", id:"warmer-wax-warmer-blue", name:"Wax Warmer Blue", temp:"−20°C … +5°C", photoKey:"blue",
-      variants:[{label:"Блок 320 г", labelEn:"Block, 320 g", price:1173}] },
-    { cat:"warmer", id:"warmer-wax-warmer-power", name:"Wax Warmer Power (E-Bike)", tempEn:"For e-bikes", temp:"Для електротяги", photoKey:"grey",
-      variants:[{label:"Блок 320 г", labelEn:"Block, 320 g", price:1173}] },
-
-    // 3. Royal Eggs NB (з нітридом бору)
-    { cat:"bn", id:"bn-royal-eggs-nb-red", name:"Royal Eggs NB Red", temp:"+25°C … +45°C", photoKey:"red",
-      variants:[{label:"NB, 500 г", labelEn:"NB, 500 g", price:1737},{label:"Компенсаційні шарики, 250 г", labelEn:"Top-up balls, 250 g", price:901}] },
-    { cat:"bn", id:"bn-royal-eggs-nb-yellow", name:"Royal Eggs NB Yellow", temp:"+18°C … +25°C", photoKey:"yellow",
-      variants:[{label:"NB, 500 г", labelEn:"NB, 500 g", price:1737},{label:"Компенсаційні шарики, 250 г", labelEn:"Top-up balls, 250 g", price:901}] },
-    { cat:"bn", id:"bn-royal-eggs-nb-green", name:"Royal Eggs NB Green", temp:"+5°C … +18°C", photoKey:"green",
-      variants:[{label:"NB, 500 г", labelEn:"NB, 500 g", price:1737},{label:"Компенсаційні шарики, 250 г", labelEn:"Top-up balls, 250 g", price:901}] },
-    { cat:"bn", id:"bn-royal-eggs-nb-blue", name:"Royal Eggs NB Blue", temp:"−20°C … +5°C", photoKey:"blue",
-      variants:[{label:"NB, 500 г", labelEn:"NB, 500 g", price:1737},{label:"Компенсаційні шарики, 250 г", labelEn:"Top-up balls, 250 g", price:901}] },
-
-    // 4. Флагман Black Diamond / Ice Diamond
-    { cat:"diamond", id:"diamond-royal-eggs-black-diamond", name:"Royal Eggs Black Diamond",
-      temp:"+15°C … +45°C, нагрів 90°C (3 хв)", tempEn:"+15°C … +45°C, heat to 90°C (3 min)", photoKey:"diamond-red",
-      variants:[{label:"Комплект: 500 г + дегризер + 2×20 г + фіксатор", labelEn:"Kit: 500 g + degreaser + 2×20 g + fixative", price:2100}] },
-    { cat:"diamond", id:"diamond-royal-eggs-ice-diamond", name:"Royal Eggs Ice Diamond",
-      temp:"−10°C … +15°C, нагрів 90°C (3 хв)", tempEn:"−10°C … +15°C, heat to 90°C (3 min)", photoKey:"blue",
-      variants:[{label:"Комплект: 500 г (сині кульки) + дегризер + 2×20 г + фіксатор", labelEn:"Kit: 500 g (blue balls) + degreaser + 2×20 g + fixative", price:2100}] },
-
-    // 5. Дегризери
-    { cat:"degreaser", id:"degreaser-degreaser-solid-red", name:"Degreaser Solid Red", temp:"Для нових ланцюгів, літо", tempEn:"For new chains, summer", photoKey:null,
-      variants:[{label:"Твердий, 2×25 г", labelEn:"Solid, 2×25 g", price:479}] },
-    { cat:"degreaser", id:"degreaser-degreaser-solid-yellow", name:"Degreaser Solid Yellow", temp:"Для нових ланцюгів, помірний клімат", tempEn:"For new chains, mild climate", photoKey:null,
-      variants:[{label:"Твердий, 2×25 г", labelEn:"Solid, 2×25 g", price:479}] },
-    { cat:"degreaser", id:"degreaser-degreaser-solid-green", name:"Degreaser Solid Green", temp:"Для нових ланцюгів, міжсезоння", tempEn:"For new chains, off-season", photoKey:null,
-      variants:[{label:"Твердий, 2×25 г", labelEn:"Solid, 2×25 g", price:479}] },
-    { cat:"degreaser", id:"degreaser-degreaser-solid-blue", name:"Degreaser Solid Blue", temp:"Для нових ланцюгів, холод", tempEn:"For new chains, cold", photoKey:null,
-      variants:[{label:"Твердий, 2×25 г", labelEn:"Solid, 2×25 g", price:479}] },
-    { cat:"degreaser", id:"degreaser-active-foam-degreaser", name:"Active Foam Degreaser", temp:"Концентрат для б/у ланцюгів і касет", tempEn:"Concentrate for used chains and cassettes", photoKey:null,
-      variants:[{label:"Рідкий концентрат, 500 мл", labelEn:"Liquid concentrate, 500 ml", price:814}] },
-
-    // 6. Набір Ultimate
-    { cat:"sets", id:"sets-ultimate-set", name:"Ultimate Set", temp:"Блок 320 г + комплект обслуговування", tempEn:"320 g block + service kit", photoKey:"grey",
-      variants:[{label:"WS₂ + MoS₂ + NB, дегризер, 2×20 г", labelEn:"WS₂ + MoS₂ + NB, degreaser, 2×20 g", price:1700}] }
-  ];
+  var CATALOG = window.MWP_CATALOG || [];
 
   var CATEGORY_LABELS_UK = {
     all:"Усі товари", pro:"PRO (дропси)", warmer:"Wax Warmer", bn:"Royal Eggs NB",
@@ -872,9 +809,7 @@ window.__PRODUCT_PHOTOS_BACK__ = {
         var product = findProductByUid(uid);
         var sel = gridEl.querySelector('.p-card-select[data-uid="' + uid + '"]');
         var variant = product.variants[Number(sel.value)];
-        var lang2 = currentLang();
-        var label = (lang2 === 'en' && variant.labelEn) ? variant.labelEn : variant.label;
-        addToCart(product.name + ' — ' + label, variant.price);
+        addToCart(product.id, Number(sel.value));
       });
     });
   }
@@ -890,17 +825,33 @@ window.__PRODUCT_PHOTOS_BACK__ = {
   // Кошик (localStorage — зручність для одного відвідувача,
   // не спільні дані між користувачами)
   // ---------------------------------------------------------------
-  var CART_KEY = 'mwp-cart-v1';
+  var CART_KEY = 'mwp-cart-v2';
   function loadCart(){
-    try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch(e){ return []; }
+    var saved;
+    try { saved = JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch(e){ saved = []; }
+    if(!Array.isArray(saved)){ return []; }
+    // лишаємо тільки товари, які є в поточному каталозі
+    return saved.filter(function(i){ return i && cartVariant(i); }).map(function(i){ return { id:i.id, v:i.v }; });
   }
+  function cartVariant(item){
+    var product = findProductByUid(item.id);
+    return product && product.variants[item.v] ? { product: product, variant: product.variants[item.v] } : null;
+  }
+  function itemName(item, lang){
+    var pv = cartVariant(item);
+    var label = (lang === 'en' && pv.variant.labelEn) ? pv.variant.labelEn : pv.variant.label;
+    return pv.product.name + ' — ' + label;
+  }
+  function itemPrice(item){ return cartVariant(item).variant.price; }
+  function cartTotal(){ return cart.reduce(function(s,i){ return s + itemPrice(i); }, 0); }
   function saveCart(cart){
     try { localStorage.setItem(CART_KEY, JSON.stringify(cart)); } catch(e){}
   }
   var cart = loadCart();
 
-  function addToCart(name, price){
-    cart.push({ name:name, price:price });
+  function addToCart(id, v){
+    if(!cartVariant({ id:id, v:v })){ return; }
+    cart.push({ id:id, v:v });
     saveCart(cart);
     renderCart();
     openCart();
@@ -924,15 +875,15 @@ window.__PRODUCT_PHOTOS_BACK__ = {
         '</p>';
     } else {
       cartItemsEl.innerHTML = cart.map(function(item, i){
-        return '<div class="cart-item"><span>' + escapeHtml(item.name) + '</span>' +
-          '<span>' + fmtPrice(item.price) + ' <button class="rm" type="button" data-i="' + i + '" aria-label="' + (lang === 'en' ? 'Remove ' : 'Видалити ') + escapeHtml(item.name) + '">✕</button></span></div>';
+        var name = itemName(item, lang);
+        return '<div class="cart-item"><span>' + escapeHtml(name) + '</span>' +
+          '<span>' + fmtPrice(itemPrice(item)) + ' <button class="rm" type="button" data-i="' + i + '" aria-label="' + (lang === 'en' ? 'Remove ' : 'Видалити ') + escapeHtml(name) + '">✕</button></span></div>';
       }).join('');
       cartItemsEl.querySelectorAll('.rm').forEach(function(btn){
         btn.addEventListener('click', function(){ removeFromCart(Number(btn.getAttribute('data-i'))); });
       });
     }
-    var total = cart.reduce(function(s,i){ return s + i.price; }, 0);
-    cartTotalEl.textContent = fmtPrice(total);
+    cartTotalEl.textContent = fmtPrice(cartTotal());
     cartCountEl.textContent = cart.length;
     document.getElementById('checkoutBtn').disabled = cart.length === 0;
   }
@@ -1010,13 +961,27 @@ window.__PRODUCT_PHOTOS_BACK__ = {
   document.getElementById('checkoutClose').addEventListener('click', closeCheckout);
   document.getElementById('checkoutSuccessClose').addEventListener('click', closeCheckout);
 
-  var ORDER_WEBHOOK_URL = 'https://hook.eu1.make.com/k8kptqq25xu3wkpa3w28ab5ldp11gbsi';
+  // Замовлення йдуть на нашу серверну функцію (api/order.js): вона перевіряє
+  // дані, рахує суму за прайсом і пересилає в Make. Адреса вебхука Make
+  // зберігається у змінних середовища Vercel, а не тут.
+  var ORDER_API_URL = '/api/order';
+  function postForm(payload){
+    return fetch(ORDER_API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function(res){
+      if(!res.ok){ throw new Error('HTTP ' + res.status); }
+      return res;
+    });
+  }
 
   document.getElementById('checkoutForm').addEventListener('submit', function(e){
     e.preventDefault();
     var f = e.target;
     var name = f.name.value, phone = f.phone.value, email = f.email.value, city = f.city.value, comment = f.comment.value;
-    var total = cart.reduce(function(s,i){ return s + i.price; }, 0);
+    var total = cartTotal();
+    var orderLines = cart.map(function(i){ return '- ' + itemName(i, 'uk') + ' — ' + itemPrice(i) + ' грн'; });
 
     var submitBtn = f.querySelector('button[type="submit"]');
     var submitLabel = submitBtn.textContent;
@@ -1024,16 +989,14 @@ window.__PRODUCT_PHOTOS_BACK__ = {
     submitBtn.textContent = currentLang() === 'en' ? 'Sending…' : 'Надсилаємо…';
 
     var payload = {
-      customerName: name,
-      customerPhone: phone,
-      customerEmail: email || '',
+      type: 'order',
+      name: name,
+      phone: phone,
+      email: email || '',
       city: city || '',
       comment: comment || '',
-      items: cart.map(function(i){ return { name: i.name, price: i.price }; }),
-      itemsText: cart.map(function(i){ return i.name + ' — ' + i.price + ' грн'; }).join('\n'),
-      total: total,
-      currency: 'UAH',
-      source: 'maxwaxpro.com'
+      items: cart.map(function(i){ return { id: i.id, v: i.v }; }),
+      website: f.website ? f.website.value : ''
     };
 
     function finishOrder(){
@@ -1049,16 +1012,12 @@ window.__PRODUCT_PHOTOS_BACK__ = {
       document.getElementById('checkoutSuccessClose').focus();
     }
 
-    fetch(ORDER_WEBHOOK_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    })
-      .then(function(res){ if(!res.ok){ throw new Error('HTTP ' + res.status); } finishOrder(); })
+    postForm(payload)
+      .then(finishOrder)
       .catch(function(){
         // Якщо вебхук недоступний (напр. немає інтернету саме в цю секунду) —
         // не втрачаємо замовлення, а підстраховуємось через mailto.
-        var itemsText = cart.map(function(i){ return '- ' + i.name + ' — ' + i.price + ' грн'; }).join('\n');
+        var itemsText = orderLines.join('\n');
         var subject = 'Нове замовлення MAX WAX PRO — ' + name;
         var body =
           'Замовлення з сайту MAX WAX PRO\n\n' +
@@ -1088,18 +1047,12 @@ window.__PRODUCT_PHOTOS_BACK__ = {
     submitBtn.textContent = currentLang() === 'en' ? 'Sending…' : 'Надсилаємо…';
 
     var payload = {
-      customerName: contactName,
-      customerPhone: phone,
-      customerEmail: email || '',
-      city: '',
-      comment: 'Заявка дилера. Компанія: ' + companyName,
-      items: [],
-      itemsText: 'Заявка дилера\nКомпанія: ' + companyName + '\nКонтактна особа: ' + contactName,
-      total: 0,
-      currency: 'UAH',
-      source: 'maxwaxpro.com (B2B форма)',
-      requestType: 'dealer_application',
-      companyName: companyName
+      type: 'dealer',
+      companyName: companyName,
+      contactName: contactName,
+      email: email,
+      phone: phone,
+      website: f.website ? f.website.value : ''
     };
 
     function finishDealerForm(){
@@ -1115,12 +1068,8 @@ window.__PRODUCT_PHOTOS_BACK__ = {
       f.parentNode.appendChild(successMsg);
     }
 
-    fetch(ORDER_WEBHOOK_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    })
-      .then(function(res){ if(!res.ok){ throw new Error('HTTP ' + res.status); } finishDealerForm(); })
+    postForm(payload)
+      .then(finishDealerForm)
       .catch(function(){
         // Якщо вебхук недоступний — підстраховуємось через mailto, як і раніше.
         var subject = 'Заявка дилера MAX WAX PRO — ' + companyName;
@@ -1138,10 +1087,10 @@ window.__PRODUCT_PHOTOS_BACK__ = {
   // ---------------------------------------------------------------
   // "Додати в кошик" на блоці Ice Diamond (не з каталогу-масиву)
   // ---------------------------------------------------------------
-  document.querySelectorAll('.add-to-cart-btn[data-name]').forEach(function(btn){
+  document.querySelectorAll('.add-to-cart-btn[data-id]').forEach(function(btn){
     if(btn.closest('.p-card')) return;
     btn.addEventListener('click', function(){
-      addToCart(btn.getAttribute('data-name'), Number(btn.getAttribute('data-price')));
+      addToCart(btn.getAttribute('data-id'), Number(btn.getAttribute('data-v')));
     });
   });
 
