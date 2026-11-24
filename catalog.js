@@ -8,7 +8,7 @@
    --------------------------------------------------------------- */
 (function(root){
 var CATALOG = [
-  // 1. PRO (дропси). Фото: фронт, зворот, дропси у відкритому пакеті (у Yellow фронту поки немає)
+  // 1. PRO (дропси). Фото: фронт, зворот, дропси у відкритому пакеті
   { cat:"pro", id:"pro-pro-red", name:"PRO Red", temp:"+25°C … +45°C", scent:"аромат полуниці", scentEn:"strawberry scent",
     gallery:[
       {src:"images/pro-red-front.jpg", alt:"пакет, фронт", altEn:"bag, front"},
@@ -21,8 +21,9 @@ var CATALOG = [
     ] },
   { cat:"pro", id:"pro-pro-yellow", name:"PRO Yellow", temp:"+18°C … +25°C", scent:"аромат лимона", scentEn:"lemon scent",
     gallery:[
-      {src:"images/pro-yellow-drops.jpg", alt:"дропси у відкритому пакеті", altEn:"pellets in an open bag"},
-      {src:"images/pro-yellow-back.jpg", alt:"пакет, зворот з етикеткою", altEn:"bag, back label"}
+      {src:"images/pro-yellow-front.jpg", alt:"пакет, фронт", altEn:"bag, front"},
+      {src:"images/pro-yellow-back.jpg", alt:"пакет, зворот з етикеткою", altEn:"bag, back label"},
+      {src:"images/pro-yellow-drops.jpg", alt:"дропси у відкритому пакеті", altEn:"pellets in an open bag"}
     ],
     variants:[
       {label:"Дропси, 500 г", labelEn:"Pellets, 500 g", price:1420},
