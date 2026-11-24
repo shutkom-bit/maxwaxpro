@@ -88,44 +88,10 @@ nav.links a:hover{color:var(--ink);}
 .hero .lede{max-width:44ch;margin-bottom:28px;}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px;}
 .check-row{display:flex;gap:20px;flex-wrap:wrap;font-size:.82rem;color:var(--ink-soft);}
-.hero-photo-wrap{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);}
-.hero-photo{width:100%;display:block;}
 
-/* --- HERO ANIMATION: seasons + spinning shiny chain + pedaling legs --- */
-.hero-anim{position:relative;width:100%;aspect-ratio:8/5;overflow:hidden;background:#0b0d11;}
-.hero-anim .season{position:absolute;inset:0;opacity:0;animation:heroSeasonCycle 16s infinite;}
-.hero-anim .season-winter{background:linear-gradient(160deg,#0e1a24 0%,#1b2b38 60%,#223544 100%);animation-delay:0s;}
-.hero-anim .season-spring{background:linear-gradient(160deg,#122015 0%,#1c3420 60%,#24402a 100%);animation-delay:4s;}
-.hero-anim .season-summer{background:linear-gradient(160deg,#241706 0%,#3a2708 60%,#4a3410 100%);animation-delay:8s;}
-.hero-anim .season-autumn{background:linear-gradient(160deg,#241008 0%,#3a1b0c 60%,#4a2410 100%);animation-delay:12s;}
-@keyframes heroSeasonCycle{
-  0%{opacity:0;}
-  4%{opacity:1;}
-  21%{opacity:1;}
-  27%{opacity:0;}
-  100%{opacity:0;}
-}
-.hero-anim .season-dot{position:absolute;border-radius:50%;opacity:.55;}
-.hero-anim .season-winter .season-dot{background:#dfeaf2;animation:heroFallStraight 7s linear infinite;}
-.hero-anim .season-spring .season-dot{background:#f2c9d9;animation:heroFallDrift 8s ease-in-out infinite;}
-.hero-anim .season-summer .season-dot{background:#ffd98a;opacity:.18;filter:blur(1px);animation:heroPulseSun 5s ease-in-out infinite;}
-.hero-anim .season-autumn .season-dot{background:#e07a2e;animation:heroFallDrift 6s ease-in-out infinite;}
-@keyframes heroFallStraight{0%{transform:translateY(-10%);}100%{transform:translateY(560%);}}
-@keyframes heroFallDrift{0%{transform:translate(0,-10%) rotate(0deg);}50%{transform:translate(20px,260%) rotate(180deg);}100%{transform:translate(-10px,560%) rotate(360deg);}}
-@keyframes heroPulseSun{0%,100%{opacity:.10;}50%{opacity:.26;}}
-
-.hero-anim-stage{position:absolute;inset:0;}
-.hero-chain-loop{fill:none;stroke:#b9bfc6;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;}
-.hero-chain-shine{fill:#fff3d6;filter:drop-shadow(0 0 6px #ffd98a) drop-shadow(0 0 14px rgba(255,180,60,.7));offset-rotate:0deg;animation:heroShineMove 3.2s linear infinite;}
-@keyframes heroShineMove{0%{offset-distance:0%;}100%{offset-distance:100%;}}
-.hero-sprocket{transform-origin:center;}
-.hero-sprocket.big{animation:heroSpin 3.2s linear infinite;}
-.hero-sprocket.small{animation:heroSpin 1.4s linear infinite;}
-@keyframes heroSpin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
-.hero-crank{transform-origin:110px 190px;animation:heroSpin 3.2s linear infinite;}
-.hero-leg{transform-origin:110px 150px;animation:heroLegBob 3.2s ease-in-out infinite;}
-@keyframes heroLegBob{0%,100%{transform:translateY(-3px) rotate(-4deg);}50%{transform:translateY(3px) rotate(4deg);}}
-.hero-badge{position:absolute;bottom:14px;left:14px;background:rgba(14,17,22,.85);border:1px solid var(--border);padding:6px 12px;border-radius:20px;font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent);}
+/* --- HERO: реальні фото чотирьох пакетів PRO --- */
+.hero-lineup{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-radius:var(--radius);overflow:hidden;background:#e7e7e5;aspect-ratio:4/3;}
+.hero-lineup img{width:100%;height:100%;object-fit:cover;object-position:center 45%;display:block;}
 
 /* ---------- trust (блок прибрано, поки немає реальних партнерів; стилі залишені на майбутнє) ---------- */
 .trust{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--surface);}
@@ -420,69 +386,11 @@ p,li{text-wrap:pretty;}
           <a class="btn btn-outline-dark" href="how.html" data-uk="Як це працює" data-en="How it works">Як це працює</a>
         </div>
       </div>
-      <div class="hero-photo-wrap">
-        <div class="hero-anim" role="img" aria-label="Анімація: велосипедист крутить педалі, ланцюг блищить, змінюються пори року">
-          <div class="season season-winter">
-            <div class="season-dot" style="width:6px;height:6px;left:8%;animation-delay:0s;"></div>
-            <div class="season-dot" style="width:4px;height:4px;left:22%;animation-delay:1.5s;"></div>
-            <div class="season-dot" style="width:5px;height:5px;left:38%;animation-delay:.6s;"></div>
-            <div class="season-dot" style="width:4px;height:4px;left:55%;animation-delay:2.2s;"></div>
-            <div class="season-dot" style="width:6px;height:6px;left:72%;animation-delay:.3s;"></div>
-            <div class="season-dot" style="width:4px;height:4px;left:88%;animation-delay:1.8s;"></div>
-          </div>
-          <div class="season season-spring">
-            <div class="season-dot" style="width:8px;height:8px;left:12%;animation-delay:0s;"></div>
-            <div class="season-dot" style="width:6px;height:6px;left:30%;animation-delay:1.2s;"></div>
-            <div class="season-dot" style="width:7px;height:7px;left:48%;animation-delay:2.4s;"></div>
-            <div class="season-dot" style="width:6px;height:6px;left:66%;animation-delay:.8s;"></div>
-            <div class="season-dot" style="width:8px;height:8px;left:84%;animation-delay:1.9s;"></div>
-          </div>
-          <div class="season season-summer">
-            <div class="season-dot" style="width:220px;height:220px;left:70%;top:-60px;animation-delay:0s;"></div>
-          </div>
-          <div class="season season-autumn">
-            <div class="season-dot" style="width:9px;height:9px;left:10%;animation-delay:0s;"></div>
-            <div class="season-dot" style="width:7px;height:7px;left:28%;animation-delay:1.4s;"></div>
-            <div class="season-dot" style="width:8px;height:8px;left:46%;animation-delay:2.6s;"></div>
-            <div class="season-dot" style="width:7px;height:7px;left:64%;animation-delay:.9s;"></div>
-            <div class="season-dot" style="width:9px;height:9px;left:82%;animation-delay:2.1s;"></div>
-          </div>
-
-          <svg class="hero-anim-stage" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice">
-            <defs>
-              <path id="heroChainPath" d="M 110 142 L 300 168 A 22 22 0 1 1 300 212 L 110 238 A 48 48 0 1 1 110 142 Z"/>
-            </defs>
-
-            <g stroke="#3a4149" stroke-width="5" stroke-linecap="round" fill="none" opacity=".8">
-              <line x1="110" y1="190" x2="70" y2="110"/>
-              <line x1="70" y1="110" x2="150" y2="105"/>
-              <line x1="150" y1="105" x2="310" y2="190"/>
-              <line x1="150" y1="105" x2="110" y2="190"/>
-            </g>
-
-            <g class="hero-leg">
-              <path d="M 150 100 C 140 130, 132 150, 118 178" stroke="#cfd3d8" stroke-width="10" stroke-linecap="round" fill="none"/>
-              <path d="M 118 178 C 112 188, 108 196, 104 206" stroke="#9aa1a8" stroke-width="9" stroke-linecap="round" fill="none"/>
-            </g>
-
-            <use href="#heroChainPath" class="hero-chain-loop"/>
-
-            <g class="hero-sprocket big" style="transform-origin:110px 190px;">
-              <circle cx="110" cy="190" r="48" fill="none" stroke="#565e66" stroke-width="10" stroke-dasharray="3 9"/>
-            </g>
-            <g class="hero-sprocket small" style="transform-origin:300px 190px;">
-              <circle cx="300" cy="190" r="22" fill="none" stroke="#565e66" stroke-width="7" stroke-dasharray="2 6"/>
-            </g>
-
-            <g class="hero-crank">
-              <line x1="110" y1="190" x2="110" y2="150" stroke="#e8e2d8" stroke-width="7" stroke-linecap="round"/>
-              <circle cx="110" cy="150" r="7" fill="#F2932E"/>
-            </g>
-
-            <circle class="hero-chain-shine" r="5" style="offset-path:path('M 110 142 L 300 168 A 22 22 0 1 1 300 212 L 110 238 A 48 48 0 1 1 110 142 Z');"/>
-          </svg>
-        </div>
-        <div class="hero-badge">● 85°C Optimal Melt</div>
+      <div class="hero-lineup" role="img" aria-label="Чотири пакети MAX WAX PRO 1 кг: Red, Yellow, Green, Blue">
+        <img src="images/pro-red-front.jpg" alt="" width="580" height="1100" fetchpriority="high">
+        <img src="images/pro-yellow-front.jpg" alt="" width="580" height="1100">
+        <img src="images/pro-green-front.jpg" alt="" width="580" height="1100">
+        <img src="images/pro-blue-front.jpg" alt="" width="580" height="1100">
       </div>
     </div>
   </section>
