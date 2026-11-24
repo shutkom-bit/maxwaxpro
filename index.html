@@ -147,8 +147,10 @@ nav.links a:hover{color:var(--ink);}
 #products{background:var(--bg);}
 .cat-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;}
 .cat-tab{font-family:'JetBrains Mono',monospace;font-size:.74rem;padding:8px 14px;border-radius:20px;border:1px solid var(--border);background:var(--surface);color:var(--ink-soft);cursor:pointer;}
+.cat-tabs[hidden]{display:none;}
 .cat-tab.active{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);}
-.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+@media (max-width:1100px){.product-grid{grid-template-columns:repeat(3,1fr);}}
 @media (max-width:920px){.product-grid{grid-template-columns:repeat(2,1fr);}}
 @media (max-width:600px){.product-grid{grid-template-columns:1fr;}}
 .p-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;}
@@ -324,6 +326,33 @@ input,textarea,select{caret-color:var(--accent);}
 h1,h2,h3{text-wrap:balance;}
 p,li{text-wrap:pretty;}
 .hp-field{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;}
+.p-gallery{position:relative;background:#e9e9e7;aspect-ratio:3/5;overflow:hidden;}
+.p-gallery-main{width:100%;height:100%;object-fit:cover;display:block;}
+.p-thumbs{position:absolute;left:10px;bottom:10px;display:flex;gap:6px;}
+.p-thumb{width:40px;height:56px;padding:0;border:2px solid rgba(255,255,255,.7);border-radius:4px;overflow:hidden;cursor:pointer;background:#ddd;opacity:.75;transition:opacity .15s ease,border-color .15s ease;}
+.p-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.p-thumb[aria-pressed="true"]{border-color:var(--accent);opacity:1;}
+.p-thumb:hover{opacity:1;}
+.p-sizes{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.p-size{background:var(--surface-2);border:1px solid var(--border);color:var(--ink-soft);border-radius:4px;padding:10px 8px;font-family:'Inter',sans-serif;font-size:.95rem;font-weight:600;cursor:pointer;min-height:44px;transition:border-color .15s ease,color .15s ease,background .15s ease;}
+.p-size:hover{color:var(--ink);border-color:rgba(244,242,236,.3);}
+.p-size[aria-pressed="true"]{color:var(--accent-ink);background:var(--accent);border-color:var(--accent);}
+.p-card-scent{font-size:.84rem;color:var(--ink-soft);}
+.pro-details{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;margin-top:44px;padding-top:36px;border-top:1px solid var(--border);}
+@media (max-width:880px){.pro-details{grid-template-columns:1fr;gap:28px;}}
+.pro-details h3{font-size:1.15rem;margin-bottom:16px;}
+.pro-why{list-style:none;margin:0;padding:0;display:grid;gap:12px;}
+.pro-why li{color:var(--ink-soft);font-size:.92rem;}
+.pro-why li strong{color:var(--ink);}
+.pro-scents{margin-top:18px;font-size:.9rem;}
+.pro-kit{border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;margin-bottom:12px;background:var(--surface);}
+.pro-kit-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:10px;}
+.pro-kit-head h4{margin:0;font-size:.98rem;}
+.pro-kit-price{font-weight:800;color:var(--accent);white-space:nowrap;}
+.pro-kit ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:.88rem;display:grid;gap:4px;}
+.pro-kit-note{margin-top:10px;font-size:.84rem;}
+.pro-note{font-size:.86rem;margin-top:10px;}
+.pro-gift{margin-top:14px;font-size:.9rem;color:var(--ink);background:rgba(242,147,46,.08);border:1px solid rgba(242,147,46,.3);border-radius:var(--radius);padding:10px 14px;}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
 .foot-social a,.foot-col div a{display:inline-block;padding:5px 0;}
 .foot-social a:hover,.foot-col div a:hover{color:var(--ink);}
@@ -385,7 +414,7 @@ p,li{text-wrap:pretty;}
       <div>
         <div class="eyebrow" data-uk="● ТРИБОЛОГІЧНА ФОРМУЛА НОВОГО ПОКОЛІННЯ" data-en="● NEXT-GENERATION TRIBOLOGICAL FORMULA">● ТРИБОЛОГІЧНА ФОРМУЛА НОВОГО ПОКОЛІННЯ</div>
         <h1><span data-uk="Ідеально чистий ланцюг." data-en="A perfectly clean chain.">Ідеально чистий ланцюг.</span> <span class="accent" data-uk="Нуль бруду та мазуту." data-en="Zero grime, zero grease.">Нуль бруду та мазуту.</span></h1>
-        <p class="lede" data-uk="Преміальний гарячий віск для велосипедних ланцюгів. До 500 км безшумного ходу на одній варці, без брудних рук та зносу трансмісії." data-en="Premium hot wax for bicycle chains. Up to 500 km of silent riding per treatment, with no dirty hands and no drivetrain wear.">Преміальний гарячий віск для велосипедних ланцюгів. До 500 км безшумного ходу на одній варці, без брудних рук та зносу трансмісії.</p>
+        <p class="lede" data-uk="Преміальний гарячий віск для велосипедних ланцюгів. 800–1000 км безшумного ходу на одній проварці, без брудних рук і зносу трансмісії." data-en="Premium hot wax for bicycle chains. 800–1000 km of silent riding per treatment, with no dirty hands and no drivetrain wear.">Преміальний гарячий віск для велосипедних ланцюгів. 800–1000 км безшумного ходу на одній проварці, без брудних рук і зносу трансмісії.</p>
         <div class="hero-actions">
           <a class="btn btn-accent" href="#products" data-uk="Замовити Starter Kit" data-en="Order a Starter Kit">Замовити Starter Kit</a>
           <a class="btn btn-outline-dark" href="how.html" data-uk="Як це працює" data-en="How it works">Як це працює</a>
@@ -468,7 +497,7 @@ p,li{text-wrap:pretty;}
       <div class="why-grid">
         <div class="why-cell"><h3 data-uk="Сухий привід" data-en="Dry drivetrain">Сухий привід</h3><p data-uk="Ланцюг і касета лишаються практично без чорного нальоту, навіть у бруді чи снігу." data-en="Chain and cassette stay almost free of black grime, even in mud or snow.">Ланцюг і касета лишаються практично без чорного нальоту, навіть у бруді чи снігу.</p></div>
         <div class="why-cell"><h3 data-uk="+5 Вт потужності" data-en="+5W of power">+5 Вт потужності</h3><p data-uk="Триступенева синергія присадок WS₂ + MoS₂ + hBN знижує тертя в кожній ланці." data-en="A three-stage additive synergy of WS₂ + MoS₂ + hBN reduces friction in every link.">Триступенева синергія присадок WS₂ + MoS₂ + hBN знижує тертя в кожній ланці.</p></div>
-        <div class="why-cell"><h3 data-uk="Ресурс x3" data-en="3x lifespan">Ресурс x3</h3><p data-uk="Менше абразивного зносу, тож ланцюг, касета й зірки служать довше." data-en="Less abrasive wear means a longer life for your chain, cassette and rings.">Менше абразивного зносу, тож ланцюг, касета й зірки служать довше.</p></div>
+        <div class="why-cell"><h3 data-uk="Ресурс у 2–3 рази більший" data-en="2–3x longer life">Ресурс у 2–3 рази більший</h3><p data-uk="Менше абразивного зносу, тож ланцюг і касета служать у 2–3 рази довше." data-en="Less abrasive wear: your chain and cassette last 2–3 times longer.">Менше абразивного зносу, тож ланцюг і касета служать у 2–3 рази довше.</p></div>
       </div>
     </div>
   </section>
@@ -477,12 +506,55 @@ p,li{text-wrap:pretty;}
   <section id="products">
     <div class="wrap">
       <div class="section-head">
-        <h2 data-uk="Каталог продукції" data-en="Product catalogue">Каталог продукції</h2>
-        <p data-uk="Офіційний прейскурант MAX WAX PRO. Оберіть формат, і ціна оновиться автоматично." data-en="The official MAX WAX PRO price list. Choose a format and the price updates automatically.">Офіційний прейскурант MAX WAX PRO. Оберіть формат, і ціна оновиться автоматично.</p>
+        <h2 data-uk="Лінійка PRO" data-en="The PRO line">Лінійка PRO</h2>
+        <p data-uk="Формула 2025 року: суміш для велоланцюгів у зручному форматі дропсів (гранул). Чотири види під будь-яку погоду. Оберіть колір за температурою і формат, ціна оновиться автоматично." data-en="The 2025 formula: a chain mix in handy pellet form. Four blends for any weather. Pick a colour by temperature and a pack size; the price updates automatically.">Формула 2025 року: суміш для велоланцюгів у зручному форматі дропсів (гранул). Чотири види під будь-яку погоду. Оберіть колір за температурою і формат, ціна оновиться автоматично.</p>
       </div>
 
       <div class="cat-tabs" id="catTabs"></div>
       <div class="product-grid" id="productGrid"></div>
+
+      <div class="pro-details">
+        <div>
+          <h3 data-uk="Чому обирають MAX WAX PRO" data-en="Why riders choose MAX WAX PRO">Чому обирають MAX WAX PRO</h3>
+          <ul class="pro-why">
+          <li data-uk-html="&lt;strong&gt;Абсолютна чистота.&lt;/strong&gt; Руки, одяг і ноги лишаються чистими. Коли везете велосипед в авто чи несете на собі, нічого не капає й не брудниться." data-en-html="&lt;strong&gt;Total cleanliness.&lt;/strong&gt; Hands, clothes and legs stay clean. Nothing drips or smears when you carry the bike or put it in the car."><strong>Абсолютна чистота.</strong> Руки, одяг і ноги лишаються чистими. Коли везете велосипед в авто чи несете на собі, нічого не капає й не брудниться.</li>
+          <li data-uk-html="&lt;strong&gt;Пісок не налипає.&lt;/strong&gt; Суміш відштовхує воду й захищає ланцюг від солі та реагентів." data-en-html="&lt;strong&gt;Sand doesn't stick.&lt;/strong&gt; The mix repels water and protects the chain from salt and de-icers."><strong>Пісок не налипає.</strong> Суміш відштовхує воду й захищає ланцюг від солі та реагентів.</li>
+          <li data-uk-html="&lt;strong&gt;Ресурс у 2–3 рази більший.&lt;/strong&gt; Ланцюг і касета служать значно довше." data-en-html="&lt;strong&gt;2–3x longer life.&lt;/strong&gt; Your chain and cassette last much longer."><strong>Ресурс у 2–3 рази більший.</strong> Ланцюг і касета служать значно довше.</li>
+          <li data-uk-html="&lt;strong&gt;Реальний пробіг 800–1000 км.&lt;/strong&gt; Стільки вистачає одного проварювання, це підтверджують сотні відгуків користувачів. Витрата: 5 г на проварку." data-en-html="&lt;strong&gt;Real-world 800–1000 km.&lt;/strong&gt; That's what one treatment lasts, backed by hundreds of user reviews. Usage: 5 g per treatment."><strong>Реальний пробіг 800–1000 км.</strong> Стільки вистачає одного проварювання, це підтверджують сотні відгуків користувачів. Витрата: 5 г на проварку.</li>
+          <li data-uk-html="&lt;strong&gt;Зручно й безпечно.&lt;/strong&gt; Матеріал не спалахує і приємно пахне під час нагрівання, тож варити можна на кухні. Завдяки новій присадці новий ланцюг не треба мити в розчинниках." data-en-html="&lt;strong&gt;Easy and safe.&lt;/strong&gt; The material doesn't ignite and smells pleasant when heated, so you can treat chains in the kitchen. Thanks to the new additive, a new chain doesn't need a solvent wash."><strong>Зручно й безпечно.</strong> Матеріал не спалахує і приємно пахне під час нагрівання, тож варити можна на кухні. Завдяки новій присадці новий ланцюг не треба мити в розчинниках.</li>
+          <li data-uk-html="&lt;strong&gt;Не сиплеться пластівцями.&lt;/strong&gt; Суміш не парафінова, тому після проварки не обсипається з ланцюга." data-en-html="&lt;strong&gt;No flaking.&lt;/strong&gt; The mix is not paraffin-based, so it doesn't flake off the chain after treatment."><strong>Не сиплеться пластівцями.</strong> Суміш не парафінова, тому після проварки не обсипається з ланцюга.</li>
+          </ul>
+          <p class="pro-scents" data-uk="Аромати: Blue з кокосом, Green з кавою, Yellow з лимоном, Red з полуницею. Аромат такий, що вдома ще й попросять проварити ланцюг." data-en="Scents: Blue coconut, Green coffee, Yellow lemon, Red strawberry. So pleasant that your family will ask you to wax the chain again.">Аромати: Blue з кокосом, Green з кавою, Yellow з лимоном, Red з полуницею. Аромат такий, що вдома ще й попросять проварити ланцюг.</p>
+        </div>
+        <div>
+          <h3 data-uk="Що в комплекті" data-en="What's in the box">Що в комплекті</h3>
+        <div class="pro-kit">
+          <div class="pro-kit-head"><h4 data-uk="Варіант 500 г" data-en="500 g option">Варіант 500 г</h4><span class="pro-kit-price">1 420 <span data-uk="грн" data-en="UAH">грн</span></span></div>
+          <ul>
+            <li data-uk="500 г дропсів у дой-паку" data-en="500 g of pellets in a stand-up pouch">500 г дропсів у дой-паку</li>
+            <li data-uk="фіксатор для ланцюга" data-en="chain holder">фіксатор для ланцюга</li>
+            <li data-uk="фільтр" data-en="filter">фільтр</li>
+            <li data-uk="присадка для нового ланцюга, 1 шт" data-en="new-chain additive, 1 pc">присадка для нового ланцюга, 1 шт</li>
+            <li data-uk="воскова кулька 20 г з нітридом бору (h-BN), 1 шт" data-en="20 g wax ball with boron nitride (h-BN), 1 pc">воскова кулька 20 г з нітридом бору (h-BN), 1 шт</li>
+          </ul>
+          <p class="pro-kit-note" data-uk="Вистачить на 5+ років." data-en="Lasts 5+ years.">Вистачить на 5+ років.</p>
+        </div>
+        <div class="pro-kit">
+          <div class="pro-kit-head"><h4 data-uk="Варіант 1 кг, вигідніше" data-en="1 kg option, better value">Варіант 1 кг, вигідніше</h4><span class="pro-kit-price">2 120 <span data-uk="грн" data-en="UAH">грн</span></span></div>
+          <ul>
+            <li data-uk="1 кг суміші у дой-паку" data-en="1 kg of mix in a stand-up pouch">1 кг суміші у дой-паку</li>
+            <li data-uk="фіксатор для ланцюга" data-en="chain holder">фіксатор для ланцюга</li>
+            <li data-uk="фільтр" data-en="filter">фільтр</li>
+            <li data-uk="присадка для нового ланцюга, 2 шт (знежирення не потрібне)" data-en="new-chain additive, 2 pcs (no degreasing needed)">присадка для нового ланцюга, 2 шт (знежирення не потрібне)</li>
+            <li data-uk="воскова кулька ROYAL EGGS BN-PRO 20 г з нітридом бору (h-BN), 2 шт" data-en="ROYAL EGGS BN-PRO 20 g wax ball with boron nitride (h-BN), 2 pcs">воскова кулька ROYAL EGGS BN-PRO 20 г з нітридом бору (h-BN), 2 шт</li>
+          </ul>
+          <p class="pro-kit-note" data-uk="Вистачить на 10+ років." data-en="Lasts 10+ years.">Вистачить на 10+ років.</p>
+        </div>
+          <p class="pro-note" data-uk="Нітрид бору створює на металі надтонку захисну плівку: знижує тертя й захищає ланцюг від зносу навіть під великим навантаженням." data-en="Boron nitride forms an ultra-thin protective film on the metal, cutting friction and protecting the chain from wear even under heavy load.">Нітрид бору створює на металі надтонку захисну плівку: знижує тертя й захищає ланцюг від зносу навіть під великим навантаженням.</p>
+          <p class="pro-gift" data-uk="Подарунок: при замовленні трьох видів суміші електронний термометр безкоштовно." data-en="Gift: order three blends and get an electronic thermometer free.">Подарунок: при замовленні трьох видів суміші електронний термометр безкоштовно.</p>
+          <p class="pro-note" data-uk="Після покупки ви отримуєте доступ до закритого Telegram-каналу з фото, відеоінструкціями та чатом техпідтримки. Ми на зв'язку цілий рік, 24/7." data-en="After purchase you get access to a private Telegram channel with photos, video guides and a support chat. We're available all year round, 24/7.">Після покупки ви отримуєте доступ до закритого Telegram-каналу з фото, відеоінструкціями та чатом техпідтримки. Ми на зв'язку цілий рік, 24/7.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -649,29 +721,9 @@ window.__PRODUCT_PHOTOS__ = {
   blue: "images/photo-blue.png",
   grey: "images/photo-grey.jpg",
   "diamond-red": "images/photo-diamond-red.jpg",
-  "pro-red-500": "images/pro-red-500.jpg",
-  "pro-red-1000": "images/pro-red-1000.jpg",
-  "pro-yellow-500": "images/pro-yellow-500.jpg",
-  "pro-yellow-1000": "images/pro-yellow-1000.jpg",
-  "pro-green-500": "images/pro-green-500.jpg",
-  "pro-green-1000": "images/pro-green-1000.jpg",
-  "pro-blue-500": "images/pro-blue-500.jpg",
-  "pro-blue-1000": "images/pro-blue-1000.jpg"
 };
 
-/* ---------------------------------------------------------------
-   Фото зворотньої сторони упаковки (back label).
-   Ключі співпадають з photoKey у window.__PRODUCT_PHOTOS__.
-   Наразі містить лише шлях-заготовку за назвою файлу
-   ("...-back.jpg"): якщо такого файлу нема в /images,
-   картинка просто не завантажиться і при ховері нічого
-   не станеться, крім звичайного zoom фронтального фото.
-   Додайте сюди новий рядок "photoKey": "images/файл.jpg",
-   щойно завантажите реальне бек-фото.
-   --------------------------------------------------------------- */
-window.__PRODUCT_PHOTOS_BACK__ = {
-  // "pro-red-500": "images/pro-red-500-back.jpg",
-};
+window.__PRODUCT_PHOTOS_BACK__ = {};
 
 (function(){
   // ---------------------------------------------------------------
@@ -700,10 +752,15 @@ window.__PRODUCT_PHOTOS_BACK__ = {
   // Рендер вкладок категорій
   // ---------------------------------------------------------------
   var catTabsEl = document.getElementById('catTabs');
-  var cats = ["all"].concat(Array.from(new Set(CATALOG.map(function(p){ return p.cat; }))));
+  // Які категорії показувати на сайті. Решта товарів лишається в catalog.js
+  // (наприклад, Ice Diamond з окремого блоку), але в каталозі не відображається.
+  var VISIBLE_CATS = ['pro'];
+  var SHOWN = CATALOG.filter(function(p){ return VISIBLE_CATS.indexOf(p.cat) !== -1; });
+  var cats = ["all"].concat(Array.from(new Set(SHOWN.map(function(p){ return p.cat; }))));
   var activeCat = "all";
 
   function renderTabs(){
+    catTabsEl.hidden = cats.length <= 2; // одна категорія: вкладки не потрібні
     var labels = currentLang() === 'en' ? CATEGORY_LABELS_EN : CATEGORY_LABELS_UK;
     catTabsEl.innerHTML = cats.map(function(c){
       return '<button class="cat-tab' + (c === activeCat ? ' active' : '') + '" data-cat="' + c + '">' +
@@ -728,7 +785,7 @@ window.__PRODUCT_PHOTOS_BACK__ = {
     var addToCartLabel = lang === 'en' ? 'Add to cart' : 'Додати в кошик';
     var photoTagLabel = lang === 'en' ? 'photo coming soon' : 'фото додається';
 
-    var list = activeCat === "all" ? CATALOG : CATALOG.filter(function(p){ return p.cat === activeCat; });
+    var list = activeCat === "all" ? SHOWN : SHOWN.filter(function(p){ return p.cat === activeCat; });
     gridEl.innerHTML = list.map(function(p, idx){
       var firstVariant = p.variants[0];
       var initialPhotoKey = firstVariant.photoKey || p.photoKey;
@@ -741,18 +798,40 @@ window.__PRODUCT_PHOTOS_BACK__ = {
         return '<option value="' + vi + '">' + label + ', ' + fmtPrice(v.price) + '</option>';
       }).join('');
       var uid = p.id;
+      var scent = (lang === 'en' && p.scentEn) ? p.scentEn : p.scent;
+      var photoBlock;
+      if(p.gallery && p.gallery.length){
+        var shotAlt = function(g){ return p.name + ', ' + ((lang === 'en' && g.altEn) ? g.altEn : g.alt); };
+        photoBlock =
+          '<div class="p-gallery">' +
+            '<img class="p-gallery-main" data-main-for="' + uid + '" src="' + p.gallery[0].src + '" alt="' + shotAlt(p.gallery[0]) + '" loading="lazy" decoding="async">' +
+            (p.gallery.length > 1 ? '<div class="p-thumbs">' + p.gallery.map(function(g, gi){
+              return '<button type="button" class="p-thumb" data-uid="' + uid + '" data-gi="' + gi + '" aria-pressed="' + (gi === 0) + '" aria-label="' + shotAlt(g) + '">' +
+                '<img src="' + g.src + '" alt="" loading="lazy" decoding="async"></button>';
+            }).join('') + '</div>' : '') +
+          '</div>';
+      }
       return (
         '<div class="p-card" data-uid="' + uid + '">' +
+          (photoBlock ||
           '<div class="p-card-photo' + (isFullPhoto ? ' p-card-photo--full' : '') + '" data-photo-el="' + uid + '">' +
             (photoSrc ?
               '<img class="photo-img photo-front" src="' + photoSrc + '" alt="' + p.name + '" loading="lazy" decoding="async">' +
               (photoBackSrc ? '<img class="photo-img photo-back" src="' + photoBackSrc + '" alt="' + p.name + ', задня етикетка" onload="this.closest(\'.p-card-photo\').classList.add(\'has-back\')" onerror="this.remove()">' : '')
               : '<span class="ph-tag">' + photoTagLabel + '</span>') +
-          '</div>' +
+          '</div>') +
           '<div class="p-card-body">' +
             '<h3>' + p.name + '</h3>' +
             '<div class="p-card-temp">' + temp + '</div>' +
-            '<select class="p-card-select" data-uid="' + uid + '">' + options + '</select>' +
+            (scent ? '<div class="p-card-scent">' + scent + '</div>' : '') +
+            (p.variants.every(function(v){ return v.short; }) ?
+              '<div class="p-sizes" role="group" aria-label="' + (lang === 'en' ? 'Pack size' : 'Фасування') + '">' +
+                p.variants.map(function(v, vi){
+                  return '<button type="button" class="p-size" data-uid="' + uid + '" data-vi="' + vi + '" aria-pressed="' + (vi === 0) + '">' +
+                    ((lang === 'en' && v.shortEn) ? v.shortEn : v.short) + '</button>';
+                }).join('') +
+              '</div>'
+              : '<select class="p-card-select" data-uid="' + uid + '">' + options + '</select>') +
             '<div class="p-card-foot">' +
               '<span class="p-card-price" data-price-for="' + uid + '">' + fmtPrice(p.variants[0].price) + '</span>' +
               '<button class="add-to-cart-btn" data-uid="' + uid + '">' + addToCartLabel + '</button>' +
@@ -782,13 +861,34 @@ window.__PRODUCT_PHOTOS_BACK__ = {
       });
     });
 
+    gridEl.querySelectorAll('.p-size').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var uid = btn.getAttribute('data-uid');
+        var variant = findProductByUid(uid).variants[Number(btn.getAttribute('data-vi'))];
+        gridEl.querySelector('[data-price-for="' + uid + '"]').textContent = fmtPrice(variant.price);
+        btn.parentNode.querySelectorAll('.p-size').forEach(function(b){ b.setAttribute('aria-pressed', String(b === btn)); });
+      });
+    });
+
+    gridEl.querySelectorAll('.p-thumb').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var uid = btn.getAttribute('data-uid');
+        var product = findProductByUid(uid);
+        var shot = product.gallery[Number(btn.getAttribute('data-gi'))];
+        var main = gridEl.querySelector('[data-main-for="' + uid + '"]');
+        main.src = shot.src;
+        main.alt = btn.getAttribute('aria-label');
+        btn.parentNode.querySelectorAll('.p-thumb').forEach(function(b){ b.setAttribute('aria-pressed', String(b === btn)); });
+      });
+    });
+
     gridEl.querySelectorAll('.add-to-cart-btn').forEach(function(btn){
       btn.addEventListener('click', function(){
         var uid = btn.getAttribute('data-uid');
         var product = findProductByUid(uid);
+        var picked = gridEl.querySelector('.p-size[data-uid="' + uid + '"][aria-pressed="true"]');
         var sel = gridEl.querySelector('.p-card-select[data-uid="' + uid + '"]');
-        var variant = product.variants[Number(sel.value)];
-        addToCart(product.id, Number(sel.value));
+        addToCart(product.id, picked ? Number(picked.getAttribute('data-vi')) : Number(sel.value));
       });
     });
   }
@@ -1107,6 +1207,11 @@ window.__PRODUCT_PHOTOS_BACK__ = {
     document.querySelectorAll('[data-en]').forEach(function(el){
       var val = el.getAttribute(attr);
       if(val !== null){ el.textContent = val; }
+    });
+    var htmlAttr = lang === 'en' ? 'data-en-html' : 'data-uk-html';
+    document.querySelectorAll('[data-en-html]').forEach(function(el){
+      var val = el.getAttribute(htmlAttr);
+      if(val !== null){ el.innerHTML = val; }
     });
     var phAttr = lang === 'en' ? 'data-en-ph' : 'data-uk-ph';
     document.querySelectorAll('[data-en-ph]').forEach(function(el){
