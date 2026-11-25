@@ -232,7 +232,7 @@ input,textarea,select{caret-color:var(--yellow);}
 .timeline .y{display:block;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.8rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-dark);margin-bottom:6px;}
 
 .quote{padding:48px 44px;border-radius:var(--radius);}
-.quote p{font-family:'Unbounded','Inter',sans-serif;font-weight:600;font-size:clamp(1.05rem,1.8vw,1.35rem);line-height:1.5;color:var(--ink);max-width:52ch;}
+.quote p{font-weight:500;font-size:clamp(1.1rem,1.9vw,1.4rem);line-height:1.55;color:var(--ink);max-width:56ch;}
 .quote .who{margin-top:22px;font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:700;color:#ffd75e;}
 @media (max-width:760px){ .quote{padding:30px 22px;} }
 
