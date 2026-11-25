@@ -29,8 +29,40 @@
 .ask h2{font-size:clamp(1.15rem,1.8vw,1.45rem);margin-bottom:10px;}
 .ask p{color:var(--ink-soft);font-size:.95rem;max-width:36ch;}
 /* погода відвідувача */
+.hero{position:relative;overflow:hidden;}
+.hero > .wrap{position:relative;z-index:1;}
 .wx{margin-top:4px;}
-.wx-now{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
+.wx-now{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.wx-ico{width:56px;height:56px;flex:none;overflow:visible;}
+.wx-city small{display:block;font-size:.8rem;color:var(--ink-soft);opacity:.85;}
+.wx-ico .rays{transform-origin:32px 32px;animation:wxSpin 22s linear infinite;}
+.wx-ico .cl{animation:wxDrift 5s ease-in-out infinite alternate;}
+.wx-ico .dp{animation:wxDrop 1.1s linear infinite;}
+.wx-ico .fk{animation:wxFlake 2.8s linear infinite;}
+.wx-ico .dp:nth-of-type(2),.wx-ico .fk:nth-of-type(2){animation-delay:-.4s;}
+.wx-ico .dp:nth-of-type(3),.wx-ico .fk:nth-of-type(3){animation-delay:-.8s;}
+.wx-ico .bt{animation:wxBolt 3.2s steps(1) infinite;}
+.wx-ico .fg{animation:wxFog 3.5s ease-in-out infinite alternate;}
+.wx-ico .fg:nth-of-type(2){animation-delay:-1.2s;}
+.wx-ico .st{animation:wxTwinkle 2.4s ease-in-out infinite;}
+.wx-ico .st:nth-of-type(2){animation-delay:-1.1s;}
+@keyframes wxSpin{to{transform:rotate(360deg);}}
+@keyframes wxDrift{from{transform:translateX(-1.5px);}to{transform:translateX(2.5px);}}
+@keyframes wxDrop{0%{transform:translateY(-3px);opacity:0;}25%{opacity:1;}100%{transform:translateY(11px);opacity:0;}}
+@keyframes wxFlake{0%{transform:translate(0,-3px);opacity:0;}25%{opacity:1;}50%{transform:translate(2px,4px);}100%{transform:translate(-1px,12px);opacity:0;}}
+@keyframes wxBolt{0%,100%{opacity:0;}6%{opacity:1;}9%{opacity:0;}12%{opacity:1;}16%{opacity:0;}}
+@keyframes wxFog{from{transform:translateX(-3px);}to{transform:translateX(3px);}}
+@keyframes wxTwinkle{0%,100%{opacity:.25;}50%{opacity:1;}}
+/* опади над стіною першого екрана */
+.wx-sky{position:absolute;inset:0;pointer-events:none;z-index:0;opacity:0;transition:opacity 1.2s ease;}
+.wx-sky.on{opacity:1;}
+.wx-sky i{position:absolute;top:-24px;left:var(--x);will-change:transform;animation:wxFall var(--d) linear var(--dl) infinite;}
+.wx-sky i.r{width:1.5px;height:18px;background:linear-gradient(rgba(200,225,255,0),rgba(200,225,255,.55));}
+.wx-sky i.s{width:var(--sz);height:var(--sz);border-radius:50%;background:rgba(255,255,255,.75);}
+@keyframes wxFall{to{transform:translate3d(var(--dx),1300px,0);}}
+.wx-flash{position:absolute;inset:0;background:#fff;opacity:0;animation:wxFlash 7s steps(1) infinite;}
+@keyframes wxFlash{0%,100%{opacity:0;}3%{opacity:.07;}4%{opacity:0;}5%{opacity:.05;}6%{opacity:0;}}
+@media (prefers-reduced-motion:reduce){ .wx-sky{display:none;} }
 .wx-city{font-size:.95rem;color:var(--ink-soft);}
 .wx-t{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:clamp(1.6rem,2.6vw,2.1rem);color:#fff;font-variant-numeric:tabular-nums;letter-spacing:-0.02em;}
 .wx-pick{margin-top:6px;font-size:.95rem;color:var(--ink-soft);max-width:40ch;}
@@ -51,6 +83,7 @@
   .ask > p{display:none;}
   .wx{margin-top:8px;}
   .wx-t{font-size:1.4rem;}
+  .wx-ico{width:44px;height:44px;}
   .wx-pick{font-size:.88rem;margin-top:2px;}
   .wx-src{display:none;}
   .announce-bar{padding:7px 12px;}
@@ -267,6 +300,7 @@
 
   <!-- 1. МОЗАЇЧНА СТІНА: вибір воску за погодою -->
   <section id="products" class="hero s-wall">
+    <div class="wx-sky" id="wxSky" aria-hidden="true"></div>
     <div class="wrap">
       <div class="hero-head">
         <div>
@@ -726,10 +760,81 @@
     try{ return new Intl.DisplayNames([lang === 'en' ? 'en' : 'uk'], { type:'region' }).of(wx.country); }catch(e){ return wx.country || ''; }
   }
   function joinList(arr, last){ return arr.length < 2 ? arr.join('') : arr.slice(0, -1).join(', ') + last + arr[arr.length - 1]; }
+  // Стан неба з коду MET Norway (clearsky_day, lightrain, sleet, snowshowers_night ...)
+  function skyOf(sym){
+    sym = String(sym || '');
+    var night = /_night$/.test(sym), k = 'cloudy';
+    if(/thunder/.test(sym)){ k = 'thunder'; }
+    else if(/sleet/.test(sym)){ k = 'sleet'; }
+    else if(/snow/.test(sym)){ k = 'snow'; }
+    else if(/rain/.test(sym)){ k = 'rain'; }
+    else if(/fog/.test(sym)){ k = 'fog'; }
+    else if(/partlycloudy|fair/.test(sym)){ k = 'partly'; }
+    else if(/clearsky/.test(sym)){ k = 'clear'; }
+    else if(!sym){ k = ''; }
+    return { k:k, night:night, light:/^light/.test(sym), heavy:/^heavy/.test(sym) };
+  }
+  var SKY_TEXT = {
+    uk:{ clear:'Ясно', clearN:'Ясна ніч', partly:'Мінлива хмарність', cloudy:'Хмарно', fog:'Туман', rain:'Дощ', rainL:'Невеликий дощ', rainH:'Злива', sleet:'Мокрий сніг', snow:'Сніг', snowL:'Невеликий сніг', snowH:'Снігопад', thunder:'Гроза' },
+    en:{ clear:'Clear', clearN:'Clear night', partly:'Partly cloudy', cloudy:'Cloudy', fog:'Fog', rain:'Rain', rainL:'Light rain', rainH:'Heavy rain', sleet:'Sleet', snow:'Snow', snowL:'Light snow', snowH:'Heavy snow', thunder:'Thunderstorm' }
+  };
+  function skyText(sky, lang){
+    var t = SKY_TEXT[lang === 'en' ? 'en' : 'uk'];
+    if(sky.k === 'clear' && sky.night){ return t.clearN; }
+    if((sky.k === 'rain' || sky.k === 'snow') && (sky.light || sky.heavy)){ return t[sky.k + (sky.light ? 'L' : 'H')]; }
+    return t[sky.k] || '';
+  }
+  function skyIcon(sky){
+    var CL = '<path class="cl" d="M19 47h27a10 10 0 0 0 1-20 14 14 0 0 0-27-2.5A11.2 11.2 0 0 0 19 47z" fill="#e9edf2"/>';
+    var CLD = '<path class="cl" d="M19 45h27a10 10 0 0 0 1-20 14 14 0 0 0-27-2.5A11.2 11.2 0 0 0 19 45z" fill="#aeb6c1"/>';
+    var SUN = function(cx, cy, r){ var rays = ''; for(var i = 0; i < 8; i++){ var a = i * Math.PI / 4, x1 = cx + Math.cos(a) * (r + 4), y1 = cy + Math.sin(a) * (r + 4), x2 = cx + Math.cos(a) * (r + 9), y2 = cy + Math.sin(a) * (r + 9); rays += '<line x1="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) + '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '"/>'; }
+      return '<g class="rays" style="transform-origin:' + cx + 'px ' + cy + 'px" stroke="#ffd75e" stroke-width="3" stroke-linecap="round">' + rays + '</g><circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="#ffd75e"/>'; };
+    var MOON = function(cx, cy){ return '<path d="M' + (cx + 4) + ' ' + (cy - 12) + 'a12 12 0 1 0 9 19 10 10 0 0 1-9-19z" fill="#f4f2ec"/><circle class="st" cx="' + (cx + 15) + '" cy="' + (cy - 10) + '" r="1.6" fill="#fff"/><circle class="st" cx="' + (cx + 19) + '" cy="' + (cy + 2) + '" r="1.2" fill="#fff"/>'; };
+    var drops = '<g stroke="#8fc4ff" stroke-width="2.6" stroke-linecap="round"><line class="dp" x1="24" y1="50" x2="22" y2="56"/><line class="dp" x1="33" y1="50" x2="31" y2="56"/><line class="dp" x1="42" y1="50" x2="40" y2="56"/></g>';
+    var flakes = '<g fill="#fff"><circle class="fk" cx="24" cy="52" r="2.4"/><circle class="fk" cx="33" cy="54" r="2.4"/><circle class="fk" cx="42" cy="52" r="2.4"/></g>';
+    var mix = '<g><line class="dp" x1="25" y1="50" x2="23" y2="56" stroke="#8fc4ff" stroke-width="2.6" stroke-linecap="round"/><circle class="fk" cx="33" cy="53" r="2.4" fill="#fff"/><line class="dp" x1="42" y1="50" x2="40" y2="56" stroke="#8fc4ff" stroke-width="2.6" stroke-linecap="round"/></g>';
+    var body = '';
+    switch(sky.k){
+      case 'clear': body = sky.night ? MOON(26, 32) : SUN(32, 32, 11); break;
+      case 'partly': body = (sky.night ? MOON(20, 22) : SUN(24, 22, 8)) + CL; break;
+      case 'fog': body = '<g stroke="#e9edf2" stroke-width="3.2" stroke-linecap="round"><line class="fg" x1="12" y1="24" x2="52" y2="24"/><line class="fg" x1="8" y1="33" x2="48" y2="33"/><line class="fg" x1="14" y1="42" x2="54" y2="42"/></g>'; break;
+      case 'rain': body = CL + drops; break;
+      case 'sleet': body = CL + mix; break;
+      case 'snow': body = CL + flakes; break;
+      case 'thunder': body = CLD + '<path class="bt" d="M33 44l-6 10h6l-3 8 10-12h-6l3-6z" fill="#ffd75e"/>' + drops.replace('stroke="#8fc4ff"', 'stroke="#8fc4ff" opacity=".7"'); break;
+      default: body = CL;
+    }
+    return '<svg class="wx-ico" viewBox="0 0 64 64" aria-hidden="true">' + body + '</svg>';
+  }
+  var skyEl = document.getElementById('wxSky'), skyKind = null;
+  function renderSky(sky){
+    var kind = sky.k === 'thunder' ? 'thunder' : (sky.k === 'rain' || sky.k === 'snow' || sky.k === 'sleet') ? sky.k : '';
+    if(kind === skyKind){ return; }
+    skyKind = kind;
+    if(!kind || reduceMotion()){ skyEl.innerHTML = ''; skyEl.classList.remove('on'); return; }
+    var narrow = window.matchMedia('(max-width:760px)').matches;
+    var n = (kind === 'snow' ? 34 : 46) * (sky.heavy ? 1.4 : sky.light ? .6 : 1) * (narrow ? .5 : 1);
+    var html = '';
+    for(var i = 0; i < Math.round(n); i++){
+      var snowy = kind === 'snow' || (kind === 'sleet' && i % 2);
+      var x = (Math.random() * 100).toFixed(1) + '%';
+      var d = snowy ? (7 + Math.random() * 6) : (0.9 + Math.random() * 0.6);
+      var dl = -(Math.random() * d).toFixed(2);
+      var dx = snowy ? ((Math.random() * 80 - 40).toFixed(0) + 'px') : '-60px';
+      var sz = (3 + Math.random() * 3).toFixed(1) + 'px';
+      html += '<i class="' + (snowy ? 's' : 'r') + '" style="--x:' + x + ';--d:' + d.toFixed(2) + 's;--dl:' + dl + 's;--dx:' + dx + ';--sz:' + sz + '"></i>';
+    }
+    if(kind === 'thunder'){ html += '<div class="wx-flash"></div>'; }
+    skyEl.innerHTML = html;
+    requestAnimationFrame(function(){ skyEl.classList.add('on'); });
+  }
+
   function renderWeather(animate){
     if(!wx){ return; }
     var lang = currentLang();
     var main = toneForTemp(wx.now);
+    var sky = skyOf(wx.sym);
+    renderSky(sky);
     var also = [];
     TONE_ORDER.forEach(function(tn){
       var lo = { blue:-99, green:5, yellow:18, red:25 }[tn], hi = { blue:5, green:18, yellow:25, red:99 }[tn];
@@ -740,7 +845,7 @@
       ? 'This week from ' + signed(wx.min) + ' to ' + signed(wx.max) + '°C. Your blend: ' + chip(main) + (also.length ? ', with ' + joinList(also.map(chip), ' and ') + ' for the rest of the week' : '') + '.'
       : 'На тижні від ' + signed(wx.min) + ' до ' + signed(wx.max) + '°C. Вам підходить ' + chip(main) + (also.length ? ', а на інші дні ' + joinList(also.map(chip), ' і ') : '') + '.';
     wxEl.innerHTML =
-      '<div class="wx-now"><span class="wx-city">' + escapeHtml(placeName(lang)) + (lang === 'en' ? ', now' : ', зараз') + '</span>' +
+      '<div class="wx-now">' + skyIcon(sky) + '<span class="wx-city">' + escapeHtml(placeName(lang)) + (lang === 'en' ? ', now' : ', зараз') + (skyText(sky, lang) ? '<small>' + skyText(sky, lang) + '</small>' : '') + '</span>' +
       '<span class="wx-t" id="wxT">' + signed(wx.now) + '°C</span></div>' +
       '<p class="wx-pick">' + pick + '</p>' +
       '<a class="wx-src" href="https://www.met.no/en" target="_blank" rel="noopener">' + (lang === 'en' ? 'Weather: MET Norway' : 'Погода: MET Norway') + '</a>';

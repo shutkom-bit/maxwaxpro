@@ -7,6 +7,7 @@
    округлені координати міста.
    На preview-деплоях можна підставити тестове місто:
      /api/weather?lat=60.17&lon=24.94&city=Helsinki&country=FI
+   і тестовий стан неба: &sym=snow (rain, sleet, fog, cloudy, clearsky_night, rainandthunder)
    --------------------------------------------------------------- */
 var UA = 'maxwaxpro.com weather hint (https://www.maxwaxpro.com)';
 var TTL_MS = 30 * 60 * 1000;
@@ -54,7 +55,10 @@ async function forecast(lat, lon) {
     if (tt < min) { min = tt; }
     if (tt > max) { max = tt; }
   }
-  var v = { now: Math.round(now), min: Math.round(min), max: Math.round(max) };
+  var d0 = series[0].data;
+  var sumry = (d0.next_1_hours || d0.next_6_hours || d0.next_12_hours || {}).summary || {};
+  var sym = String(sumry.symbol_code || '').replace(/[^a-z_]/g, '').slice(0, 40);
+  var v = { now: Math.round(now), min: Math.round(min), max: Math.round(max), sym: sym };
   cache.set(key, { t: Date.now(), v: v });
   if (cache.size > 2000) { cache.clear(); }
   return v;
@@ -75,6 +79,10 @@ module.exports = async function handler(req, res) {
   var country = String(h['x-vercel-ip-country'] || '').slice(0, 2);
 
   var q = req.query || {};
+  var testSym = '';
+  if (process.env.VERCEL_ENV !== 'production' && q.sym) {
+    testSym = String(q.sym).replace(/[^a-z_]/g, '').slice(0, 40);
+  }
   if (process.env.VERCEL_ENV !== 'production' && q.lat && q.lon) {
     lat = num(q.lat); lon = num(q.lon);
     city = String(q.city || '').slice(0, 60);
@@ -87,7 +95,7 @@ module.exports = async function handler(req, res) {
 
   try {
     var w = await forecast(round(lat, 2), round(lon, 2));
-    return res.status(200).json({ ok: true, city: city.slice(0, 60), country: country, now: w.now, min: w.min, max: w.max });
+    return res.status(200).json({ ok: true, city: city.slice(0, 60), country: country, now: w.now, min: w.min, max: w.max, sym: testSym || w.sym });
   } catch (e) {
     return res.status(200).json({ ok: false });
   }
