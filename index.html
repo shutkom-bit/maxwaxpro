@@ -8,6 +8,7 @@
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#2f3a46">
 <link rel="preload" href="/fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
 <style>
 :root{
@@ -48,9 +49,9 @@ body{margin:0;background:var(--wall-deep);color:var(--ink);font-family:'Inter',s
 a{color:inherit;text-decoration:none;}
 img{max-width:100%;}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
-h1,h2{font-weight:800;letter-spacing:-0.025em;line-height:1.02;margin:0;}
-h1{font-size:clamp(2.1rem,4.6vw,3.6rem);}
-h2{font-size:clamp(1.7rem,3.2vw,2.5rem);}
+h1,h2{font-family:'Unbounded','Inter',system-ui,sans-serif;font-weight:700;letter-spacing:-0.015em;line-height:1.1;margin:0;}
+h1{font-size:clamp(1.8rem,3.8vw,2.95rem);}
+h2{font-size:clamp(1.4rem,2.5vw,2rem);}
 h3{font-weight:700;margin:0;letter-spacing:-0.01em;}
 p{margin:0;}
 .mono{font-family:'JetBrains Mono',monospace;}
@@ -143,16 +144,16 @@ nav.links a:hover{color:var(--ink);border-color:var(--yellow);}
 .eyebrow::before{content:"";width:10px;height:10px;background:var(--yellow);flex:none;}
 .hero h1 .soft{color:var(--ink-soft);}
 .ask{border-left:2px solid var(--yellow);padding:2px 0 2px 18px;}
-.ask h2{font-size:clamp(1.35rem,2.2vw,1.75rem);margin-bottom:8px;}
+.ask h2{font-size:clamp(1.15rem,1.8vw,1.45rem);margin-bottom:10px;}
 .ask p{color:var(--ink-soft);font-size:.95rem;max-width:36ch;}
 @media (max-width:860px){ .hero{padding:32px 0 40px;} .hero-head{grid-template-columns:1fr;margin-bottom:24px;} }
 @media (max-width:760px){
   .hero{padding:22px 0 36px;}
   .hero-head{gap:18px;margin-bottom:18px;}
   .eyebrow{font-size:.66rem;margin-bottom:12px;}
-  .hero h1{font-size:1.9rem;}
+  .hero h1{font-size:1.6rem;}
   .ask{padding-left:14px;}
-  .ask h2{font-size:1.25rem;margin:0;}
+  .ask h2{font-size:1.1rem;margin:0;}
   .ask p{display:none;}
   .announce-bar{padding:7px 12px;}
   .announce-link{font-size:.7rem;}
@@ -162,7 +163,7 @@ nav.links a:hover{color:var(--ink);border-color:var(--yellow);}
 .mosaic{display:flex;gap:8px;height:clamp(400px,calc(100vh - 360px),480px);}
 .panel{--tone:var(--blue);--tone-txt:var(--blue);--on:#fff;--on-soft:rgba(255,255,255,.82);
   position:relative;display:flex;flex:1 1 0;min-width:0;border-radius:var(--radius);overflow:hidden;
-  background-color:var(--tone);background-image:var(--hex);background-size:var(--hex-size);color:var(--on);
+  background-color:var(--tone);color:var(--on);
   transition:flex-grow .55s var(--ease-out);}
 .panel[data-tone="green"]{--tone:var(--green);--tone-txt:var(--green-txt);}
 .panel[data-tone="yellow"]{--tone:var(--yellow);--tone-txt:var(--yellow);--on:var(--ink-dark);--on-soft:rgba(27,31,36,.78);}
@@ -196,7 +197,7 @@ nav.links a:hover{color:var(--ink);border-color:var(--yellow);}
 .co .lb small{display:block;font-weight:400;opacity:.75;font-size:.64rem;}
 
 .info{display:flex;flex-direction:column;gap:14px;min-width:0;justify-content:center;}
-.info h3{font-size:clamp(1.6rem,2.6vw,2.3rem);font-weight:800;letter-spacing:-0.02em;line-height:1;}
+.info h3{font-family:'Unbounded','Inter',sans-serif;font-size:clamp(1.35rem,2.1vw,1.85rem);font-weight:700;letter-spacing:-0.01em;line-height:1.05;}
 .info .t{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:1.05rem;font-variant-numeric:tabular-nums;}
 .info .meta{color:var(--on-soft);font-size:.95rem;max-width:42ch;}
 .thumbs{display:flex;gap:6px;}
@@ -233,7 +234,7 @@ nav.links a:hover{color:var(--ink);border-color:var(--yellow);}
   .shot{height:auto;width:118px;aspect-ratio:580/800;align-self:start;}
   .callouts{display:none;}
   .info{gap:11px;justify-content:flex-start;}
-  .info h3{font-size:1.45rem;}
+  .info h3{font-size:1.2rem;}
   .info .t{font-size:.9rem;}
   .info .meta{font-size:.86rem;}
   .thumbs{display:none;}
