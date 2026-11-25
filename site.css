@@ -278,7 +278,7 @@ input,textarea,select{caret-color:var(--yellow);}
 .req-v.mono{font-family:'JetBrains Mono',monospace;letter-spacing:.02em;font-variant-numeric:tabular-nums;}
 .req-note{margin-top:22px;max-width:62ch;}
 .req-note a,.legal a{text-decoration:underline;text-underline-offset:3px;}
-@media (max-width:560px){ .req-card{padding:4px 18px;} .req-row{flex-direction:column;gap:4px;} .req-v{text-align:left;word-break:break-all;} }
+@media (max-width:560px){ .req-card{padding:4px 18px;} .req-row{flex-direction:column;gap:4px;} .req-v{text-align:left;} .req-v.mono{word-break:break-all;} }
 
 /* юридичний текст */
 .legal h2{font-size:clamp(1.1rem,1.8vw,1.3rem);margin:40px 0 14px;}
