@@ -472,6 +472,9 @@
         <form id="dealerForm">
           <label class="sr-only" for="dl-company" data-uk="Назва компанії/майстерні" data-en="Company / workshop name">Назва компанії/майстерні</label>
           <input class="field-input" id="dl-company" maxlength="160" name="companyName" autocomplete="organization" data-uk-ph="Назва компанії/майстерні" data-en-ph="Company / workshop name" placeholder="Назва компанії/майстерні" required>
+          <label class="sr-only" for="dl-country" data-uk="Країна" data-en="Country">Країна</label>
+          <input class="field-input" id="dl-country" maxlength="80" name="country" autocomplete="country-name" list="dl-countries" data-uk-ph="Країна" data-en-ph="Country" placeholder="Країна" required>
+          <datalist id="dl-countries"><option value="Україна"><option value="Польща"><option value="Німеччина"><option value="Чехія"><option value="Словаччина"><option value="Литва"><option value="Латвія"><option value="Естонія"><option value="Молдова"><option value="Румунія"><option value="Угорщина"><option value="Австрія"><option value="Італія"><option value="Іспанія"><option value="Франція"><option value="Нідерланди"><option value="Бельгія"><option value="Велика Британія"><option value="Ірландія"><option value="Данія"><option value="Швеція"><option value="Норвегія"><option value="Фінляндія"><option value="Швейцарія"><option value="Португалія"><option value="Греція"><option value="Хорватія"><option value="Болгарія"><option value="США"><option value="Канада"></datalist>
           <label class="sr-only" for="dl-contact" data-uk="Контактна особа" data-en="Contact person">Контактна особа</label>
           <input class="field-input" id="dl-contact" maxlength="100" name="contactName" autocomplete="name" data-uk-ph="Контактна особа" data-en-ph="Contact person" placeholder="Контактна особа" required>
           <label class="sr-only" for="dl-email" data-uk="Email" data-en="Email">Email</label>
@@ -1162,7 +1165,7 @@
   document.getElementById('dealerForm').addEventListener('submit', function(e){
     e.preventDefault();
     var f = e.target;
-    var companyName = f.companyName.value, contactName = f.contactName.value, email = f.email.value, phone = f.phone.value;
+    var companyName = f.companyName.value, country = f.country.value, contactName = f.contactName.value, email = f.email.value, phone = f.phone.value;
 
     var submitBtn = f.querySelector('button[type="submit"]');
     var originalBtnText = submitBtn.textContent;
@@ -1172,6 +1175,7 @@
     var payload = {
       type: 'dealer',
       companyName: companyName,
+      country: country,
       contactName: contactName,
       email: email,
       phone: phone,
@@ -1197,6 +1201,7 @@
         var subject = 'Заявка дилера MAX WAX PRO: ' + companyName;
         var body =
           'Компанія: ' + companyName + '\n' +
+          'Країна: ' + country + '\n' +
           'Контактна особа: ' + contactName + '\n' +
           'Email: ' + email + '\n' +
           'Телефон: ' + phone;
