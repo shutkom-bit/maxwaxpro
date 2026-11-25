@@ -58,6 +58,16 @@
   }
   syncLangLabel();
 
+  // На головній на телефоні кнопка WhatsApp не перекриває «У кошик»: з'являється після першого екрана
+  var wa = document.querySelector('.wa-float'), heroEl = document.getElementById('products');
+  if(HOME && wa && heroEl && window.IntersectionObserver && window.matchMedia){
+    var narrow = window.matchMedia('(max-width:760px)');
+    new IntersectionObserver(function(entries){
+      var e = entries[0];
+      wa.classList.toggle('wa-off', narrow.matches && e.isIntersecting && e.intersectionRatio > 0.25);
+    }, { threshold:[0, 0.25, 0.5] }).observe(heroEl);
+  }
+
   if(HOME){ return; }
 
   // ---------------- внутрішні сторінки ----------------
