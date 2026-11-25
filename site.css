@@ -191,7 +191,7 @@ footer .brand-word{font-size:1.05rem;}
 .wa-float:active{transform:scale(.96);}
 .wa-float:focus-visible{outline:3px solid var(--yellow);outline-offset:3px;}
 @keyframes waIn{from{opacity:0;transform:translateY(12px) scale(.9);}to{opacity:1;transform:none;}}
-@media (max-width:760px){ .wa-float{right:14px;bottom:14px;width:52px;height:52px;} }
+@media (max-width:760px){ .wa-float{right:14px;bottom:14px;width:52px;height:52px;} footer{padding-bottom:80px;} }
 
 /* ---------- доступність ---------- */
 ::selection{background:var(--yellow);color:var(--ink-dark);}
