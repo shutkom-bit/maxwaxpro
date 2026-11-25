@@ -268,3 +268,23 @@ input,textarea,select{caret-color:var(--yellow);}
 .p-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:auto;padding-top:6px;}
 .p-price{font-weight:800;font-size:1.15rem;font-variant-numeric:tabular-nums;}
 .p-add{min-height:42px;padding:10px 14px;}
+
+/* реквізити */
+.req-card{background:#f6f1e7;border:1px solid var(--light-border);border-top:4px solid var(--wall);padding:6px 28px;max-width:720px;}
+.req-row{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--light-border);flex-wrap:wrap;}
+.req-row:last-child{border-bottom:none;}
+.req-k{color:var(--ink-dark-soft);font-size:.9rem;}
+.req-v{font-weight:600;color:var(--ink-dark);text-align:right;}
+.req-v.mono{font-family:'JetBrains Mono',monospace;letter-spacing:.02em;font-variant-numeric:tabular-nums;}
+.req-note{margin-top:22px;max-width:62ch;}
+.req-note a,.legal a{text-decoration:underline;text-underline-offset:3px;}
+@media (max-width:560px){ .req-card{padding:4px 18px;} .req-row{flex-direction:column;gap:4px;} .req-v{text-align:left;word-break:break-all;} }
+
+/* юридичний текст */
+.legal h2{font-size:clamp(1.1rem,1.8vw,1.3rem);margin:40px 0 14px;}
+.legal h2:first-of-type{margin-top:0;}
+.legal ul{margin:0 0 18px;padding-left:20px;display:grid;gap:8px;color:var(--ink-dark-soft);}
+.legal li{line-height:1.65;}
+.legal strong{color:var(--ink-dark);}
+.contact-box{background:#f6f1e7;border:1px solid var(--light-border);border-top:4px solid var(--wall);padding:20px 22px;}
+.contact-box p{margin:0 0 6px;}
