@@ -1,51 +1,126 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" data-lang="uk">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Реквізити для оплати | MAX WAX PRO</title>
-<meta name="robots" content="noindex, follow">
+<title data-uk="Реквізити для оплати | MAX WAX PRO" data-en="Payment details | MAX WAX PRO">Реквізити для оплати | MAX WAX PRO</title>
+<meta name="description" content="Банківські реквізити ФОП для оплати замовлення MAX WAX PRO прямим переказом.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#2f3a46">
 <link rel="preload" href="/fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
-<style>
-  :root{
-    --bg:#0E1116; --surface:#171B22; --ink:#F4F2EC; --ink-soft:#9AA1AC;
-    --accent:#F2932E; --border:rgba(244,242,236,0.12);
-  }
-  *{box-sizing:border-box;}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.65;}
-  .wrap{max-width:640px;margin:0 auto;padding:60px 24px 100px;}
-  a{color:var(--accent);text-decoration:none;}
-  a:hover{text-decoration:underline;}
-  h1{font-size:clamp(1.6rem,4vw,2.1rem);font-weight:800;letter-spacing:-0.02em;margin:0 0 10px;}
-  .back{display:inline-block;margin-bottom:30px;font-family:'JetBrains Mono',monospace;font-size:.8rem;}
-  p.lede{color:var(--ink-soft);margin:0 0 30px;font-size:.95rem;}
-  .req-card{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:6px 26px;}
-  .req-row{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;}
-  .req-row:last-of-type{border-bottom:none;}
-  .req-k{color:var(--ink-soft);font-size:.86rem;}
-  .req-v{font-weight:600;font-size:.94rem;text-align:right;}
-  .req-v.mono{font-family:'JetBrains Mono',monospace;letter-spacing:.02em;}
-  .req-note{padding:22px 0 8px;font-size:.85rem;color:var(--ink-soft);}
-  @media (max-width:520px){ .req-row{flex-direction:column;gap:4px;} .req-v{text-align:left;} }
-</style>
+<link rel="stylesheet" href="/site.css">
 </head>
 <body>
-  <div class="wrap">
-    <a class="back" href="index.html">← На головну / MAX WAX PRO</a>
-    <h1>Реквізити для оплати</h1>
-    <p class="lede">Якщо вам зручніше оплатити прямим переказом на рахунок ФОП, а не через кошик на сайті, ось реквізити.</p>
 
-    <div class="req-card">
-      <div class="req-row"><span class="req-k">Отримувач</span><span class="req-v">ФОП Тесленко Ірина Вікторівна</span></div>
-      <div class="req-row"><span class="req-k">IBAN</span><span class="req-v mono">UA593220010000026004370080278</span></div>
-      <div class="req-row"><span class="req-k">ІПН/ЄДРПОУ</span><span class="req-v mono">2254719589</span></div>
-      <div class="req-row"><span class="req-k">Банк</span><span class="req-v">Акціонерне товариство «УНІВЕРСАЛ БАНК»</span></div>
-      <div class="req-row"><span class="req-k">МФО</span><span class="req-v mono">322001</span></div>
-      <div class="req-row"><span class="req-k">ЄДРПОУ банку</span><span class="req-v mono">21133352</span></div>
-      <div class="req-row"><span class="req-k">Телефон для зв'язку</span><span class="req-v"><a href="tel:+380968949414">+380 96 894 94 14</a></span></div>
+<div class="announce-bar">
+  <a href="/#ice-diamond" class="announce-link" data-uk="Новинка: Royal Eggs Ice Diamond, зимова формула вже в каталозі →" data-en="New: Royal Eggs Ice Diamond, the winter formula is now in the catalogue →">Новинка: Royal Eggs Ice Diamond, зимова формула вже в каталозі →</a>
+</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="/">
+      <img src="/logo.png" alt="MAX WAX PRO" class="logo-mark">
+      <span class="brand-word">MAX WAX <span>PRO</span></span>
+    </a>
+    <nav class="links">
+      <a href="/#products" data-uk="Воски" data-en="Waxes">Воски</a>
+      <a href="/how" data-uk="Як варити" data-en="How to wax">Як варити</a>
+      <a href="/about" data-uk="Про нас" data-en="About us">Про нас</a>
+      <a href="/#dealers" data-uk="Дилерам" data-en="Dealers">Дилерам</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang-toggle" role="group" aria-label="Мова / Language">
+        <button class="lang-btn active" data-lang="uk" type="button">UA</button>
+        <button class="lang-btn" data-lang="en" type="button">EN</button>
+      </div>
+      <a class="cart-btn" href="/#products" aria-label="Кошик"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/></svg> <span data-uk="КОШИК" data-en="CART">КОШИК</span> <span class="cart-count" id="cartCount">0</span></a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mobilePanel">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <p class="req-note">Після оплати за реквізитами напишіть, будь ласка, на <a href="mailto:maxwaxpro2@gmail.com">maxwaxpro2@gmail.com</a> або в Telegram і вкажіть суму й час переказу, щоб ми одразу підтвердили замовлення.</p>
   </div>
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="/#products" data-uk="Воски" data-en="Waxes">Воски</a>
+      <a href="/how" data-uk="Як варити" data-en="How to wax">Як варити</a>
+      <a href="/about" data-uk="Про нас" data-en="About us">Про нас</a>
+      <a href="/#dealers" data-uk="Дилерам" data-en="Dealers">Дилерам</a>
+    <div class="mobile-panel-lang">
+      <button class="lang-btn" data-lang="uk" type="button">UA</button>
+      <button class="lang-btn" data-lang="en" type="button">EN</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero s-wall-light">
+    <div class="wrap">
+      <div class="crumbs"><a href="/" data-uk="Головна" data-en="Home">Головна</a> / <span data-uk="Реквізити" data-en="Payment details">Реквізити</span></div>
+      <h1 data-uk="Реквізити для оплати" data-en="Payment details">Реквізити для оплати</h1>
+      <p class="lede" data-uk="Якщо вам зручніше оплатити прямим переказом на рахунок ФОП, а не через кошик на сайті, ось реквізити." data-en="If you prefer to pay by direct bank transfer to our account rather than through the site cart, here are the details.">Якщо вам зручніше оплатити прямим переказом на рахунок ФОП, а не через кошик на сайті, ось реквізити.</p>
+    </div>
+  </section>
+  <section class="sec s-ground">
+    <div class="wrap">
+      <div class="req-card">
+        <div class="req-row"><span class="req-k" data-uk="Отримувач" data-en="Recipient">Отримувач</span><span class="req-v ">ФОП Тесленко Ірина Вікторівна</span></div>
+        <div class="req-row"><span class="req-k" data-uk="IBAN" data-en="IBAN">IBAN</span><span class="req-v mono">UA593220010000026004370080278</span></div>
+        <div class="req-row"><span class="req-k" data-uk="ІПН/ЄДРПОУ" data-en="Tax ID">ІПН/ЄДРПОУ</span><span class="req-v mono">2254719589</span></div>
+        <div class="req-row"><span class="req-k" data-uk="Банк" data-en="Bank">Банк</span><span class="req-v ">Акціонерне товариство «УНІВЕРСАЛ БАНК»</span></div>
+        <div class="req-row"><span class="req-k" data-uk="МФО" data-en="Bank code (MFO)">МФО</span><span class="req-v mono">322001</span></div>
+        <div class="req-row"><span class="req-k" data-uk="ЄДРПОУ банку" data-en="Bank EDRPOU">ЄДРПОУ банку</span><span class="req-v mono">21133352</span></div>
+        <div class="req-row"><span class="req-k" data-uk="Телефон для зв&#x27;язку" data-en="Contact phone">Телефон для зв&#x27;язку</span><span class="req-v"><a href="tel:+380968949414">+380 96 894 94 14</a></span></div>
+      </div>
+      <p class="req-note" data-uk-html="Після оплати за реквізитами напишіть, будь ласка, на &lt;a href=&quot;mailto:maxwaxpro2@gmail.com&quot;&gt;maxwaxpro2@gmail.com&lt;/a&gt; або в Telegram і вкажіть суму й час переказу, щоб ми одразу підтвердили замовлення." data-en-html="After paying by bank transfer, please email &lt;a href=&quot;mailto:maxwaxpro2@gmail.com&quot;&gt;maxwaxpro2@gmail.com&lt;/a&gt; or message us on Telegram with the amount and time of the transfer so we can confirm your order right away.">Після оплати за реквізитами напишіть, будь ласка, на <a href="mailto:maxwaxpro2@gmail.com">maxwaxpro2@gmail.com</a> або в Telegram і вкажіть суму й час переказу, щоб ми одразу підтвердили замовлення.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a class="brand" href="/">
+          <img src="/logo.png" alt="MAX WAX PRO" class="logo-mark logo-mark--footer">
+          <span class="brand-word">MAX WAX <span>PRO</span></span>
+        </a>
+        <p data-uk="Професійні воскові змазки для велосипедних ланцюгів. Розроблено та вироблено в Україні." data-en="Professional hot wax lubricants for bicycle chains. Designed and made in Ukraine.">Професійні воскові змазки для велосипедних ланцюгів. Розроблено та вироблено в Україні.</p>
+        <div class="foot-social">
+          <a href="https://www.instagram.com/max.waxpro" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.tiktok.com/@maxwaxpro" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://www.youtube.com/@maxwaxpro" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://t.me/+UKmDAg-wsNczZWYy" target="_blank" rel="noopener">Telegram</a>
+        </div>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4 data-uk="Продукція" data-en="Products">Продукція</h4>
+          <div><a href="/#products">PRO Blue · Green · Yellow · Red</a></div>
+          <div><a href="/#ice-diamond">Royal Eggs Ice Diamond</a></div>
+          <div><a href="/how" data-uk="Як варити" data-en="How to wax">Як варити</a></div>
+          <div><a href="/faq" data-uk="Питання" data-en="FAQ">Питання</a></div>
+        </div>
+        <div class="foot-col">
+          <h4 data-uk="Контакти" data-en="Contacts">Контакти</h4>
+          <div><a href="mailto:maxwaxpro2@gmail.com">maxwaxpro2@gmail.com</a></div>
+          <div><a href="tel:+380968949414">+380 96 894 94 14</a></div>
+          <div><span data-uk="Дилерам:" data-en="Dealers:">Дилерам:</span> <a href="/#dealers" data-uk="заявка B2B" data-en="B2B application">заявка B2B</a></div>
+        </div>
+        <div class="foot-col">
+          <h4 data-uk="Правова інформація" data-en="Legal">Правова інформація</h4>
+          <div><a href="/privacy" data-uk="Політика конфіденційності" data-en="Privacy policy">Політика конфіденційності</a></div>
+          <div><a href="/requisites" data-uk="Реквізити для оплати" data-en="Payment details">Реквізити для оплати</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span data-uk="Зроблено з душею для душі" data-en="With soul for the soul">Зроблено з душею для душі</span>
+      <span data-uk="© 2026 MAX WAX PRO. Торгова марка MAX WAX PRO. Всі права захищені." data-en="© 2026 MAX WAX PRO. MAX WAX PRO trademark. All rights reserved.">© 2026 MAX WAX PRO. Торгова марка MAX WAX PRO. Всі права захищені.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/site.js"></script>
 </body>
 </html>
