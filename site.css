@@ -169,17 +169,29 @@ textarea.field-input{resize:vertical;}
 .checkout-success h3{margin-bottom:8px;}
 .checkout-success p{color:var(--ink-soft);font-size:.9rem;margin-bottom:22px;}
 /* ---------- футер ---------- */
-footer{background:var(--wall-deep);padding:48px 0 20px;}
-.foot-top{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap;padding-bottom:24px;border-bottom:1px solid var(--border);}
-.foot-top p{margin-top:12px;max-width:34ch;color:var(--ink-soft);}
-.foot-social{display:flex;gap:16px;margin-top:14px;flex-wrap:wrap;}
-.foot-social a{font-size:.86rem;color:var(--ink-soft);}
-.foot-cols{display:flex;gap:40px;flex-wrap:wrap;}
-.foot-col h4{font-family:'JetBrains Mono',monospace;font-size:.74rem;letter-spacing:.05em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 12px;}
-.foot-col div{font-size:.88rem;margin-bottom:3px;line-height:1.4;color:var(--ink-soft);}
-.foot-bottom{display:flex;justify-content:space-between;padding-top:14px;font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--ink-soft);flex-wrap:wrap;gap:8px;}
-.foot-social a,.foot-col div a{display:inline-block;padding:5px 0;}
-.foot-social a:hover,.foot-col div a:hover{color:var(--ink);}
+footer{background:var(--wall-deep);padding:32px 0 16px;font-size:.86rem;}
+footer .logo-mark--footer{height:40px;}
+footer .brand-word{font-size:1.05rem;}
+.foot-top{display:flex;justify-content:space-between;gap:24px 40px;flex-wrap:wrap;padding-bottom:20px;border-bottom:1px solid var(--border);}
+.foot-top p{margin-top:10px;max-width:32ch;color:var(--ink-soft);font-size:.84rem;line-height:1.5;}
+.foot-social{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;}
+.foot-social a{display:grid;place-items:center;width:38px;height:38px;border:1px solid var(--border);border-radius:var(--radius);color:var(--ink-soft);transition:color .15s ease,background-color .15s ease,border-color .15s ease;}
+.foot-social a:hover{color:var(--ink-dark);background:var(--yellow);border-color:var(--yellow);}
+.foot-cols{display:flex;gap:16px 36px;flex-wrap:wrap;}
+.foot-col h4{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.05em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 8px;opacity:.8;}
+.foot-col div{font-size:.84rem;line-height:1.35;color:var(--ink-soft);}
+.foot-col div a{display:inline-block;padding:4px 0;}
+.foot-col div a:hover{color:var(--ink);}
+.foot-bottom{display:flex;justify-content:space-between;padding-top:12px;font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--ink-soft);flex-wrap:wrap;gap:6px 16px;}
+@media (max-width:620px){ .foot-cols{display:grid;grid-template-columns:1fr 1fr;gap:18px 20px;width:100%;} .foot-col:last-child{grid-column:1 / -1;} }
+
+/* плаваюча кнопка WhatsApp */
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:80;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:#25d366;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.28);transition:transform .2s var(--ease-out),box-shadow .2s ease;animation:waIn .5s var(--ease-out) .8s both;}
+.wa-float:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 12px 28px rgba(0,0,0,.32);}
+.wa-float:active{transform:scale(.96);}
+.wa-float:focus-visible{outline:3px solid var(--yellow);outline-offset:3px;}
+@keyframes waIn{from{opacity:0;transform:translateY(12px) scale(.9);}to{opacity:1;transform:none;}}
+@media (max-width:760px){ .wa-float{right:14px;bottom:14px;width:52px;height:52px;} footer{padding-bottom:80px;} }
 
 /* ---------- доступність ---------- */
 ::selection{background:var(--yellow);color:var(--ink-dark);}
