@@ -25,6 +25,18 @@
 .ask{border-left:2px solid var(--yellow);padding:2px 0 2px 18px;}
 .ask h2{font-size:clamp(1.15rem,1.8vw,1.45rem);margin-bottom:10px;}
 .ask p{color:var(--ink-soft);font-size:.95rem;max-width:36ch;}
+/* погода відвідувача */
+.wx{margin-top:4px;}
+.wx-now{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
+.wx-city{font-size:.95rem;color:var(--ink-soft);}
+.wx-t{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:clamp(1.6rem,2.6vw,2.1rem);color:#fff;font-variant-numeric:tabular-nums;letter-spacing:-0.02em;}
+.wx-pick{margin-top:6px;font-size:.95rem;color:var(--ink-soft);max-width:40ch;}
+.wx-pick b{color:#fff;}
+.wx-pick b::before{content:"";display:inline-block;width:9px;height:9px;margin-right:6px;background:var(--c);vertical-align:1px;}
+.wx-src{display:inline-block;margin-top:6px;font-size:.72rem;color:var(--ink-soft);text-decoration:underline;text-underline-offset:2px;}
+.wx.on{animation:wxIn .5s var(--ease-out) both;}
+@keyframes wxIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+.ask.has-wx > p{display:none;}
 @media (max-width:860px){ .hero{padding:32px 0 40px;} .hero-head{grid-template-columns:1fr;margin-bottom:24px;} }
 @media (max-width:760px){
   .hero{padding:22px 0 36px;}
@@ -33,7 +45,11 @@
   .hero h1{font-size:1.6rem;}
   .ask{padding-left:14px;}
   .ask h2{font-size:1.1rem;margin:0;}
-  .ask p{display:none;}
+  .ask > p{display:none;}
+  .wx{margin-top:8px;}
+  .wx-t{font-size:1.4rem;}
+  .wx-pick{font-size:.88rem;margin-top:2px;}
+  .wx-src{display:none;}
   .announce-bar{padding:7px 12px;}
   .announce-link{font-size:.7rem;}
 }
@@ -252,6 +268,7 @@
         <div class="ask">
           <h2 id="askTitle" data-uk="Яка у вас погода?" data-en="What's your weather?">Яка у вас погода?</h2>
           <p data-uk="Чотири суміші під температуру повітря. Оберіть ту, в якій їздите найчастіше." data-en="Four blends matched to air temperature. Pick the one you ride in most.">Чотири суміші під температуру повітря. Оберіть ту, в якій їздите найчастіше.</p>
+          <div class="wx" id="wx" hidden aria-live="polite"></div>
         </div>
       </div>
       <div class="mosaic" id="mosaic" role="group" aria-labelledby="askTitle"></div>
@@ -631,7 +648,7 @@
     }).join('');
   }
 
-  function openPanel(tone){
+  function openPanel(tone, silent){
     if(state.tone === tone){ return; }
     state.tone = tone;
     mosaicEl.querySelectorAll('.panel').forEach(function(el){
@@ -641,7 +658,7 @@
       if(isOpen){
         var img = el.querySelector('.shot img');
         if(img){ img.removeAttribute('loading'); }
-        if(window.matchMedia('(max-width:760px)').matches){
+        if(!silent && window.matchMedia('(max-width:760px)').matches){
           var top = el.getBoundingClientRect().top;
           if(top < 70 || top > window.innerHeight * 0.6){ el.scrollIntoView({ block:'start', behavior: reduceMotion() ? 'auto' : 'smooth' }); }
         }
@@ -652,7 +669,7 @@
 
   mosaicEl.addEventListener('click', function(e){
     var toggle = e.target.closest('.panel-toggle');
-    if(toggle){ openPanel(toggle.closest('.panel').getAttribute('data-tone')); return; }
+    if(toggle){ state.touched = true; openPanel(toggle.closest('.panel').getAttribute('data-tone')); return; }
 
     var size = e.target.closest('.size');
     if(size){
@@ -683,6 +700,65 @@
       addToCart(auid, state.size[auid] || 0);
     }
   });
+
+  // ---------------------------------------------------------------
+  // Погода відвідувача: /api/weather визначає місто за IP (Vercel)
+  // і бере прогноз у MET Norway. Підказує суміш і відкриває її панно,
+  // якщо людина ще сама нічого не вибрала. Немає даних: блок не показуємо.
+  // ---------------------------------------------------------------
+  var wxEl = document.getElementById('wx');
+  var wx = null, wxShown = false;
+  var TONE_NAME = { blue:'Blue', green:'Green', yellow:'Yellow', red:'Red' };
+  function toneForTemp(t){ return t < 5 ? 'blue' : t < 18 ? 'green' : t < 25 ? 'yellow' : 'red'; }
+  function signed(n){ return (n > 0 ? '+' : n < 0 ? '−' : '') + Math.abs(n); }
+  function placeName(lang){
+    if(wx.city){ return wx.city; }
+    try{ return new Intl.DisplayNames([lang === 'en' ? 'en' : 'uk'], { type:'region' }).of(wx.country); }catch(e){ return wx.country || ''; }
+  }
+  function renderWeather(animate){
+    if(!wx){ return; }
+    var lang = currentLang();
+    var main = toneForTemp(wx.now);
+    var also = [];
+    TONE_ORDER.forEach(function(tn){
+      var lo = { blue:-99, green:5, yellow:18, red:25 }[tn], hi = { blue:5, green:18, yellow:25, red:99 }[tn];
+      if(tn !== main && wx.max >= lo && wx.min < hi){ also.push(tn); }
+    });
+    var chip = function(tn){ return '<b style="--c:var(--' + tn + ')">' + TONE_NAME[tn] + '</b>'; };
+    var pick = lang === 'en'
+      ? 'This week from ' + signed(wx.min) + ' to ' + signed(wx.max) + '°C. Your blend: ' + chip(main) + (also.length ? ', and ' + also.map(chip).join(', ') + ' for the rest of the week' : '') + '.'
+      : 'На тижні від ' + signed(wx.min) + ' до ' + signed(wx.max) + '°C. Вам підходить ' + chip(main) + (also.length ? ', а на інші дні ' + also.map(chip).join(', ') : '') + '.';
+    wxEl.innerHTML =
+      '<div class="wx-now"><span class="wx-city">' + escapeHtml(placeName(lang)) + (lang === 'en' ? ', now' : ', зараз') + '</span>' +
+      '<span class="wx-t" id="wxT">' + signed(wx.now) + '°C</span></div>' +
+      '<p class="wx-pick">' + pick + '</p>' +
+      '<a class="wx-src" href="https://www.met.no/en" target="_blank" rel="noopener">' + (lang === 'en' ? 'Weather: MET Norway' : 'Погода: MET Norway') + '</a>';
+    wxEl.hidden = false;
+    wxEl.parentNode.classList.add('has-wx');
+    if(animate && !reduceMotion()){
+      wxEl.classList.add('on');
+      var el = document.getElementById('wxT'), start = null, to = wx.now, dur = 700;
+      var step = function(ts){
+        if(start === null){ start = ts; }
+        var k = Math.min(1, (ts - start) / dur), e = 1 - Math.pow(1 - k, 3);
+        el.textContent = signed(Math.round(to * e)) + '°C';
+        if(k < 1){ requestAnimationFrame(step); }
+      };
+      requestAnimationFrame(step);
+    }
+    if(!wxShown){
+      wxShown = true;
+      if(!state.touched){ openPanel(main, true); }
+    }
+  }
+  try{
+    fetch('/api/weather' + location.search.replace(/^\?(?!.*\blat=).*$/, ''), { headers:{ 'Accept':'application/json' } })
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){
+        if(d && d.ok && typeof d.now === 'number'){ wx = d; renderWeather(true); }
+      })
+      .catch(function(){});
+  }catch(e){}
 
   // Ціни в блоці «Що в комплекті» беремо з каталогу, щоб не розходились
   // ---------------------------------------------------------------
@@ -1085,6 +1161,7 @@
     try{ localStorage.setItem(LANG_KEY, lang); }catch(e){}
 
     renderMosaic();
+    renderWeather(false);
     renderCatalog();
     renderKitPrices();
     renderCart();
