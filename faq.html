@@ -1,55 +1,167 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" data-lang="uk">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Питання | MAX WAX PRO</title>
-<meta name="description" content="Відповіді на часті питання про MAX WAX PRO: воскоплав, частота проварювання, кольори лінійок, як стати дилером.">
+<title data-uk="Питання | MAX WAX PRO" data-en="FAQ | MAX WAX PRO">Питання | MAX WAX PRO</title>
+<meta name="description" content="Відповіді на часті питання про MAX WAX PRO: вибір суміші, проварка, оплата, доставка, дилерам.">
 <meta name="robots" content="index, follow">
+<meta name="theme-color" content="#2f3a46">
 <link rel="preload" href="/fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
-<style>
-  :root{
-    --bg:#0E1116; --surface:#171B22; --ink:#F4F2EC; --ink-soft:#9AA1AC;
-    --accent:#F2932E; --border:rgba(244,242,236,0.12);
-  }
-  *{box-sizing:border-box;}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.55;}
-  .wrap{max-width:720px;margin:0 auto;padding:60px 24px 100px;}
-  a{color:var(--accent);text-decoration:none;}
-  a:hover{text-decoration:underline;}
-  h1{font-size:clamp(1.8rem,4vw,2.3rem);font-weight:800;letter-spacing:-0.02em;margin:0 0 30px;}
-  .back{display:inline-block;margin-bottom:30px;font-family:'JetBrains Mono',monospace;font-size:.8rem;}
-  details{border-bottom:1px solid var(--border);}
-  details:first-of-type{border-top:1px solid var(--border);}
-  summary{list-style:none;cursor:pointer;padding:18px 4px;display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:1rem;}
-  summary::-webkit-details-marker{display:none;}
-  summary .plus{color:var(--accent);font-family:'JetBrains Mono',monospace;transition:transform .15s ease;}
-  details[open] summary .plus{transform:rotate(45deg);}
-  details p{padding:0 4px 20px;color:var(--ink-soft);font-size:.92rem;max-width:64ch;}
-</style>
+<link rel="stylesheet" href="/site.css">
 </head>
 <body>
-  <div class="wrap">
-    <a class="back" href="index.html">← На головну / MAX WAX PRO</a>
-    <h1>Питання</h1>
 
-    <details open>
-      <summary>Чи потрібен спеціальний воскоплав?<span class="plus">+</span></summary>
-      <p>Бажано, бо так температура тримається стабільною. Можна також використати мультиварку чи ковшик з термометром.</p>
-    </details>
-    <details>
-      <summary>Як часто варити ланцюг?<span class="plus">+</span></summary>
-      <p>Залежно від лінійки, орієнтовно кожні 300–1000 км, дивіться ресурс у картці товару.</p>
-    </details>
-    <details>
-      <summary>Що означають кольори PRO/Wax Warmer/Royal Eggs NB?<span class="plus">+</span></summary>
-      <p>Колір відповідає температурному діапазону використання: Red для спеки, Yellow для тепла, Green для міжсезоння, Blue для холоду.</p>
-    </details>
-    <details>
-      <summary>Як стати дилером?<span class="plus">+</span></summary>
-      <p>Залиште заявку в розділі B2B, і ми надішлемо гуртовий прайс і умови співпраці.</p>
-    </details>
+<div class="announce-bar">
+  <a href="/#ice-diamond" class="announce-link" data-uk="Новинка: Royal Eggs Ice Diamond, зимова формула вже в каталозі →" data-en="New: Royal Eggs Ice Diamond, the winter formula is now in the catalogue →">Новинка: Royal Eggs Ice Diamond, зимова формула вже в каталозі →</a>
+</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="/">
+      <img src="/logo.png" alt="MAX WAX PRO" class="logo-mark">
+      <span class="brand-word">MAX WAX <span>PRO</span></span>
+    </a>
+    <nav class="links">
+      <a href="/#products" data-uk="Воски" data-en="Waxes">Воски</a>
+      <a href="/how" data-uk="Як варити" data-en="How to wax">Як варити</a>
+      <a href="/about" data-uk="Про нас" data-en="About us">Про нас</a>
+      <a href="/#dealers" data-uk="Дилерам" data-en="Dealers">Дилерам</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang-toggle" role="group" aria-label="Мова / Language">
+        <button class="lang-btn active" data-lang="uk" type="button">UA</button>
+        <button class="lang-btn" data-lang="en" type="button">EN</button>
+      </div>
+      <a class="cart-btn" href="/#products" aria-label="Кошик"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/></svg> <span data-uk="КОШИК" data-en="CART">КОШИК</span> <span class="cart-count" id="cartCount">0</span></a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mobilePanel">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="/#products" data-uk="Воски" data-en="Waxes">Воски</a>
+      <a href="/how" data-uk="Як варити" data-en="How to wax">Як варити</a>
+      <a href="/about" data-uk="Про нас" data-en="About us">Про нас</a>
+      <a href="/#dealers" data-uk="Дилерам" data-en="Dealers">Дилерам</a>
+    <div class="mobile-panel-lang">
+      <button class="lang-btn" data-lang="uk" type="button">UA</button>
+      <button class="lang-btn" data-lang="en" type="button">EN</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero s-wall-light">
+    <div class="wrap">
+      <div class="crumbs"><a href="/" data-uk="Головна" data-en="Home">Головна</a> / <span data-uk="Питання" data-en="FAQ">Питання</span></div>
+      <h1 data-uk="Питання та відповіді" data-en="Questions and answers">Питання та відповіді</h1>
+      <p class="lede" data-uk="Коротко про вибір суміші, проварку, оплату й доставку. Не знайшли відповідь? Напишіть нам у Telegram або на пошту." data-en="Short answers on choosing a blend, waxing, payment and delivery. Didn&#x27;t find yours? Message us on Telegram or by email.">Коротко про вибір суміші, проварку, оплату й доставку. Не знайшли відповідь? Напишіть нам у Telegram або на пошту.</p>
+    </div>
+  </section>
+  <section class="sec s-ground">
+    <div class="wrap">
+      <div class="faq">
+        <details open>
+          <summary><span data-uk="Як обрати суміш?" data-en="How do I choose a blend?">Як обрати суміш?</span><span class="plus" aria-hidden="true">+</span></summary>
+          <p data-uk-html="За температурою, в якій ви їздите найчастіше: Blue від −20 до +5°C, Green від +5 до +18°C, Yellow від +18 до +25°C, Red від +25 до +45°C. Якщо їздите цілий рік, можна мати дві суміші під різні сезони." data-en-html="By the temperature you ride in most: Blue from −20 to +5°C, Green from +5 to +18°C, Yellow from +18 to +25°C, Red from +25 to +45°C. If you ride all year, you can keep two blends for different seasons.">За температурою, в якій ви їздите найчастіше: Blue від −20 до +5°C, Green від +5 до +18°C, Yellow від +18 до +25°C, Red від +25 до +45°C. Якщо їздите цілий рік, можна мати дві суміші під різні сезони.</p>
+        </details>
+        <details>
+          <summary><span data-uk="Чи потрібен спеціальний воскоплав?" data-en="Do I need a special wax pot?">Чи потрібен спеціальний воскоплав?</span><span class="plus" aria-hidden="true">+</span></summary>
+          <p data-uk-html="Бажано, бо так температура тримається стабільною. Підійде також мультиварка чи ковшик з термометром." data-en-html="It helps, because it keeps the temperature steady. A slow cooker or a pan with a thermometer works too.">Бажано, бо так температура тримається стабільною. Підійде також мультиварка чи ковшик з термометром.</p>
+        </details>
+        <details>
+          <summary><span data-uk="При якій температурі й скільки варити?" data-en="What temperature and how long?">При якій температурі й скільки варити?</span><span class="plus" aria-hidden="true">+</span></summary>
+          <p data-uk-html="Розтопіть суміш до 95°C і тримайте ланцюг у розплаві 3 хвилини. Покроково: &lt;a href=&quot;/how&quot;&gt;як варити&lt;/a&gt;." data-en-html="Melt the mix to 95°C and keep the chain in the melt for 3 minutes. Step by step: &lt;a href=&quot;/how&quot;&gt;how to wax&lt;/a&gt;.">Розтопіть суміш до 95°C і тримайте ланцюг у розплаві 3 хвилини. Покроково: <a href="/how">як варити</a>.</p>
+        </details>
+        <details>
+          <summary><span data-uk="Як часто варити ланцюг?" data-en="How often should I wax?">Як часто варити ланцюг?</span><span class="plus" aria-hidden="true">+</span></summary>
+          <p data-uk-html="Суміш PRO тримається 800–1000 км на одній проварці. Для інших лінійок ресурс вказано в описі товару." data-en-html="The PRO mix lasts 800–1000 km per treatment. For other lines, the mileage is given in the product description.">Суміш PRO тримається 800–1000 км на одній проварці. Для інших лінійок ресурс вказано в описі товару.</p>
+        </details>
+        <details>
+          <summary><span data-uk="Що робити з новим ланцюгом?" data-en="What about a new chain?">Що робити з новим ланцюгом?</span><span class="plus" aria-hidden="true">+</span></summary>
+          <p data-uk-html="Скористайтесь присадкою для нового ланцюга з комплекту. Вона перетворює заводське мастило на олеогель, тож знежирювати ланцюг не потрібно. Це займає близько 10 хвилин." data-en-html="Use the new-chain additive from the kit. It turns the factory grease into an oleogel, so there is no need to degrease the chain. It takes about 10 minutes.">Скористайтесь присадкою для нового ланцюга з комплекту. Вона перетворює заводське мастило на олеогель, тож знежирювати ланцюг не потрібно. Це займає близько 10 хвилин.</p>
+        </details>
+        <details>
+          <summary><span data-uk="Чи можна варити на кухні?" data-en="Can I wax in the kitchen?">Чи можна варити на кухні?</span><span class="plus" aria-hidden="true">+</span></summary>
+          <p data-uk-html="Так. Суміш не спалахує і приємно пахне під час нагрівання: кокос, кава, лимон або полуниця, залежно від кольору." data-en-html="Yes. The mix does not ignite and smells pleasant when heated: coconut, coffee, lemon or strawberry, depending on the colour.">Так. Суміш не спалахує і приємно пахне під час нагрівання: кокос, кава, лимон або полуниця, залежно від кольору.</p>
+        </details>
+        <details>
+          <summary><span data-uk="На скільки вистачає пакета?" data-en="How long does a bag last?">На скільки вистачає пакета?</span><span class="plus" aria-hidden="true">+</span></summary>
+          <p data-uk-html="На одну обробку йде близько 5 г. Пакета 500 г вистачає на 5+ років, 1 кг на 10+ років." data-en-html="One treatment uses about 5 g. A 500 g bag lasts 5+ years, a 1 kg bag 10+ years.">На одну обробку йде близько 5 г. Пакета 500 г вистачає на 5+ років, 1 кг на 10+ років.</p>
+        </details>
+        <details>
+          <summary><span data-uk="Як оплатити й отримати замовлення?" data-en="How do I pay and get my order?">Як оплатити й отримати замовлення?</span><span class="plus" aria-hidden="true">+</span></summary>
+          <p data-uk-html="Оформіть замовлення в кошику на сайті, і ми зв&#x27;яжемось для підтвердження. Оплатити можна за &lt;a href=&quot;/requisites&quot;&gt;реквізитами&lt;/a&gt; або після підтвердження замовлення. Доставляємо Новою Поштою по Україні." data-en-html="Place your order in the cart on the site and we will get in touch to confirm it. You can pay using our &lt;a href=&quot;/requisites&quot;&gt;bank details&lt;/a&gt; or after the order is confirmed. We ship across Ukraine with Nova Poshta.">Оформіть замовлення в кошику на сайті, і ми зв'яжемось для підтвердження. Оплатити можна за <a href="/requisites">реквізитами</a> або після підтвердження замовлення. Доставляємо Новою Поштою по Україні.</p>
+        </details>
+        <details>
+          <summary><span data-uk="Що дає закритий Telegram-канал?" data-en="What is the private Telegram channel?">Що дає закритий Telegram-канал?</span><span class="plus" aria-hidden="true">+</span></summary>
+          <p data-uk-html="Після покупки ви отримуєте доступ до каналу з фото, відеоінструкціями та чатом підтримки. Ми на зв&#x27;язку цілий рік." data-en-html="After purchase you get access to a channel with photos, video guides and a support chat. We are available all year round.">Після покупки ви отримуєте доступ до каналу з фото, відеоінструкціями та чатом підтримки. Ми на зв'язку цілий рік.</p>
+        </details>
+        <details>
+          <summary><span data-uk="Як стати дилером?" data-en="How do I become a dealer?">Як стати дилером?</span><span class="plus" aria-hidden="true">+</span></summary>
+          <p data-uk-html="Залиште &lt;a href=&quot;/#dealers&quot;&gt;заявку для дилерів&lt;/a&gt;, і ми надішлемо гуртовий прайс і умови співпраці." data-en-html="Send a &lt;a href=&quot;/#dealers&quot;&gt;dealer application&lt;/a&gt; and we will send you our wholesale price list and terms.">Залиште <a href="/#dealers">заявку для дилерів</a>, і ми надішлемо гуртовий прайс і умови співпраці.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+  <section class="sec s-ground">
+    <div class="wrap cta-band">
+      <h2 data-uk="Готові спробувати?" data-en="Ready to try it?">Готові спробувати?</h2>
+      <div class="acts">
+        <a class="btn btn-accent" href="/#products" data-uk="Обрати віск" data-en="Choose a wax">Обрати віск</a>
+        <a class="btn btn-line-dark" href="/how" data-uk="Як варити" data-en="How to wax">Як варити</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a class="brand" href="/">
+          <img src="/logo.png" alt="MAX WAX PRO" class="logo-mark logo-mark--footer">
+          <span class="brand-word">MAX WAX <span>PRO</span></span>
+        </a>
+        <p data-uk="Професійні воскові змазки для велосипедних ланцюгів. Розроблено та вироблено в Україні." data-en="Professional hot wax lubricants for bicycle chains. Designed and made in Ukraine.">Професійні воскові змазки для велосипедних ланцюгів. Розроблено та вироблено в Україні.</p>
+        <div class="foot-social">
+          <a href="https://www.instagram.com/max.waxpro" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.tiktok.com/@maxwaxpro" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://www.youtube.com/@maxwaxpro" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://t.me/+UKmDAg-wsNczZWYy" target="_blank" rel="noopener">Telegram</a>
+        </div>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4 data-uk="Продукція" data-en="Products">Продукція</h4>
+          <div><a href="/#products">PRO Blue · Green · Yellow · Red</a></div>
+          <div><a href="/#ice-diamond">Royal Eggs Ice Diamond</a></div>
+          <div><a href="/how" data-uk="Як варити" data-en="How to wax">Як варити</a></div>
+          <div><a href="/faq" data-uk="Питання" data-en="FAQ">Питання</a></div>
+        </div>
+        <div class="foot-col">
+          <h4 data-uk="Контакти" data-en="Contacts">Контакти</h4>
+          <div><a href="mailto:maxwaxpro2@gmail.com">maxwaxpro2@gmail.com</a></div>
+          <div><a href="tel:+380968949414">+380 96 894 94 14</a></div>
+          <div><span data-uk="Дилерам:" data-en="Dealers:">Дилерам:</span> <a href="/#dealers" data-uk="заявка B2B" data-en="B2B application">заявка B2B</a></div>
+        </div>
+        <div class="foot-col">
+          <h4 data-uk="Правова інформація" data-en="Legal">Правова інформація</h4>
+          <div><a href="/privacy" data-uk="Політика конфіденційності" data-en="Privacy policy">Політика конфіденційності</a></div>
+          <div><a href="/requisites" data-uk="Реквізити для оплати" data-en="Payment details">Реквізити для оплати</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span data-uk="Зроблено з душею для душі" data-en="With soul for the soul">Зроблено з душею для душі</span>
+      <span data-uk="© 2026 MAX WAX PRO. Торгова марка MAX WAX PRO. Всі права захищені." data-en="© 2026 MAX WAX PRO. MAX WAX PRO trademark. All rights reserved.">© 2026 MAX WAX PRO. Торгова марка MAX WAX PRO. Всі права захищені.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/site.js"></script>
 </body>
 </html>

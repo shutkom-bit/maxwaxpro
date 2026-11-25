@@ -10,127 +10,8 @@
 <link rel="preload" href="/fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/site.css">
 <style>
-:root{
-  /* Стіна (бетон) і ґрунт */
-  --wall:#2f3a46;
-  --wall-deep:#232c36;
-  --wall-2:#38444f;
-  --ground:#e9e1d3;
-  --ground-2:#ddd3c2;
-  --ink:#f4f2ec;
-  --ink-soft:#b9bec6;
-  --ink-dark:#1b1f24;
-  --ink-dark-soft:#4f5560;
-  /* Кольори воску. *-txt: темніші відтінки під білий текст (контраст 4.5:1 і більше) */
-  --blue:#1f6fb5;
-  --green:#2e8b57;  --green-txt:#267a4b;
-  --yellow:#f2c230;
-  --red:#d6402b;    --red-txt:#c93a26;
-  --ice:#16314a;
-  --ice-light:#cfe8f3;
-  /* Сумісність зі старими компонентами (кошик, форма замовлення) */
-  --bg:var(--wall-deep);
-  --surface:var(--wall);
-  --surface-2:var(--wall-2);
-  --accent:var(--yellow);
-  --accent-ink:var(--ink-dark);
-  --border:rgba(244,242,236,.14);
-  --light-border:rgba(27,31,36,.14);
-  --radius:3px;
-  --maxw:1180px;
-  --ease-out:cubic-bezier(.22,1,.36,1);
-  --hex:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96.995' height='84.0'%3E%3Cpolygon points='0.00,-7.00 6.06,-3.50 6.06,3.50 0.00,7.00 -6.06,3.50 -6.06,-3.50' fill='%23000' fill-opacity='0.078' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='6.06,3.50 12.12,7.00 12.12,14.00 6.06,17.50 -0.00,14.00 0.00,7.00' fill='%23000' fill-opacity='0.041' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='12.12,-7.00 18.19,-3.50 18.19,3.50 12.12,7.00 6.06,3.50 6.06,-3.50' fill='%23fff' fill-opacity='0.017' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='18.19,3.50 24.25,7.00 24.25,14.00 18.19,17.50 12.12,14.00 12.12,7.00' fill='%23000' fill-opacity='0.057' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='24.25,-7.00 30.31,-3.50 30.31,3.50 24.25,7.00 18.19,3.50 18.19,-3.50' fill='%23fff' fill-opacity='0.008' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='30.31,3.50 36.37,7.00 36.37,14.00 30.31,17.50 24.25,14.00 24.25,7.00' fill='%23000' fill-opacity='0.013' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='36.37,-7.00 42.44,-3.50 42.44,3.50 36.37,7.00 30.31,3.50 30.31,-3.50' fill='%23fff' fill-opacity='0.054' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='42.44,3.50 48.50,7.00 48.50,14.00 42.44,17.50 36.37,14.00 36.37,7.00' fill='%23000' fill-opacity='0.087' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='48.50,-7.00 54.56,-3.50 54.56,3.50 48.50,7.00 42.44,3.50 42.44,-3.50' fill='%23fff' fill-opacity='0.056' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='54.56,3.50 60.62,7.00 60.62,14.00 54.56,17.50 48.50,14.00 48.50,7.00' fill='%23fff' fill-opacity='0.005' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='60.62,-7.00 66.68,-3.50 66.68,3.50 60.62,7.00 54.56,3.50 54.56,-3.50' fill='%23fff' fill-opacity='0.079' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='66.68,3.50 72.75,7.00 72.75,14.00 66.68,17.50 60.62,14.00 60.62,7.00' fill='%23fff' fill-opacity='0.07' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='72.75,-7.00 78.81,-3.50 78.81,3.50 72.75,7.00 66.68,3.50 66.68,-3.50' fill='%23000' fill-opacity='0.04' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='78.81,3.50 84.87,7.00 84.87,14.00 78.81,17.50 72.75,14.00 72.75,7.00' fill='%23fff' fill-opacity='0.047' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='84.87,-7.00 90.93,-3.50 90.93,3.50 84.87,7.00 78.81,3.50 78.81,-3.50' fill='%23000' fill-opacity='0.045' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='90.93,3.50 96.99,7.00 96.99,14.00 90.93,17.50 84.87,14.00 84.87,7.00' fill='%23fff' fill-opacity='0.041' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='96.99,-7.00 103.06,-3.50 103.06,3.50 96.99,7.00 90.93,3.50 90.93,-3.50' fill='%23000' fill-opacity='0.078' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='103.06,3.50 109.12,7.00 109.12,14.00 103.06,17.50 96.99,14.00 96.99,7.00' fill='%23000' fill-opacity='0.041' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='0.00,14.00 6.06,17.50 6.06,24.50 0.00,28.00 -6.06,24.50 -6.06,17.50' fill='%23000' fill-opacity='0.037' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='6.06,24.50 12.12,28.00 12.12,35.00 6.06,38.50 -0.00,35.00 0.00,28.00' fill='%23fff' fill-opacity='0.064' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='12.12,14.00 18.19,17.50 18.19,24.50 12.12,28.00 6.06,24.50 6.06,17.50' fill='%23000' fill-opacity='0.068' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='18.19,24.50 24.25,28.00 24.25,35.00 18.19,38.50 12.12,35.00 12.12,28.00' fill='%23000' fill-opacity='0.003' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='24.25,14.00 30.31,17.50 30.31,24.50 24.25,28.00 18.19,24.50 18.19,17.50' fill='%23fff' fill-opacity='0.036' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='30.31,24.50 36.37,28.00 36.37,35.00 30.31,38.50 24.25,35.00 24.25,28.00' fill='%23000' fill-opacity='0.035' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='36.37,14.00 42.44,17.50 42.44,24.50 36.37,28.00 30.31,24.50 30.31,17.50' fill='%23fff' fill-opacity='0.076' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='42.44,24.50 48.50,28.00 48.50,35.00 42.44,38.50 36.37,35.00 36.37,28.00' fill='%23fff' fill-opacity='0.019' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='48.50,14.00 54.56,17.50 54.56,24.50 48.50,28.00 42.44,24.50 42.44,17.50' fill='%23fff' fill-opacity='0.042' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='54.56,24.50 60.62,28.00 60.62,35.00 54.56,38.50 48.50,35.00 48.50,28.00' fill='%23000' fill-opacity='0.038' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='60.62,14.00 66.68,17.50 66.68,24.50 60.62,28.00 54.56,24.50 54.56,17.50' fill='%23fff' fill-opacity='0.07' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='66.68,24.50 72.75,28.00 72.75,35.00 66.68,38.50 60.62,35.00 60.62,28.00' fill='%23000' fill-opacity='0.03' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='72.75,14.00 78.81,17.50 78.81,24.50 72.75,28.00 66.68,24.50 66.68,17.50' fill='%23000' fill-opacity='0.03' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='78.81,24.50 84.87,28.00 84.87,35.00 78.81,38.50 72.75,35.00 72.75,28.00' fill='%23000' fill-opacity='0.068' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='84.87,14.00 90.93,17.50 90.93,24.50 84.87,28.00 78.81,24.50 78.81,17.50' fill='%23fff' fill-opacity='0.012' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='90.93,24.50 96.99,28.00 96.99,35.00 90.93,38.50 84.87,35.00 84.87,28.00' fill='%23fff' fill-opacity='0.001' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='96.99,14.00 103.06,17.50 103.06,24.50 96.99,28.00 90.93,24.50 90.93,17.50' fill='%23000' fill-opacity='0.037' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='103.06,24.50 109.12,28.00 109.12,35.00 103.06,38.50 96.99,35.00 96.99,28.00' fill='%23fff' fill-opacity='0.064' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='0.00,35.00 6.06,38.50 6.06,45.50 0.00,49.00 -6.06,45.50 -6.06,38.50' fill='%23000' fill-opacity='0.072' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='6.06,45.50 12.12,49.00 12.12,56.00 6.06,59.50 -0.00,56.00 0.00,49.00' fill='%23fff' fill-opacity='0.061' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='12.12,35.00 18.19,38.50 18.19,45.50 12.12,49.00 6.06,45.50 6.06,38.50' fill='%23fff' fill-opacity='0.04' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='18.19,45.50 24.25,49.00 24.25,56.00 18.19,59.50 12.12,56.00 12.12,49.00' fill='%23fff' fill-opacity='0.089' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='24.25,35.00 30.31,38.50 30.31,45.50 24.25,49.00 18.19,45.50 18.19,38.50' fill='%23fff' fill-opacity='0.038' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='30.31,45.50 36.37,49.00 36.37,56.00 30.31,59.50 24.25,56.00 24.25,49.00' fill='%23000' fill-opacity='0.01' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='36.37,35.00 42.44,38.50 42.44,45.50 36.37,49.00 30.31,45.50 30.31,38.50' fill='%23000' fill-opacity='0.089' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='42.44,45.50 48.50,49.00 48.50,56.00 42.44,59.50 36.37,56.00 36.37,49.00' fill='%23fff' fill-opacity='0.024' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='48.50,35.00 54.56,38.50 54.56,45.50 48.50,49.00 42.44,45.50 42.44,38.50' fill='%23000' fill-opacity='0.09' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='54.56,45.50 60.62,49.00 60.62,56.00 54.56,59.50 48.50,56.00 48.50,49.00' fill='%23fff' fill-opacity='0.019' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='60.62,35.00 66.68,38.50 66.68,45.50 60.62,49.00 54.56,45.50 54.56,38.50' fill='%23000' fill-opacity='0.09' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='66.68,45.50 72.75,49.00 72.75,56.00 66.68,59.50 60.62,56.00 60.62,49.00' fill='%23fff' fill-opacity='0.004' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='72.75,35.00 78.81,38.50 78.81,45.50 72.75,49.00 66.68,45.50 66.68,38.50' fill='%23fff' fill-opacity='0.019' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='78.81,45.50 84.87,49.00 84.87,56.00 78.81,59.50 72.75,56.00 72.75,49.00' fill='%23000' fill-opacity='0.001' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='84.87,35.00 90.93,38.50 90.93,45.50 84.87,49.00 78.81,45.50 78.81,38.50' fill='%23000' fill-opacity='0.075' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='90.93,45.50 96.99,49.00 96.99,56.00 90.93,59.50 84.87,56.00 84.87,49.00' fill='%23000' fill-opacity='0.007' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='96.99,35.00 103.06,38.50 103.06,45.50 96.99,49.00 90.93,45.50 90.93,38.50' fill='%23000' fill-opacity='0.072' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='103.06,45.50 109.12,49.00 109.12,56.00 103.06,59.50 96.99,56.00 96.99,49.00' fill='%23fff' fill-opacity='0.061' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='0.00,56.00 6.06,59.50 6.06,66.50 0.00,70.00 -6.06,66.50 -6.06,59.50' fill='%23fff' fill-opacity='0.019' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='6.06,66.50 12.12,70.00 12.12,77.00 6.06,80.50 -0.00,77.00 0.00,70.00' fill='%23fff' fill-opacity='0.001' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='12.12,56.00 18.19,59.50 18.19,66.50 12.12,70.00 6.06,66.50 6.06,59.50' fill='%23000' fill-opacity='0.033' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='18.19,66.50 24.25,70.00 24.25,77.00 18.19,80.50 12.12,77.00 12.12,70.00' fill='%23000' fill-opacity='0.011' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='24.25,56.00 30.31,59.50 30.31,66.50 24.25,70.00 18.19,66.50 18.19,59.50' fill='%23000' fill-opacity='0.075' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='30.31,66.50 36.37,70.00 36.37,77.00 30.31,80.50 24.25,77.00 24.25,70.00' fill='%23fff' fill-opacity='0.078' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='36.37,56.00 42.44,59.50 42.44,66.50 36.37,70.00 30.31,66.50 30.31,59.50' fill='%23fff' fill-opacity='0.056' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='42.44,66.50 48.50,70.00 48.50,77.00 42.44,80.50 36.37,77.00 36.37,70.00' fill='%23000' fill-opacity='0.082' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='48.50,56.00 54.56,59.50 54.56,66.50 48.50,70.00 42.44,66.50 42.44,59.50' fill='%23fff' fill-opacity='0.065' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='54.56,66.50 60.62,70.00 60.62,77.00 54.56,80.50 48.50,77.00 48.50,70.00' fill='%23fff' fill-opacity='0.067' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='60.62,56.00 66.68,59.50 66.68,66.50 60.62,70.00 54.56,66.50 54.56,59.50' fill='%23fff' fill-opacity='0.062' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='66.68,66.50 72.75,70.00 72.75,77.00 66.68,80.50 60.62,77.00 60.62,70.00' fill='%23000' fill-opacity='0.079' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='72.75,56.00 78.81,59.50 78.81,66.50 72.75,70.00 66.68,66.50 66.68,59.50' fill='%23fff' fill-opacity='0.038' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='78.81,66.50 84.87,70.00 84.87,77.00 78.81,80.50 72.75,77.00 72.75,70.00' fill='%23fff' fill-opacity='0.01' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='84.87,56.00 90.93,59.50 90.93,66.50 84.87,70.00 78.81,66.50 78.81,59.50' fill='%23000' fill-opacity='0.021' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='90.93,66.50 96.99,70.00 96.99,77.00 90.93,80.50 84.87,77.00 84.87,70.00' fill='%23000' fill-opacity='0.023' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='96.99,56.00 103.06,59.50 103.06,66.50 96.99,70.00 90.93,66.50 90.93,59.50' fill='%23fff' fill-opacity='0.019' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='103.06,66.50 109.12,70.00 109.12,77.00 103.06,80.50 96.99,77.00 96.99,70.00' fill='%23fff' fill-opacity='0.001' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='0.00,77.00 6.06,80.50 6.06,87.50 0.00,91.00 -6.06,87.50 -6.06,80.50' fill='%23000' fill-opacity='0.078' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='6.06,87.50 12.12,91.00 12.12,98.00 6.06,101.50 -0.00,98.00 0.00,91.00' fill='%23000' fill-opacity='0.041' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='12.12,77.00 18.19,80.50 18.19,87.50 12.12,91.00 6.06,87.50 6.06,80.50' fill='%23fff' fill-opacity='0.017' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='18.19,87.50 24.25,91.00 24.25,98.00 18.19,101.50 12.12,98.00 12.12,91.00' fill='%23000' fill-opacity='0.057' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='24.25,77.00 30.31,80.50 30.31,87.50 24.25,91.00 18.19,87.50 18.19,80.50' fill='%23fff' fill-opacity='0.008' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='30.31,87.50 36.37,91.00 36.37,98.00 30.31,101.50 24.25,98.00 24.25,91.00' fill='%23000' fill-opacity='0.013' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='36.37,77.00 42.44,80.50 42.44,87.50 36.37,91.00 30.31,87.50 30.31,80.50' fill='%23fff' fill-opacity='0.054' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='42.44,87.50 48.50,91.00 48.50,98.00 42.44,101.50 36.37,98.00 36.37,91.00' fill='%23000' fill-opacity='0.087' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='48.50,77.00 54.56,80.50 54.56,87.50 48.50,91.00 42.44,87.50 42.44,80.50' fill='%23fff' fill-opacity='0.056' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='54.56,87.50 60.62,91.00 60.62,98.00 54.56,101.50 48.50,98.00 48.50,91.00' fill='%23fff' fill-opacity='0.005' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='60.62,77.00 66.68,80.50 66.68,87.50 60.62,91.00 54.56,87.50 54.56,80.50' fill='%23fff' fill-opacity='0.079' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='66.68,87.50 72.75,91.00 72.75,98.00 66.68,101.50 60.62,98.00 60.62,91.00' fill='%23fff' fill-opacity='0.07' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='72.75,77.00 78.81,80.50 78.81,87.50 72.75,91.00 66.68,87.50 66.68,80.50' fill='%23000' fill-opacity='0.04' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='78.81,87.50 84.87,91.00 84.87,98.00 78.81,101.50 72.75,98.00 72.75,91.00' fill='%23fff' fill-opacity='0.047' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='84.87,77.00 90.93,80.50 90.93,87.50 84.87,91.00 78.81,87.50 78.81,80.50' fill='%23000' fill-opacity='0.045' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='90.93,87.50 96.99,91.00 96.99,98.00 90.93,101.50 84.87,98.00 84.87,91.00' fill='%23fff' fill-opacity='0.041' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='96.99,77.00 103.06,80.50 103.06,87.50 96.99,91.00 90.93,87.50 90.93,80.50' fill='%23000' fill-opacity='0.078' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3Cpolygon points='103.06,87.50 109.12,91.00 109.12,98.00 103.06,101.50 96.99,98.00 96.99,91.00' fill='%23000' fill-opacity='0.041' stroke='%23000' stroke-opacity='.16' stroke-width='1.2'/%3E%3C/svg%3E");
-  --hex-size:96.995px 84.0px;
-}
-*{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{margin:0;background:var(--wall-deep);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;}
-a{color:inherit;text-decoration:none;}
-img{max-width:100%;}
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
-h1,h2{font-family:'Unbounded','Inter',system-ui,sans-serif;font-weight:700;letter-spacing:-0.015em;line-height:1.1;margin:0;}
-h1{font-size:clamp(1.8rem,3.8vw,2.95rem);}
-h2{font-size:clamp(1.4rem,2.5vw,2rem);}
-h3{font-weight:700;margin:0;letter-spacing:-0.01em;}
-p{margin:0;}
-.mono{font-family:'JetBrains Mono',monospace;}
-section{scroll-margin-top:84px;}
-h1,h2,h3{text-wrap:balance;}
-p,li{text-wrap:pretty;}
-
-/* ---------- поверхні: матеріал і є ґрунтом ---------- */
-.s-wall{background-color:var(--wall);background-image:var(--hex);background-size:var(--hex-size);color:var(--ink);}
-.s-ground{background-color:var(--ground);color:var(--ink-dark);}
-.s-ground + .s-ground{border-top:1px solid var(--light-border);}
-.sec{padding:88px 0;}
-@media (max-width:760px){ .sec{padding:60px 0;} }
-.sec-head{max-width:640px;margin-bottom:40px;}
-.sec-head h2{margin-bottom:14px;}
-.sec-head p{font-size:1.05rem;}
-.s-ground .sec-head p,.s-ground p{color:var(--ink-dark-soft);}
-.s-wall p{color:var(--ink-soft);}
-
-/* ---------- кнопки ---------- */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 22px;min-height:46px;border-radius:var(--radius);font-weight:700;font-size:.92rem;cursor:pointer;border:1px solid transparent;font-family:inherit;transition:transform .16s var(--ease-out),background-color .16s ease,border-color .16s ease;}
-.btn:active{transform:scale(.97);}
-.btn-accent{background:var(--yellow);color:var(--ink-dark);}
-.btn-accent:hover{background:#ffd24a;}
-.btn-dark{background:var(--ink-dark);color:var(--ink);}
-.btn-dark:hover{background:#2a3038;}
-.btn-line{background:transparent;color:inherit;border-color:currentColor;}
-.btn-line:hover{background:rgba(127,127,127,.12);}
-.btn-outline-dark{background:transparent;color:var(--ink);border-color:var(--border);}
-.full-btn{width:100%;}
-.btn:disabled,.cart-btn:disabled{opacity:.5;cursor:not-allowed;}
-
-/* ---------- смужка оголошення ---------- */
-.announce-bar{background:var(--wall-deep);border-bottom:1px solid var(--border);text-align:center;padding:9px 16px;}
-.announce-link{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.78rem;letter-spacing:.02em;color:#ffd75e;}
-.announce-link:hover{text-decoration:underline;text-underline-offset:3px;}
-
-/* ---------- шапка ---------- */
-header{background:var(--wall-deep);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50;}
-.nav{display:flex;align-items:center;justify-content:space-between;height:76px;gap:20px;}
-.brand{display:flex;align-items:center;gap:12px;font-weight:800;}
-.logo-mark{height:56px;width:auto;display:block;}
-.logo-mark--footer{height:64px;}
-.brand-word{font-weight:800;font-size:1.25rem;letter-spacing:-0.01em;color:var(--ink);white-space:nowrap;}
-.brand-word span{color:var(--yellow);}
-nav.links{display:flex;gap:26px;}
-nav.links a{font-size:.92rem;color:var(--ink-soft);padding:6px 0;border-bottom:2px solid transparent;transition:color .15s ease,border-color .15s ease;}
-nav.links a:hover{color:var(--ink);border-color:var(--yellow);}
-.nav-right{display:flex;align-items:center;gap:12px;}
-.lang-toggle{display:flex;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
-.lang-btn{border:none;background:transparent;color:var(--ink-soft);font-family:'JetBrains Mono',monospace;font-size:.75rem;font-weight:700;padding:8px 12px;min-height:34px;cursor:pointer;}
-.lang-btn.active{background:var(--ink);color:var(--wall-deep);}
-.cart-btn{background:var(--yellow);color:var(--ink-dark);border:none;border-radius:var(--radius);padding:10px 16px;min-height:40px;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.76rem;letter-spacing:.03em;cursor:pointer;display:flex;align-items:center;gap:6px;transition:transform .16s var(--ease-out);}
-.cart-btn:active{transform:scale(.96);}
-.cart-count{background:rgba(27,31,36,.18);border-radius:2px;padding:1px 6px;font-size:.7rem;}
-.cart-btn.bump{animation:bump .4s var(--ease-out);}
-@keyframes bump{40%{transform:scale(1.1);}}
-
-.menu-toggle{display:none;flex-direction:column;justify-content:center;gap:4px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:0 6px;flex:none;}
-.menu-toggle span{display:block;width:100%;height:2px;background:var(--ink);border-radius:1px;transition:transform .2s ease,opacity .2s ease;}
-.menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg);}
-.menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
-.menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
-.mobile-panel{display:none;flex-direction:column;background:var(--wall-deep);border-top:1px solid var(--border);padding:10px 24px 20px;}
-.mobile-panel.open{display:flex;}
-.mobile-panel a{padding:14px 2px;font-size:1rem;color:var(--ink);border-bottom:1px solid var(--border);}
-.mobile-panel a:last-of-type{border-bottom:none;}
-.mobile-panel-lang{display:flex;gap:8px;margin-top:14px;}
-.mobile-panel-lang .lang-btn{flex:1;border:1px solid var(--border);border-radius:var(--radius);padding:10px 0;}
-@media (max-width:860px){
-  nav.links{display:none;}
-  .nav-right > .lang-toggle{display:none;}
-  .menu-toggle{display:flex;}
-  .cart-btn > span:not(.cart-count){display:none;}
-  .cart-btn{padding:10px 12px;}
-}
-@media (min-width:861px){ .mobile-panel{display:none !important;} }
-@media (max-width:480px){ .logo-mark{height:42px;} .brand-word{font-size:1rem;} .nav{height:64px;} }
-@media (max-width:360px){ .wrap{padding:0 16px;} .logo-mark{height:36px;} .brand-word{font-size:.86rem;} .nav{gap:10px;} .nav-right{gap:8px;} }
 
 /* ---------- перший екран: мозаїчна стіна ---------- */
 .hero{padding:32px 0 56px;}
@@ -140,8 +21,6 @@ nav.links a:hover{color:var(--ink);border-color:var(--yellow);}
 .hero .eyebrow::before{background:#ffd75e;}
 .hero .ask{border-left-color:#ffd75e;}
 .hero-head{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:28px 48px;align-items:end;margin-bottom:26px;}
-.eyebrow{display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:.08em;color:var(--yellow);font-weight:700;margin-bottom:18px;text-transform:uppercase;}
-.eyebrow::before{content:"";width:10px;height:10px;background:var(--yellow);flex:none;}
 .hero h1 .soft{color:var(--ink-soft);}
 .ask{border-left:2px solid var(--yellow);padding:2px 0 2px 18px;}
 .ask h2{font-size:clamp(1.15rem,1.8vw,1.45rem);margin-bottom:10px;}
@@ -262,17 +141,6 @@ nav.links a:hover{color:var(--ink);border-color:var(--yellow);}
 .why-shot figcaption{margin-top:12px;font-size:.82rem;color:var(--ink-dark-soft);}
 @media (max-width:900px){ .why-grid{grid-template-columns:1fr;gap:40px;} .why-shot{max-width:440px;} }
 
-/* ---------- як варити ---------- */
-.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
-.step{background:#f6f1e7;border:1px solid var(--light-border);padding:28px 26px 30px;border-top:4px solid var(--c);}
-.step:nth-child(1){--c:var(--red);} .step:nth-child(2){--c:var(--yellow);} .step:nth-child(3){--c:var(--blue);}
-.step-n{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.8rem;color:var(--ink-dark-soft);margin-bottom:22px;}
-.step-k{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:clamp(1.6rem,2.6vw,2.1rem);color:var(--ink-dark);margin-bottom:10px;font-variant-numeric:tabular-nums;letter-spacing:-0.02em;}
-.step h3{font-size:1.1rem;margin-bottom:8px;}
-.step p{font-size:.94rem;}
-.how-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px;}
-.how-links .btn-line{color:var(--ink-dark);border-color:rgba(27,31,36,.45);}
-@media (max-width:860px){ .steps{grid-template-columns:1fr;} }
 
 /* ---------- що в комплекті ---------- */
 .kit-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;}
@@ -321,67 +189,11 @@ nav.links a:hover{color:var(--ink);border-color:var(--yellow);}
 .form-card .field-input::placeholder{color:#6b717b;}
 .form-card .field-input:focus-visible{border-color:var(--ink-dark);}
 .form-card h3{margin-bottom:18px;font-size:1.2rem;}
-.field-input{width:100%;background:var(--wall-deep);border:1px solid var(--border);border-radius:var(--radius);padding:12px 13px;font-family:'Inter',sans-serif;font-size:1rem;color:var(--ink);margin-bottom:10px;}
-.field-input::placeholder{color:var(--ink-soft);}
 .dealer-form-success{background:rgba(46,139,87,0.10);border:1px solid rgba(46,139,87,0.45);color:#1d5e39;border-radius:var(--radius);padding:16px 18px;font-size:.95rem;margin:0;}
 @media (max-width:880px){ .dealers-grid{grid-template-columns:1fr;gap:32px;} .form-card{padding:22px 18px;} }
 
-/* ---------- кошик ---------- */
-.cart-overlay,.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:90;display:none;}
-.modal-overlay{z-index:200;overflow-y:auto;-webkit-overflow-scrolling:touch;}
-.cart-overlay.open,.modal-overlay.open{display:block;}
-.cart-drawer{position:fixed;top:0;right:-380px;width:360px;max-width:88vw;height:100%;background:var(--surface);border-left:1px solid var(--border);z-index:100;transition:right .25s ease,visibility 0s linear .25s;visibility:hidden;display:flex;flex-direction:column;padding:24px;}
-@media (max-width:420px){ .cart-drawer{right:-100%;width:100%;max-width:100%;padding:20px;} .cart-drawer.open{right:0 !important;} }
-.cart-drawer.open{right:0;visibility:visible;transition:right .25s ease;}
-.cart-drawer-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;}
-.cart-close{background:none;border:none;color:var(--ink);font-size:1.1rem;cursor:pointer;width:44px;height:44px;margin:-10px -12px -10px 0;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;}
-.cart-close:hover{background:var(--surface-2);}
-.cart-items{flex:1;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;gap:12px;}
-.cart-item{display:flex;justify-content:space-between;gap:10px;font-size:.86rem;border-bottom:1px solid var(--border);padding-bottom:10px;}
-.cart-item .rm{background:none;border:none;color:var(--ink-soft);cursor:pointer;font-size:.8rem;width:32px;height:32px;margin:-7px 0 -7px 2px;flex:none;border-radius:50%;}
-.cart-item > span:last-child{white-space:nowrap;flex:none;}
-.cart-item .rm:hover{color:var(--ink);background:var(--surface-2);}
-.cart-total-row{display:flex;justify-content:space-between;font-weight:800;padding:16px 0;border-top:1px solid var(--border);margin-top:10px;}
-.cart-empty{color:var(--ink-soft);font-size:.86rem;}
 
-/* ---------- форма замовлення ---------- */
-.modal-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);max-width:420px;width:calc(100% - 32px);margin:8vh auto;padding:26px;}
-@media (max-width:420px){ .modal-card{margin:6vh auto;padding:20px;} }
-.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;}
-.checkout-note{font-size:.76rem;color:var(--ink-soft);margin-top:10px;}
-.checkout-note a{text-decoration:underline;}
-textarea.field-input{resize:vertical;}
-.checkout-success{text-align:center;padding:12px 4px 4px;}
-.success-check{width:56px;height:56px;border-radius:50%;background:#1E7B3C;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:800;margin:0 auto 18px;}
-.checkout-success h3{margin-bottom:8px;}
-.checkout-success p{color:var(--ink-soft);font-size:.9rem;margin-bottom:22px;}
-
-/* ---------- футер ---------- */
-footer{background:var(--wall-deep);padding:48px 0 20px;}
-.foot-top{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap;padding-bottom:24px;border-bottom:1px solid var(--border);}
-.foot-top p{margin-top:12px;max-width:34ch;color:var(--ink-soft);}
-.foot-social{display:flex;gap:16px;margin-top:14px;flex-wrap:wrap;}
-.foot-social a{font-size:.86rem;color:var(--ink-soft);}
-.foot-cols{display:flex;gap:40px;flex-wrap:wrap;}
-.foot-col h4{font-family:'JetBrains Mono',monospace;font-size:.74rem;letter-spacing:.05em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 12px;}
-.foot-col div{font-size:.88rem;margin-bottom:3px;line-height:1.4;color:var(--ink-soft);}
-.foot-bottom{display:flex;justify-content:space-between;padding-top:14px;font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--ink-soft);flex-wrap:wrap;gap:8px;}
-.foot-social a,.foot-col div a{display:inline-block;padding:5px 0;}
-.foot-social a:hover,.foot-col div a:hover{color:var(--ink);}
-
-/* ---------- доступність ---------- */
-::selection{background:var(--yellow);color:var(--ink-dark);}
-input,textarea,select{caret-color:var(--yellow);}
-:focus-visible{outline:2px solid var(--yellow);outline-offset:3px;}
-.s-ground :focus-visible{outline-color:var(--ink-dark);}
-.field-input:focus-visible{outline-offset:0;border-color:var(--yellow);}
-.hp-field{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto;}
-  *,*::before,*::after{animation:none !important;transition:none !important;}
-  .panel .panel-body{opacity:1;}
-}
+@media (prefers-reduced-motion:reduce){ .panel .panel-body{opacity:1;} }
 </style>
 </head>
 <body>
@@ -443,6 +255,16 @@ input,textarea,select{caret-color:var(--yellow);}
         </div>
       </div>
       <div class="mosaic" id="mosaic" role="group" aria-labelledby="askTitle"></div>
+    </div>
+  </section>
+
+  <!-- 1б. ІНШІ ЛІНІЙКИ: з'являється сам, коли в VISIBLE_CATS додати категорію з catalog.js (warmer, bn, diamond, degreaser, sets) -->
+  <section id="catalog" class="sec s-ground" hidden>
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 data-uk="Інші лінійки" data-en="Other lines">Інші лінійки</h2>
+      </div>
+      <div id="catalogGroups"></div>
     </div>
   </section>
 
@@ -719,14 +541,17 @@ input,textarea,select{caret-color:var(--yellow);}
   // Мозаїка: чотири панно лінійки PRO. Назви, температури, аромати,
   // фото й ціни беруться з catalog.js. Які категорії показувати: VISIBLE_CATS.
   // ---------------------------------------------------------------
+  // Щоб показати нову лінійку, додайте її категорію сюди, наприклад ['pro', 'warmer'].
+  // PRO живе в мозаїці, решта автоматично з'являється карточками в блоці «Інші лінійки».
   var VISIBLE_CATS = ['pro'];
   var SHOWN = CATALOG.filter(function(p){ return VISIBLE_CATS.indexOf(p.cat) !== -1; });
+  var EXTRA = SHOWN.filter(function(p){ return p.cat !== 'pro'; });
   var TONE_ORDER = ['blue','green','yellow','red'];
   function toneOf(p){
     for(var i = 0; i < TONE_ORDER.length; i++){ if(p.id.indexOf(TONE_ORDER[i]) !== -1){ return TONE_ORDER[i]; } }
-    return 'blue';
+    return 'none';
   }
-  var PANELS = SHOWN.slice().sort(function(a, b){ return TONE_ORDER.indexOf(toneOf(a)) - TONE_ORDER.indexOf(toneOf(b)); });
+  var PANELS = SHOWN.filter(function(p){ return p.cat === 'pro'; }).sort(function(a, b){ return TONE_ORDER.indexOf(toneOf(a)) - TONE_ORDER.indexOf(toneOf(b)); });
 
   // Нейтральні мотиви: сніг, крапля, сонце за обрієм, повне сонце
   var MOTIFS = {
@@ -860,6 +685,65 @@ input,textarea,select{caret-color:var(--yellow);}
   });
 
   // Ціни в блоці «Що в комплекті» беремо з каталогу, щоб не розходились
+  // ---------------------------------------------------------------
+  // Інші лінійки: картки товарів, згруповані за категорією
+  // ---------------------------------------------------------------
+  var PHOTO_BY_KEY = {
+    red:'images/photo-red.png', yellow:'images/photo-yellow.png', green:'images/photo-green.png',
+    blue:'images/photo-blue.png', grey:'images/photo-grey.jpg', 'diamond-red':'images/photo-diamond-red.jpg'
+  };
+  var CAT_LABELS = {
+    uk:{ warmer:'Wax Warmer', bn:'Royal Eggs NB', diamond:'Black Diamond / Ice Diamond', degreaser:'Дегризери', sets:'Набори' },
+    en:{ warmer:'Wax Warmer', bn:'Royal Eggs NB', diamond:'Black Diamond / Ice Diamond', degreaser:'Degreasers', sets:'Sets' }
+  };
+  var catalogSection = document.getElementById('catalog');
+  var catalogGroups = document.getElementById('catalogGroups');
+  var extraPick = {};
+
+  function renderCatalog(){
+    if(!EXTRA.length){ catalogSection.hidden = true; return; }
+    catalogSection.hidden = false;
+    var lang = currentLang();
+    var cats = [];
+    EXTRA.forEach(function(p){ if(cats.indexOf(p.cat) === -1){ cats.push(p.cat); } });
+    catalogGroups.innerHTML = cats.map(function(cat){
+      var items = EXTRA.filter(function(p){ return p.cat === cat; });
+      return '<h3 style="margin:28px 0 14px;font-size:1.15rem">' + escapeHtml((CAT_LABELS[lang][cat]) || cat) + '</h3>' +
+        '<div class="p-grid">' + items.map(function(p){
+          var vi = extraPick[p.id] || 0;
+          var photo = (p.gallery && p.gallery[0] && p.gallery[0].src) || PHOTO_BY_KEY[p.photoKey] || '';
+          var temp = (lang === 'en' && p.tempEn) ? p.tempEn : (p.temp || '');
+          return '<div class="p-card" data-tone="' + toneOf(p) + '">' +
+            '<div class="p-photo">' + (photo ? '<img src="' + photo + '" alt="' + escapeHtml(p.name) + '" loading="lazy" decoding="async">' : '<span class="ph">' + (lang === 'en' ? 'photo coming soon' : 'фото додається') + '</span>') + '</div>' +
+            '<div class="p-body">' +
+              '<h3>' + escapeHtml(p.name) + '</h3>' +
+              (temp ? '<div class="p-temp">' + escapeHtml(temp) + '</div>' : '') +
+              (p.variants.length > 1 ? '<div class="p-vars" role="group" aria-label="' + (lang === 'en' ? 'Option' : 'Варіант') + '">' + p.variants.map(function(v, i){
+                var label = (lang === 'en' && v.labelEn) ? v.labelEn : v.label;
+                return '<button type="button" class="p-var" data-uid="' + p.id + '" data-vi="' + i + '" aria-pressed="' + (i === vi) + '">' + escapeHtml(label) + '</button>';
+              }).join('') + '</div>' : '<div class="p-temp">' + escapeHtml((lang === 'en' && p.variants[0].labelEn) ? p.variants[0].labelEn : p.variants[0].label) + '</div>') +
+              '<div class="p-foot">' +
+                '<span class="p-price" data-xprice-for="' + p.id + '">' + fmtPrice(p.variants[vi].price) + '</span>' +
+                '<button type="button" class="btn btn-dark p-add" data-uid="' + p.id + '">' + (lang === 'en' ? 'Add to cart' : 'У кошик') + '</button>' +
+              '</div>' +
+            '</div>' +
+          '</div>';
+        }).join('') + '</div>';
+    }).join('');
+  }
+  catalogGroups.addEventListener('click', function(e){
+    var v = e.target.closest('.p-var');
+    if(v){
+      var uid = v.getAttribute('data-uid'), vi = Number(v.getAttribute('data-vi'));
+      extraPick[uid] = vi;
+      v.parentNode.querySelectorAll('.p-var').forEach(function(b){ b.setAttribute('aria-pressed', String(b === v)); });
+      catalogGroups.querySelector('[data-xprice-for="' + uid + '"]').textContent = fmtPrice(findProductByUid(uid).variants[vi].price);
+      return;
+    }
+    var add = e.target.closest('.p-add');
+    if(add){ var auid = add.getAttribute('data-uid'); addToCart(auid, extraPick[auid] || 0); }
+  });
+
   function renderKitPrices(){
     var ref = PANELS[0];
     if(!ref){ return; }
@@ -1201,6 +1085,7 @@ input,textarea,select{caret-color:var(--yellow);}
     try{ localStorage.setItem(LANG_KEY, lang); }catch(e){}
 
     renderMosaic();
+    renderCatalog();
     renderKitPrices();
     renderCart();
   }
