@@ -604,7 +604,7 @@
   function priceMarkup(v){
     if(!v.oldPrice){ return fmtPrice(v.price); }
     return '<s class="old-price" aria-label="' + (currentLang() === 'en' ? 'was ' : 'було ') + fmtPrice(v.oldPrice) + '">' + fmtPrice(v.oldPrice) + '</s> ' +
-      fmtPrice(v.price) + ' <span class="sale-tag">Black Friday</span>';
+      fmtPrice(v.price) + ' <span class="sale-tag">Black Friday −' + Math.round((1 - v.price / v.oldPrice) * 100) + '%</span>';
   }
 
   function findProductByUid(uid){
