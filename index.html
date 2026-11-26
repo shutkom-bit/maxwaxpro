@@ -600,12 +600,11 @@
   }
   function priceUnit(){ return currentLang() === 'en' ? 'UAH' : 'грн'; }
   function fmtPrice(n){ return n.toLocaleString('uk-UA') + ' ' + priceUnit(); }
-  // Ціна варіанта: під час акції стара закреслена, поруч нова і мітка −30%
+  // Ціна варіанта: під час акції стара закреслена, поруч нова і мітка Black Friday
   function priceMarkup(v){
     if(!v.oldPrice){ return fmtPrice(v.price); }
-    var pct = Math.round((1 - v.price / v.oldPrice) * 100);
     return '<s class="old-price" aria-label="' + (currentLang() === 'en' ? 'was ' : 'було ') + fmtPrice(v.oldPrice) + '">' + fmtPrice(v.oldPrice) + '</s> ' +
-      fmtPrice(v.price) + ' <span class="sale-tag">−' + pct + '%</span>';
+      fmtPrice(v.price) + ' <span class="sale-tag">Black Friday</span>';
   }
 
   function findProductByUid(uid){
