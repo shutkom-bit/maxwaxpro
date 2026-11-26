@@ -200,6 +200,8 @@
 .kit.best{border-top-color:var(--yellow);}
 .kit-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:16px;}
 .kit-head h3{font-size:1.25rem;}
+.old-price{font-weight:500;font-size:.72em;opacity:.6;margin-right:.2em;text-decoration-thickness:2px;}
+.sale-tag{display:inline-block;font-size:.55em;font-weight:800;letter-spacing:.02em;padding:.25em .5em;border-radius:4px;background:#111;color:#fff;vertical-align:middle;margin-left:.3em;}
 .kit-price{font-weight:800;font-size:1.3rem;white-space:nowrap;font-variant-numeric:tabular-nums;}
 .kit ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;color:var(--ink-dark-soft);}
 .kit li{display:grid;grid-template-columns:10px minmax(0,1fr);gap:12px;}
@@ -587,12 +589,24 @@
 <script>
 (function(){
   var CATALOG = window.MWP_CATALOG || [];
+  // Акція (див. SALE у catalog.js): поки діє, акційна ціна стає ціною, стара лишається для показу
+  var SALE_ON = !!(CATALOG.saleOn && CATALOG.saleOn());
+  if(SALE_ON){
+    CATALOG.forEach(function(p){ p.variants.forEach(function(v){ if(v.sale){ v.oldPrice = v.price; v.price = v.sale; } }); });
+  }
 
   function currentLang(){
     return document.documentElement.getAttribute('data-lang') === 'en' ? 'en' : 'uk';
   }
   function priceUnit(){ return currentLang() === 'en' ? 'UAH' : 'грн'; }
   function fmtPrice(n){ return n.toLocaleString('uk-UA') + ' ' + priceUnit(); }
+  // Ціна варіанта: під час акції стара закреслена, поруч нова і мітка −30%
+  function priceMarkup(v){
+    if(!v.oldPrice){ return fmtPrice(v.price); }
+    var pct = Math.round((1 - v.price / v.oldPrice) * 100);
+    return '<s class="old-price" aria-label="' + (currentLang() === 'en' ? 'was ' : 'було ') + fmtPrice(v.oldPrice) + '">' + fmtPrice(v.oldPrice) + '</s> ' +
+      fmtPrice(v.price) + ' <span class="sale-tag">−' + pct + '%</span>';
+  }
 
   function findProductByUid(uid){
     for(var i = 0; i < CATALOG.length; i++){
@@ -684,7 +698,7 @@
                 return '<button type="button" class="size" data-uid="' + p.id + '" data-vi="' + i + '" aria-pressed="' + (i === vi) + '">' + ((lang === 'en' && v.shortEn) ? v.shortEn : (v.short || v.label)) + '</button>';
               }).join('') + '</div>' +
               '<div class="buy">' +
-                '<span class="price" data-price-for="' + p.id + '">' + fmtPrice(p.variants[vi].price) + '</span>' +
+                '<span class="price" data-price-for="' + p.id + '">' + priceMarkup(p.variants[vi]) + '</span>' +
                 '<button type="button" class="btn add-btn" data-uid="' + p.id + '">' + L.add + '</button>' +
               '</div>' +
               '<a class="kit-link" href="#kit">' + L.kit + '</a>' +
@@ -723,7 +737,7 @@
       var uid = size.getAttribute('data-uid'), vi = Number(size.getAttribute('data-vi'));
       state.size[uid] = vi;
       size.parentNode.querySelectorAll('.size').forEach(function(b){ b.setAttribute('aria-pressed', String(b === size)); });
-      mosaicEl.querySelector('[data-price-for="' + uid + '"]').textContent = fmtPrice(findProductByUid(uid).variants[vi].price);
+      mosaicEl.querySelector('[data-price-for="' + uid + '"]').innerHTML = priceMarkup(findProductByUid(uid).variants[vi]);
       return;
     }
 
@@ -918,7 +932,7 @@
                 return '<button type="button" class="p-var" data-uid="' + p.id + '" data-vi="' + i + '" aria-pressed="' + (i === vi) + '">' + escapeHtml(label) + '</button>';
               }).join('') + '</div>' : '<div class="p-temp">' + escapeHtml((lang === 'en' && p.variants[0].labelEn) ? p.variants[0].labelEn : p.variants[0].label) + '</div>') +
               '<div class="p-foot">' +
-                '<span class="p-price" data-xprice-for="' + p.id + '">' + fmtPrice(p.variants[vi].price) + '</span>' +
+                '<span class="p-price" data-xprice-for="' + p.id + '">' + priceMarkup(p.variants[vi]) + '</span>' +
                 '<button type="button" class="btn btn-dark p-add" data-uid="' + p.id + '">' + (lang === 'en' ? 'Add to cart' : 'У кошик') + '</button>' +
               '</div>' +
             '</div>' +
@@ -932,7 +946,7 @@
       var uid = v.getAttribute('data-uid'), vi = Number(v.getAttribute('data-vi'));
       extraPick[uid] = vi;
       v.parentNode.querySelectorAll('.p-var').forEach(function(b){ b.setAttribute('aria-pressed', String(b === v)); });
-      catalogGroups.querySelector('[data-xprice-for="' + uid + '"]').textContent = fmtPrice(findProductByUid(uid).variants[vi].price);
+      catalogGroups.querySelector('[data-xprice-for="' + uid + '"]').innerHTML = priceMarkup(findProductByUid(uid).variants[vi]);
       return;
     }
     var add = e.target.closest('.p-add');
@@ -944,7 +958,7 @@
     if(!ref){ return; }
     document.querySelectorAll('[data-kit-price]').forEach(function(el){
       var v = ref.variants[Number(el.getAttribute('data-kit-price'))];
-      if(v){ el.textContent = fmtPrice(v.price); }
+      if(v){ el.innerHTML = priceMarkup(v); }
     });
   }
 
