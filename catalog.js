@@ -16,8 +16,8 @@ var CATALOG = [
       {src:"images/pro-red-drops.jpg", alt:"дропси у відкритому пакеті", altEn:"pellets in an open bag"}
     ],
     variants:[
-      {label:"Дропси, 500 г", labelEn:"Pellets, 500 g", short:"500 г", shortEn:"500 g", price:1420},
-      {label:"Дропси, 1 кг", labelEn:"Pellets, 1 kg", short:"1 кг", shortEn:"1 kg", price:2120}
+      {label:"Дропси, 500 г", labelEn:"Pellets, 500 g", short:"500 г", shortEn:"500 g", price:1420, sale:1136},
+      {label:"Дропси, 1 кг", labelEn:"Pellets, 1 kg", short:"1 кг", shortEn:"1 kg", price:2120, sale:1696}
     ] },
   { cat:"pro", id:"pro-pro-yellow", name:"PRO Yellow", temp:"+18°C … +25°C", scent:"аромат лимона", scentEn:"lemon scent",
     gallery:[
@@ -26,8 +26,8 @@ var CATALOG = [
       {src:"images/pro-yellow-drops.jpg", alt:"дропси у відкритому пакеті", altEn:"pellets in an open bag"}
     ],
     variants:[
-      {label:"Дропси, 500 г", labelEn:"Pellets, 500 g", short:"500 г", shortEn:"500 g", price:1420},
-      {label:"Дропси, 1 кг", labelEn:"Pellets, 1 kg", short:"1 кг", shortEn:"1 kg", price:2120}
+      {label:"Дропси, 500 г", labelEn:"Pellets, 500 g", short:"500 г", shortEn:"500 g", price:1420, sale:1136},
+      {label:"Дропси, 1 кг", labelEn:"Pellets, 1 kg", short:"1 кг", shortEn:"1 kg", price:2120, sale:1696}
     ] },
   { cat:"pro", id:"pro-pro-green", name:"PRO Green", temp:"+5°C … +18°C", scent:"аромат кави", scentEn:"coffee scent",
     gallery:[
@@ -36,8 +36,8 @@ var CATALOG = [
       {src:"images/pro-green-drops.jpg", alt:"дропси у відкритому пакеті", altEn:"pellets in an open bag"}
     ],
     variants:[
-      {label:"Дропси, 500 г", labelEn:"Pellets, 500 g", short:"500 г", shortEn:"500 g", price:1420},
-      {label:"Дропси, 1 кг", labelEn:"Pellets, 1 kg", short:"1 кг", shortEn:"1 kg", price:2120}
+      {label:"Дропси, 500 г", labelEn:"Pellets, 500 g", short:"500 г", shortEn:"500 g", price:1420, sale:1136},
+      {label:"Дропси, 1 кг", labelEn:"Pellets, 1 kg", short:"1 кг", shortEn:"1 kg", price:2120, sale:1696}
     ] },
   { cat:"pro", id:"pro-pro-blue", name:"PRO Blue", temp:"−20°C … +5°C", scent:"аромат кокосу", scentEn:"coconut scent",
     gallery:[
@@ -46,8 +46,8 @@ var CATALOG = [
       {src:"images/pro-blue-drops.jpg", alt:"дропси у відкритому пакеті", altEn:"pellets in an open bag"}
     ],
     variants:[
-      {label:"Дропси, 500 г", labelEn:"Pellets, 500 g", short:"500 г", shortEn:"500 g", price:1420},
-      {label:"Дропси, 1 кг", labelEn:"Pellets, 1 kg", short:"1 кг", shortEn:"1 kg", price:2120}
+      {label:"Дропси, 500 г", labelEn:"Pellets, 500 g", short:"500 г", shortEn:"500 g", price:1420, sale:1136},
+      {label:"Дропси, 1 кг", labelEn:"Pellets, 1 kg", short:"1 кг", shortEn:"1 kg", price:2120, sale:1696}
     ] },
 
   // 2. Wax Warmer (блоки для воскоплавів)
@@ -96,6 +96,12 @@ var CATALOG = [
   { cat:"sets", id:"sets-ultimate-set", name:"Ultimate Set", temp:"Блок 320 г + комплект обслуговування", tempEn:"320 g block + service kit", photoKey:"grey",
     variants:[{label:"WS₂ + MoS₂ + NB, дегризер, 2×20 г", labelEn:"WS₂ + MoS₂ + NB, degreaser, 2×20 g", price:1700}] }
 ];
+// Акція. Поки триває (до SALE.until), діє variant.sale замість variant.price.
+// Після дати ціни повертаються самі; щоб прибрати акцію раніше, поставте active:false.
+var SALE = { active: true, until: "2026-11-30T21:59:59Z", label: "Black Friday −20%" }; // 30.11 23:59 за Києвом
+function saleOn(now){ return SALE.active && (now === undefined ? Date.now() : now) < Date.parse(SALE.until); }
+function currentPrice(variant, now){ return (variant.sale && saleOn(now)) ? variant.sale : variant.price; }
+CATALOG.SALE = SALE; CATALOG.saleOn = saleOn; CATALOG.currentPrice = currentPrice;
 if (typeof module !== 'undefined' && module.exports) { module.exports = CATALOG; }
 else { root.MWP_CATALOG = CATALOG; }
 })(this);
